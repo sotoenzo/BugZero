@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BugZero — Aprende, practica, construye mejor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <a href="nosotros.html" class="brand">
+    <span class="brand-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+    </span>
+    Bug<span class="zero">Zero</span>
+  </a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+  </button>
+</header>
+
+<!-- SIDE MENU -->
+<div class="overlay" id="overlay"></div>
+<aside class="side-menu" id="sideMenu">
+  <div class="side-menu-header">
+    <a href="#inicio" class="brand" style="font-size:1.2rem;">
+      <span class="brand-icon" style="width:30px;height:30px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+      </span>
+      Bug<span class="zero">Zero</span>
+    </a>
+    <button class="side-menu-close" id="menuClose" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav>
+    <a href="#calidad" class="side-link active">
+      <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Inicio</span>
+    </a>
+    <a href="#" class="side-link">
+      <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>Calidad</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+    </a>
+    <a href="#" class="side-link">
+      <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>Desarrollo</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+    </a>
+    <a href="#ogias" class="side-link">
+      <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M11 20c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/></svg>Metodologías</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+    </a>
+    <a href="#" class="side-link">
+      <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 1 4 17.5v-13z"/><path d="M20 17H6.5A2.5 2.5 0 0 0, 4 19.5"/></svg>Recursos</span>
+    </a>
+    <a href="nosotros.html" class="side-link">
+      <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.5 2.9-6.3 6.5-6.3S15.5 16.5 15.5 20"/><circle cx="17.5" cy="9" r="2.6"/><path d="M14.7 13.8c2.6.3 4.7 2.6 4.8 5.5"/></svg>Nosotros</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+    </a>
+    <a href="#contacto" class="side-link">
+      <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg>Contacto</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+    </a>
+  </nav>
+  <div class="side-divider"></div>
+  <button class="side-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M11 20c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/></svg>
+    Comparar metodologías
+  </button>
+</aside>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow">Aprende &nbsp;·&nbsp; Practica &nbsp;·&nbsp; Construye mejor</p>
+      <h1>Bienvenido a<br>Bug<span class="zero">Zero</span></h1>
+      <p>Tu espacio para aprender sobre la gestión de la calidad del software, los procesos de desarrollo y las metodologías más utilizadas en la industria. Contenido teórico, ejemplos prácticos y herramientas interactivas para que construyas software de calidad.</p>
+      <div class="hero-actions">
+        <a href="#recursos" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          Comenzar a aprender
+        </a>
+        <a href="#metodologias" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 1 4 17.5v-13z"/></svg>
+          Explorar metodologías
+        </a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg">
+        <!-- monitor with bug -->
+        <rect x="30" y="30" width="220" height="150" rx="10" fill="none" stroke="#3d7ed6" stroke-width="2" opacity=".55"/>
+        <circle cx="140" cy="105" r="34" fill="none" stroke="#4fa3ff" stroke-width="2.5"/>
+        <line x1="140" y1="60" x2="140" y2="72" stroke="#4fa3ff" stroke-width="2.5"/>
+        <line x1="118" y1="70" x2="126" y2="80" stroke="#4fa3ff" stroke-width="2.5"/>
+        <line x1="162" y1="70" x2="154" y2="80" stroke="#4fa3ff" stroke-width="2.5"/>
+        <line x1="106" y1="105" x2="118" y2="105" stroke="#4fa3ff" stroke-width="2.5"/>
+        <line x1="162" y1="105" x2="174" y2="105" stroke="#4fa3ff" stroke-width="2.5"/>
+        <line x1="115" y1="130" x2="124" y2="122" stroke="#4fa3ff" stroke-width="2.5"/>
+        <line x1="165" y1="130" x2="156" y2="122" stroke="#4fa3ff" stroke-width="2.5"/>
+        <circle cx="140" cy="105" r="14" fill="#0c1832" stroke="#4fa3ff" stroke-width="2.5"/>
+        <line x1="105" y1="105" x2="175" y2="105" stroke="#0c1832" stroke-width="4"/>
+        <circle cx="200" cy="55" r="14" fill="none" stroke="#3d7ed6" stroke-width="2" opacity=".6"/>
+        <rect x="192" y="47" width="16" height="16" rx="3" fill="none" stroke="#3d7ed6" stroke-width="2" opacity=".6"/>
+
+        <!-- laptop -->
+        <g>
+          <rect x="140" y="185" width="320" height="185" rx="12" fill="#0e1c3a" stroke="#2f8cff" stroke-width="1.5"/>
+          <rect x="155" y="198" width="290" height="140" rx="4" fill="#081025"/>
+          <!-- code lines -->
+          <rect x="172" y="212" width="70" height="6" rx="3" fill="#4fa3ff"/>
+          <rect x="172" y="228" width="110" height="6" rx="3" fill="#7ec1ff" opacity=".8"/>
+          <rect x="172" y="244" width="60" height="6" rx="3" fill="#1fae6b"/>
+          <rect x="190" y="260" width="130" height="6" rx="3" fill="#e8792a" opacity=".85"/>
+          <rect x="190" y="276" width="90" height="6" rx="3" fill="#7c3aed" opacity=".85"/>
+          <rect x="172" y="292" width="150" height="6" rx="3" fill="#4fa3ff" opacity=".7"/>
+          <rect x="172" y="308" width="80" height="6" rx="3" fill="#7ec1ff" opacity=".6"/>
+          <path d="M155 370 L140 405 L460 405 L445 370 Z" fill="#0c1832" stroke="#2f8cff" stroke-width="1.2"/>
+        </g>
+
+        <!-- checklist card -->
+        <g transform="translate(345,120)">
+          <rect x="0" y="0" width="175" height="120" rx="12" fill="#0e1c3a" stroke="#2f8cff" stroke-width="1.4"/>
+          <circle cx="24" cy="26" r="10" fill="#1fae6b"/>
+          <path d="M19 26l4 4 8-8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="42" y="31" fill="#dce6f5" font-family="Inter, sans-serif" font-size="14" font-weight="600">Calidad</text>
+          <circle cx="24" cy="60" r="10" fill="#1fae6b"/>
+          <path d="M19 60l4 4 8-8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="42" y="65" fill="#dce6f5" font-family="Inter, sans-serif" font-size="14" font-weight="600">Procesos</text>
+          <circle cx="24" cy="94" r="10" fill="#1fae6b"/>
+          <path d="M19 94l4 4 8-8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="42" y="99" fill="#dce6f5" font-family="Inter, sans-serif" font-size="14" font-weight="600">Metodologías</text>
+        </g>
+
+        <!-- gear -->
+        <g transform="translate(400,300)">
+          <circle cx="30" cy="30" r="26" fill="#0e1c3a" stroke="#2f8cff" stroke-width="1.4"/>
+          <circle cx="30" cy="30" r="10" fill="none" stroke="#4fa3ff" stroke-width="2.5"/>
+          <g stroke="#4fa3ff" stroke-width="2.5">
+            <line x1="30" y1="8" x2="30" y2="15"/>
+            <line x1="30" y1="45" x2="30" y2="52"/>
+            <line x1="8" y1="30" x2="15" y2="30"/>
+            <line x1="45" y1="30" x2="52" y2="30"/>
+          </g>
+        </g>
+
+        <!-- books stack -->
+        <g transform="translate(390,355)">
+          <rect x="0" y="0" width="140" height="16" rx="3" fill="#0e1c3a" stroke="#3d7ed6" stroke-width="1"/>
+          <text x="70" y="12" text-anchor="middle" fill="#7ec1ff" font-family="Inter, sans-serif" font-size="8.5" letter-spacing="1" font-weight="700">CLEAN CODE</text>
+          <rect x="-6" y="20" width="152" height="16" rx="3" fill="#0e1c3a" stroke="#3d7ed6" stroke-width="1"/>
+          <text x="70" y="32" text-anchor="middle" fill="#7ec1ff" font-family="Inter, sans-serif" font-size="8" letter-spacing="1" font-weight="700">SOFTWARE ENGINEERING</text>
+        </g>
+
+        <!-- coffee mug -->
+        <g transform="translate(30,230)">
+          <rect x="0" y="0" width="34" height="30" rx="5" fill="none" stroke="#3d7ed6" stroke-width="2"/>
+          <path d="M34 8h8a6 6 0 0 1 0 12h-8" fill="none" stroke="#3d7ed6" stroke-width="2"/>
+        </g>
+        <rect x="20" y="272" width="55" height="14" rx="3" fill="none" stroke="#3d7ed6" stroke-width="1.6" opacity=".7"/>
+
+        <!-- plant -->
+        <g transform="translate(470,190)">
+          <path d="M10 60c0-18 -14-24-14-40" fill="none" stroke="#1fae6b" stroke-width="2.5"/>
+          <path d="M10 60c0-22 16-26 16-46" fill="none" stroke="#1fae6b" stroke-width="2.5"/>
+          <path d="M10 60c0-14 2-20 0-34" fill="none" stroke="#1fae6b" stroke-width="2.5"/>
+          <rect x="-6" y="58" width="32" height="26" rx="4" fill="none" stroke="#3d7ed6" stroke-width="2"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION LABEL -->
+<div class="section-label">
+  <span class="bar"></span>
+  <span>EXPLORÁ NUESTRAS SECCIONES PRINCIPALES</span>
+</div>
+
+<!-- CARDS -->
+<section class="cards-grid">
+  <article class="card quality" id="calidad">
+    <div class="card-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+    </div>
+    <h3>Gestión de la Calidad<br>del Software</h3>
+    <p>Conceptos clave, métricas, estándares (ISO 9126/25000), pruebas y herramientas de calidad.</p>
+    <a href="#calidad" class="card-link">Ver sección
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </article>
+
+  <article class="card dev" id="desarrollo">
+    <div class="card-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>
+    </div>
+    <h3>Procesos de Desarrollo<br>de Software</h3>
+    <p>Ciclo de vida, modelos tradicionales y metodologías ágiles.</p>
+    <a href="#desarrollo" class="card-link">Ver sección
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </article>
+
+  <article class="card method" id="metodologias">
+    <div class="card-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M11 20c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/></svg>
+    </div>
+    <h3>Metodologías Ágiles</h3>
+    <p>Scrum, Kanban, XP y más. Principios, roles, ceremonias y artefactos.</p>
+    <a href="#metodologias" class="card-link">Ver sección
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </article>
+
+  <article class="card res" id="recursos">
+    <div class="card-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 1 4 17.5v-13z"/><path d="M20 17H6.5A2.5 2.5 0 0 0 4 19.5"/></svg>
+    </div>
+    <h3>Recursos y Aprendizaje</h3>
+    <p>Glosario, FAQ, enlaces de interés, ejercicios prácticos y mucho más.</p>
+    <a href="#recursos" class="card-link">Ver sección
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </article>
+</section>
+
+<!-- FEATURES BAR -->
+<section class="features">
+  <div class="features-inner">
+    <div class="feature">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg></span>
+      <div><h4>Aprendizaje accesible</h4><p>Explicaciones claras y simples.</p></div>
+    </div>
+    <div class="feature">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg></span>
+      <div><h4>Enfoque práctico</h4><p>Ejemplos reales y ejercicios.</p></div>
+    </div>
+    <div class="feature">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M11 20c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/></svg></span>
+      <div><h4>Para todos los niveles</h4><p>Desde principiantes hasta avanzados.</p></div>
+    </div>
+    <div class="feature">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg></span>
+      <div><h4>Objetivo claro</h4><p>Cero bugs, mejor software.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="nosotros">
+  <div class="footer-inner">
+    <div class="footer-brand" id="contacto">
+      <a href="#inicio" class="brand" style="font-size:1.25rem;">
+        <span class="brand-icon" style="width:30px;height:30px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+        </span>
+        Bug<span class="zero">Zero</span>
+      </a>
+      <p>Aprendé hoy, construí mejor mañana.</p>
+      <div class="social">
+        <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.7 5.6.7 12c0 5.1 3.3 9.4 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.6 7.9-5.9 7.9-11C23.3 5.6 18.3.5 12 .5z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.4-5.1c-.3-.9-1-1.6-1.9-1.9C19 4.5 12 4.5 12 4.5s-7 0-8.7.5c-.9.3-1.6 1-1.9 1.9C1 8.5 1 12 1 12s0 3.5.4 5.1c.3.9 1 1.6 1.9 1.9 1.7.5 8.7.5 8.7.5s7 0 8.7-.5c.9-.3 1.6-1 1.9-1.9.4-1.6.4-5.1.4-5.1zM9.8 15.3V8.7l5.8 3.3-5.8 3.3z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5zM.4 8.3H4.6V23H.4V8.3zM8.5 8.3h4v2h.06c.56-1 1.9-2.1 3.9-2.1 4.2 0 5 2.8 5 6.3V23h-4.2v-6.6c0-1.6 0-3.6-2.2-3.6-2.2 0-2.5 1.7-2.5 3.5V23H8.5V8.3z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Contacto</h5>
+      <ul class="footer-contact">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg> info@bugzero.com</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s-8-7.2-8-13a8 8 0 0 1 16 0c0 5.8-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg> Neuquén, Argentina</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Conócenos</h5>
+      <ul>
+        <li><a href="nosotros.html">Sobre nosotros</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 BugZero. Todos los derechos reservados.</div>
+</footer>
+
+<script src="script.js"></script>
+
