@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>BugZero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="nosotros.css">
+
+  <!-- ICONOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a href="index.html" class="logo"><i class="fa-solid fa-bug"></i> BugZero</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+  </button>
+</header>
+
+<div class="overlay" id="overlay"></div>
+<aside class="side-menu" id="sideMenu">
+  <div class="side-menu-header">
+    <a href="index.html#inicio" class="brand" style="font-size:1.2rem;">
+      <span class="brand-icon" style="width:30px;height:30px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+      </span>
+      Bug<span class="zero">Zero</span>
+    </a>
+    <button class="side-menu-close" id="menuClose" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav>
+    <a href="index.html#inicio" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Inicio</span></a>
+    <a href="index.html#calidad" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>Calidad</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg></a>
+    <a href="index.html#desarrollo" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>Desarrollo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg></a>
+    <a href="index.html#metodologias" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M11 20c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/></svg>Metodologías</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg></a>
+    <a href="index.html#recursos" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 1 4 17.5v-13z"/><path d="M20 17H6.5A2.5 2.5 0 0 0 4 19.5"/></svg>Recursos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg></a>
+    <a href="#nosotros" class="side-link active" aria-current="page"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.5 2.9-6.3 6.5-6.3S15.5 16.5 15.5 20"/><circle cx="17.5" cy="9" r="2.6"/><path d="M14.7 13.8c2.6.3 4.7 2.6 4.8 5.5"/></svg>Nosotros</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg></a>
+    <a href="contacto.html" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg>Contacto</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg></a>
+  </nav>
+  <div class="side-divider"></div>
+  <a class="side-cta" href="index.html#metodologias"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M11 20c0-2.5 2-4.5 4.5-4.5s4.5 2-4.5 4.5"/></svg>Comparar metodologías</a>
+</aside>
+
+<section class="hero" id="nosotros">
+  <h1>NUESTRO EQUIPO</h1>
+  <p>
+    Somos un grupo de estudiantes que tienen como objetivo desarrollar software de calidad,
+    priorizando la usabilidad, el trabajo en equipo y la generación de valor en cada iteración.
+  </p>
+</section>
+
+<section class="equipo">
+
+  <div class="card">
+    <img src="img/WhatsApp Image 2026-09-23 at 18.40.10.jpeg" alt="Foto de Reissig Tomás">
+    <h3>Reissig Tomás</h3>
+    <span class="rol azul">Scrum Master</span>
+    <p class="escuela"><i class="fa-solid fa-school"></i> E.P.E.T N°20</p>
+    <p class="motivacion">"Mi objetivo es facilitar la colaboración y optimizar procesos."</p>
+  </div>
+
+  <div class="card">
+    <img src="img/lucho.jpeg" alt="Foto de Luciano Matteo">
+    <h3>Matteo Luciano</h3>
+    <span class="rol violeta">Diseñador</span>
+    <p class="escuela"><i class="fa-solid fa-school"></i> E.P.E.T N°20</p>
+    <p class="motivacion">"Crear experiencias visuales atractivas y fluidas."</p>
+  </div>
+
+  <div class="card">
+    <img src="img/enzo.jpeg" alt="Foto de Soto Enzo">
+    <h3>Soto Enzo</h3>
+    <span class="rol verde">Programador</span>
+    <p class="escuela"><i class="fa-solid fa-school"></i> E.P.E.T N°20</p>
+    <p class="motivacion">"Construir sistemas eficientes y funcionales."</p>
+  </div>
+
+  <div class="card">
+    <img src="img/eze.jpeg" alt="Foto de Esteban Schieroni">
+    <h3>Esteban Schieroni</h3>
+    <span class="rol naranja">Tester</span>
+    <p class="escuela"><i class="fa-solid fa-school"></i> E.P.E.T N°20</p>
+    <p class="motivacion">"Garantizar calidad y estabilidad del sistema."</p>
+  </div>
+
+</section>
+
+<section class="contacto" id="contacto">
+  <h2>CONTACTO Y ENLACES</h2>
+</section>
+
+<footer class="footer">
+
+  <div class="col">
+    <h3><i class="fa-solid fa-bug"></i> BugZero</h3>
+    <p>Aprendé hoy, construí mejor mañana.</p>
+  </div>
+
+  <div class="col">
+    <h4>Enlaces rápidos</h4>
+    <p><a href="index.html#inicio">Inicio</a></p>
+    <p><a href="index.html#calidad">Calidad</a></p>
+    <p><a href="index.html#desarrollo">Desarrollo</a></p>
+  </div>
+
+  <div class="col">
+    <h4>Recursos</h4>
+    <p><a href="index.html#recursos">Glosario</a></p>
+    <p><a href="index.html#recursos">FAQ</a></p>
+    <p><a href="index.html#recursos">Ejercicios</a></p>
+  </div>
+
+  <div class="col">
+    <h4>Contacto</h4>
+    <p><a href="mailto:info@bugzero.com">info@bugzero.com</a></p>
+    <p>Neuquén, Argentina</p>
+    <div class="redes">
+      <i class="fa-brands fa-github"></i>
+      <i class="fa-brands fa-instagram"></i>
+      <i class="fa-brands fa-linkedin"></i>
+    </div>
+  </div>
+
+</footer>
+
+<script src="nosotros.js"></script>
+</body>
+</html>
