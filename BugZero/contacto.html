@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contactate con el equipo de BugZero.">
+  <title>Contacto — BugZero</title>
+  <link rel="stylesheet" href="contacto.css">
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html#inicio" class="brand">
+      <span class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+      </span>
+      Bug<span class="zero">Zero</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="sideMenu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </header>
+
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+  <aside class="side-menu" id="sideMenu" aria-label="Menú principal" aria-hidden="true">
+    <div class="side-menu-header">
+      <a href="index.html#inicio" class="brand">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+        </span>
+        Bug<span class="zero">Zero</span>
+      </a>
+      <button class="side-menu-close" id="menuClose" type="button" aria-label="Cerrar menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav aria-label="Secciones del sitio">
+      <a href="index.html#inicio" class="side-link"><span class="left">Inicio</span></a>
+      <a href="index.html#calidad" class="side-link"><span class="left">Calidad</span></a>
+      <a href="index.html#desarrollo" class="side-link"><span class="left">Desarrollo</span></a>
+      <a href="index.html#metodologias" class="side-link"><span class="left">Metodologías</span></a>
+      <a href="index.html#recursos" class="side-link"><span class="left">Recursos</span></a>
+      <a href="nosotros.html#nosotros" class="side-link"><span class="left">Nosotros</span></a>
+      <a href="contacto.html" class="side-link active" aria-current="page"><span class="left">Contacto</span></a>
+    </nav>
+    <div class="side-divider"></div>
+    <a class="side-cta" href="index.html#metodologias">Explorar metodologías</a>
+  </aside>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Estamos para ayudarte</p>
+        <h1>Hablemos de tu próximo proyecto</h1>
+        <p>¿Tenés una consulta, una idea o querés saber más sobre BugZero? Escribinos y nuestro equipo se pondrá en contacto.</p>
+      </div>
+    </section>
+
+    <section class="contact-section" aria-labelledby="contact-title">
+      <div class="contact-layout">
+        <div class="contact-intro">
+          <span class="section-kicker">CONTACTO</span>
+          <h2 id="contact-title">Contanos en qué podemos ayudarte</h2>
+          <p>Completá todos los campos del formulario para enviarnos tu mensaje.</p>
+          <div class="contact-details">
+            <div class="detail-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg>
+            </div>
+            <div>
+              <h3>Correo electrónico</h3>
+              <a href="mailto:info@bugzero.com">info@bugzero.com</a>
+            </div>
+          </div>
+          <div class="contact-details">
+            <div class="detail-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s-8-7.2-8-13a8 8 0 0 1 16 0c0 5.8-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </div>
+            <div>
+              <h3>Ubicación</h3>
+              <p>Neuquén, Argentina</p>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Nombre completo</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-field">
+              <label for="email">Correo electrónico</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="nombre@ejemplo.com" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="subject">Asunto</label>
+            <input id="subject" name="subject" type="text" placeholder="¿Sobre qué querés hablar?" required>
+          </div>
+          <div class="form-field">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="6" minlength="10" placeholder="Escribí tu mensaje (mínimo 10 caracteres)" required></textarea>
+          </div>
+          <button class="submit-button" type="submit">
+            Enviar mensaje
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="form-success" id="formSuccess" role="status" aria-live="polite" tabindex="-1" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            ¡Mensaje enviado! Gracias por contactarnos.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a href="index.html#inicio" class="brand">
+      <span class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+      </span>
+      Bug<span class="zero">Zero</span>
+    </a>
+    <p>Aprendé hoy, construí mejor mañana.</p>
+    <div class="footer-links">
+      <a href="index.html#inicio">Inicio</a>
+      <a href="nosotros.html#nosotros">Nosotros</a>
+      <a href="contacto.html" aria-current="page">Contacto</a>
+    </div>
+    <small>© 2026 BugZero. Todos los derechos reservados.</small>
+  </footer>
+  <script src="contacto.js"></script>
+</body>
+</html>
