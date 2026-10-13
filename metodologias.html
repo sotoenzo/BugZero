@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BugZero - Metodologías Ágiles</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-left">
+            <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-bug"></i>
+                    <div class="logo-ring"></div>
+                </div>
+                <span class="logo-text">Bug<span class="highlight">Zero</span></span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <button class="compare-btn">
+                <i class="fa-solid fa-arrow-right-arrow-left"></i> Comparar metodologías
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        
+        <!-- Top Hero Section -->
+        <section class="hero-section">
+            <div class="hero-left">
+                <a href="#" class="back-link"><i class="fa-solid fa-arrow-left"></i> Metodologías Ágiles</a>
+                <div class="hero-title-wrapper">
+                    <div class="rocket-icon">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h1>Metodologías<br><span class="text-blue">Ágiles</span></h1>
+                </div>
+                <p class="hero-description">
+                    Las metodologías ágiles son enfoques de trabajo que permiten desarrollar software de forma iterativa, flexible y colaborativa, adaptándose a los cambios y entregando valor de manera continua.
+                </p>
+            </div>
+            <div class="hero-right">
+                <div class="laptop-mockup">
+                    <div class="laptop-screen">
+                        <div class="code-lines">
+                            <span class="line red"></span>
+                            <span class="line blue"></span>
+                            <span class="line green"></span>
+                        </div>
+                    </div>
+                    <!-- Elementos flotantes tecnológicos -->
+                    <div class="float-card fc-1"><i class="fa-solid fa-gear"></i></div>
+                    <div class="float-card fc-2"><i class="fa-solid fa-code"></i></div>
+                    <div class="float-card fc-3"><i class="fa-solid fa-laptop-code"></i></div>
+                </div>
+                <div class="hero-badge-text">
+                    Más flexibilidad, mejores resultados.
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodologies Cards Grid -->
+        <section class="cards-grid">
+            
+            <!-- Scrum Card -->
+            <div class="method-card">
+                <div class="card-header-flex">
+                    <div class="card-icon-title">
+                        <i class="fa-solid fa-rotate"></i>
+                        <h2>Scrum</h2>
+                    </div>
+                </div>
+                <p class="card-desc">
+                    Scrum es un marco de trabajo ágil que se basa en iteraciones llamadas Sprint, con roles definidos, reuniones periódicas y un enfoque en la entrega continua de valor.
+                </p>
+                <div class="card-visual scrum-visual">
+                    <div class="scrum-step">
+                        <span class="step-lbl">Product Backlog</span>
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </div>
+                    <i class="fa-solid fa-arrow-right arrow-indicator"></i>
+                    <div class="scrum-step center-circle">
+                        <div class="circle-content">
+                            <span>Sprint</span>
+                            <small>(1-4 semanas)</small>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right arrow-indicator"></i>
+                    <div class="scrum-step highlight-box">
+                        <i class="fa-solid fa-cube"></i>
+                        <span>Incremento del producto</span>
+                    </div>
+                </div>
+                <div class="scrum-roles">
+                    <div class="role-item">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span>Product Owner<small>(define el valor)</small></span>
+                    </div>
+                    <div class="role-item">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <span>Scrum Master<small>(facilita)</small></span>
+                    </div>
+                    <div class="role-item">
+                        <i class="fa-solid fa-users"></i>
+                        <span>Equipo de Desarrollo<small>(implementa)</small></span>
+                    </div>
+                </div>
+                <button class="zoom-btn" onclick="openModal('Scrum')">
+                    <i class="fa-solid fa-expand"></i> Ver imagen en grande
+                </button>
+            </div>
+
+            <!-- Kanban Card -->
+            <div class="method-card">
+                <div class="card-header-flex">
+                    <div class="card-icon-title">
+                        <i class="fa-solid fa-table-columns"></i>
+                        <h2>Kanban</h2>
+                    </div>
+                </div>
+                <p class="card-desc">
+                    Kanban se enfoca en la visualización del trabajo a través de un tablero, limitando el trabajo en proceso (WIP) y mejorando el flujo de tareas.
+                </p>
+                <div class="card-visual kanban-visual">
+                    <div class="kanban-column">
+                        <span class="col-title por-hacer">Por hacer</span>
+                        <div class="task-line"></div>
+                        <div class="task-line"></div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right arrow-indicator"></i>
+                    <div class="kanban-column">
+                        <span class="col-title en-progreso">En progreso</span>
+                        <div class="task-line"></div>
+                        <div class="task-line"></div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right arrow-indicator"></i>
+                    <div class="kanban-column">
+                        <span class="col-title hecho">Hecho</span>
+                        <div class="task-line"></div>
+                        <div class="task-line"></div>
+                    </div>
+                </div>
+                <div class="kanban-features">
+                    <div class="feat-item">
+                        <i class="fa-solid fa-eye"></i>
+                        <span>Visualización del trabajo</span>
+                    </div>
+                    <div class="feat-item">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Límite de WIP <small>(trabajo en proceso)</small></span>
+                    </div>
+                    <div class="feat-item">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span>Mejora continua del flujo</span>
+                    </div>
+                </div>
+                <button class="zoom-btn" onclick="openModal('Kanban')">
+                    <i class="fa-solid fa-expand"></i> Ver imagen en grande
+                </button>
+            </div>
+
+            <!-- Cascada Card -->
+            <div class="method-card">
+                <div class="card-header-flex">
+                    <div class="card-icon-title">
+                        <i class="fa-solid fa-stairs"></i>
+                        <h2>Cascada</h2>
+                    </div>
+                </div>
+                <p class="card-desc">
+                    Cascada es un enfoque tradicional y secuencial, donde cada fase se completa antes de pasar a la siguiente.
+                </p>
+                <div class="card-visual cascade-visual">
+                    <div class="cascade-step bg-blue">Análisis</div>
+                    <div class="cascade-step bg-purple">Diseño</div>
+                    <div class="cascade-step bg-teal">Desarrollo</div>
+                    <div class="cascade-step bg-orange">Pruebas</div>
+                    <div class="cascade-step bg-red">Implementación</div>
+                </div>
+                <div class="cascade-features">
+                    <div class="feat-item">
+                        <i class="fa-solid fa-file-lines"></i>
+                        <span>Estructura clara</span>
+                    </div>
+                    <div class="feat-item">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Documentación completa</span>
+                    </div>
+                    <div class="feat-item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Ideal para proyectos con requisitos fijos</span>
+                    </div>
+                </div>
+                <button class="zoom-btn" onclick="openModal('Cascada')">
+                    <i class="fa-solid fa-expand"></i> Ver imagen en grande
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Galería de Ilustraciones -->
+        <section class="gallery-section">
+            <div class="gallery-header">
+                <div class="gallery-title-wrapper">
+                    <i class="fa-regular fa-images"></i>
+                    <div>
+                        <h3>Galería de Ilustraciones</h3>
+                        <p>Explora y ampliá las imágenes para ver más detalles de cada metodología.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal('Scrum - Ciclo del Sprint')">
+                    <div class="thumb-preview scrum-thumb">
+                        <i class="fa-solid fa-rotate"></i>
+                    </div>
+                    <div class="thumb-footer">
+                        <span>Scrum - Ciclo del Sprint</span>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal('Kanban - Flujo de trabajo')">
+                    <div class="thumb-preview kanban-thumb">
+                        <i class="fa-solid fa-table-columns"></i>
+                    </div>
+                    <div class="thumb-footer">
+                        <span>Kanban - Flujo de trabajo</span>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal('XP - Bucle de retroalimentación')">
+                    <div class="thumb-preview xp-thumb">
+                        <i class="fa-solid fa-infinity"></i>
+                    </div>
+                    <div class="thumb-footer">
+                        <span>XP - Bucle de retroalimentación</span>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal('Cascada - Fases del proyecto')">
+                    <div class="thumb-preview cascade-thumb">
+                        <i class="fa-solid fa-stairs"></i>
+                    </div>
+                    <div class="thumb-footer">
+                        <span>Cascada - Fases del proyecto</span>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Info Bar -->
+        <section class="info-bar">
+            <div class="info-box">
+                <div class="info-icon-wrapper"><i class="fa-solid fa-bolt"></i></div>
+                <div>
+                    <h4>Comparación clara</h4>
+                    <p>Visualizá diferencias y similitudes en un solo lugar.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <div class="info-icon-wrapper"><i class="fa-solid fa-gear"></i></div>
+                <div>
+                    <h4>Información dinámica</h4>
+                    <p>La labia se actualiza según tu selección en tiempo real.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <div class="info-icon-wrapper"><i class="fa-solid fa-users"></i></div>
+                <div>
+                    <h4>Tomá la mejor decisión</h4>
+                    <p>Elegí la metodología que se adapta a tu proyecto.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <div class="info-icon-wrapper"><i class="fa-solid fa-bullseye"></i></div>
+                <div>
+                    <h4>Impulsá tu aprendizaje</h4>
+                    <p>Conocé más sobre cada metodología y sus aplicaciones.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal para ver imagen en grande -->
+    <div class="modal-overlay" id="imageModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModalBtn"><i class="fa-solid fa-xmark"></i></button>
+            <h3 id="modalTitle">Vista ampliada</h3>
+            <div class="modal-body-placeholder">
+                <i class="fa-solid fa-image"></i>
+                <p>Visualización detallada de la metodología seleccionada.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
