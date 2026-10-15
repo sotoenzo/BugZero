@@ -54,40 +54,11 @@ body {
     gap: 10px;
 }
 
-.logo-icon {
-    position: relative;
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, #0055ff, #00d2ff);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 16px;
-}
-
-.logo-ring {
-    position: absolute;
-    width: 44px;
-    height: 44px;
-    border: 2px dashed rgba(0, 210, 255, 0.5);
-    border-radius: 50%;
-    animation: rotate 10s linear infinite;
-}
-
-@keyframes rotate {
-    100% { transform: rotate(360deg); }
-}
-
-.logo-text {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-}
-
-.logo-text .highlight {
-    color: var(--accent-cyan);
+.brand-logo {
+    display: block;
+    width: 140px;
+    height: 53px;
+    object-fit: contain;
 }
 
 .compare-btn {
@@ -646,6 +617,7 @@ body {
 }
 
 @media(max-width: 768px) {
+    .brand-logo { width: 120px; height: 45px; }
     .hero-section { flex-direction: column; gap: 30px; align-items: flex-start; }
     .hero-right { width: 100%; align-items: center; }
     .gallery-grid { grid-template-columns: 1fr; }

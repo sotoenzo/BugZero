@@ -2,6 +2,8 @@ const menuToggle = document.getElementById('menuToggle');
   const menuClose = document.getElementById('menuClose');
   const sideMenu = document.getElementById('sideMenu');
   const overlay = document.getElementById('overlay');
+  const methodologyToggle = document.getElementById('methodologyToggle');
+  const methodologySubmenu = document.getElementById('methodologySubmenu');
 
   function openMenu(){
     sideMenu.classList.add('open');
@@ -16,6 +18,12 @@ const menuToggle = document.getElementById('menuToggle');
   menuClose.addEventListener('click', closeMenu);
   overlay.addEventListener('click', closeMenu);
   document.addEventListener('keydown', e => { if(e.key === 'Escape') closeMenu(); });
+
+  methodologyToggle.addEventListener('click', () => {
+    const isExpanded = methodologyToggle.getAttribute('aria-expanded') === 'true';
+    methodologyToggle.setAttribute('aria-expanded', String(!isExpanded));
+    methodologySubmenu.hidden = isExpanded;
+  });
 
   // close menu + mark active link on nav click
   document.querySelectorAll('.side-link').forEach(link=>{
@@ -32,8 +40,8 @@ const menuToggle = document.getElementById('menuToggle');
 
   const linkMap = {};
   document.querySelectorAll('.side-link').forEach(l=>{
-    const href = l.getAttribute('href').replace('#','');
-    linkMap[href] = l;
+    const href = l.getAttribute('href');
+    if(href && href.startsWith('#')) linkMap[href.slice(1)] = l;
   });
 
   const observer = new IntersectionObserver((entries)=>{

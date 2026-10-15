@@ -20,9 +20,10 @@ body{
 }
 
 .logo{
-  font-size:22px;
-  font-weight:bold;
+  display:flex;
+  align-items:center;
 }
+.brand-logo{display:block;width:140px;height:53px;object-fit:contain;flex:0 0 auto;}
 
 nav{
   display:flex;
@@ -70,9 +71,7 @@ nav a.active{
 .side-menu.open { transform: translateX(0); }
 .side-menu-header { display: flex; align-items: center; justify-content: space-between; padding: 6px 6px 22px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 12px; }
 .side-menu .brand { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 1.2rem; font-weight: 700; text-decoration: none; }
-.side-menu .brand .zero { color: #4fa3ff; }
-.side-menu .brand-icon { width: 30px; height: 30px; border: 2px solid #4fa3ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #4fa3ff; flex-shrink: 0; }
-.side-menu .brand-icon svg { width: 20px; height: 20px; }
+.side-menu .brand-logo { width: 130px; height: 49px; }
 .side-menu-close { background: none; border: none; color: #fff; width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
 .side-menu-close svg { width: 22px; height: 22px; }
 .side-menu nav { display: flex; flex-direction: column; gap: 4px; }
@@ -188,5 +187,6 @@ body.menu-open { overflow: hidden; }
 /* RESPONSIVE */
 @media(max-width:768px){
   .navbar { padding: 18px 20px; }
+  .brand-logo { width: 120px; height: 45px; }
   .footer { flex-direction: column; gap: 20px; text-align: center; }
 }
