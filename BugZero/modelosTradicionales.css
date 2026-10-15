@@ -14,15 +14,6 @@ body {
     position: relative;
 }
 
-/* LOGO */
-/* --- ESTILOS PARA EL LOGO CON FONDO TRANSPARENTE --- */
-.logo-container img {
-    height: 38px;
-    width: auto;
-    object-fit: contain;
-    display: block;
-}
-
 /* Fondo tecnológico simulado con líneas y brillo */
 body::before {
     content: "";
@@ -44,7 +35,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
+    gap: 16px;
+    padding: 12px clamp(16px, 4vw, 40px);
     border-bottom: 1px solid rgba(0, 212, 255, 0.2);
     background: rgba(4, 10, 25, 0.6);
     backdrop-filter: blur(5px);
@@ -54,15 +46,18 @@ header {
     display: flex;
     align-items: center;
     gap: 12px;
+    min-width: 0;
     color: inherit;
     text-decoration: none;
 }
 
 .brand-logo {
     display: block;
-    width: 140px;
-    height: 53px;
-    object-fit: contain;
+    width: clamp(150px, 28vw, 280px);
+    height: auto;
+    max-height: 94px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .menu-icon {
@@ -105,8 +100,10 @@ header {
     right: 0;
     width: min(340px, 88vw);
     height: 100vh;
+    height: 100dvh;
     padding: 24px 20px;
     overflow-y: auto;
+    overscroll-behavior: contain;
     background: rgba(4, 10, 25, 0.98);
     border-left: 1px solid rgba(0, 212, 255, 0.25);
     box-shadow: -12px 0 36px rgba(0, 0, 0, 0.4);
@@ -152,6 +149,12 @@ header {
     gap: 5px;
 }
 
+.site-menu-nav-group,
+.site-menu-models {
+    display: flex;
+    flex-direction: column;
+}
+
 .site-menu-link {
     display: flex;
     align-items: center;
@@ -169,6 +172,39 @@ header {
     text-align: center;
 }
 
+.site-menu-link.methodology-trigger {
+    justify-content: space-between;
+    border: 0;
+    background: transparent;
+    width: 100%;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.site-menu-link.methodology-trigger > span {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.site-menu-link.methodology-trigger > i {
+    transition: transform 0.2s ease;
+}
+
+.site-menu-link.methodology-trigger[aria-expanded="true"] > i {
+    transform: rotate(90deg);
+}
+
+.site-menu-section-label {
+    padding: 8px 12px 2px;
+    color: #7b9ebd;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
 .site-menu-link:hover,
 .site-menu-link:focus-visible,
 .site-menu-link.active {
@@ -181,6 +217,10 @@ header {
     flex-direction: column;
     gap: 4px;
     padding: 0 0 8px 44px;
+}
+
+.site-menu-submenu[hidden] {
+    display: none;
 }
 
 .site-menu-submenu a {
@@ -200,7 +240,7 @@ header {
 main {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 25px 30px;
+    padding: 25px clamp(16px, 4vw, 40px);
 }
 
 /* Migas de pan */
@@ -253,19 +293,23 @@ h1 {
 
 .subnav-tabs {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     flex-wrap: wrap;
+    min-width: 0;
 }
 
 .tab {
+    max-width: 100%;
     background: rgba(10, 30, 70, 0.4);
     border: 1px solid rgba(0, 212, 255, 0.3);
     border-radius: 8px;
-    padding: 10px 25px;
+    padding: 10px clamp(12px, 2vw, 25px);
     font-family: 'Orbitron', sans-serif;
     font-size: 13px;
+    line-height: 1.4;
     color: #8ab4f8;
     cursor: pointer;
+    overflow-wrap: anywhere;
     transition: all 0.3s ease;
     box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.05);
 }
@@ -284,18 +328,23 @@ h1 {
 }
 
 /* --- TARJETAS DE CONTENIDO --- */
+.model-panel[hidden] {
+    display: none;
+}
+
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 25px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(16px, 3vw, 25px);
     margin-bottom: 40px;
 }
 
 .card {
+    min-width: 0;
     background: rgba(8, 20, 45, 0.7);
     border: 1px solid rgba(0, 212, 255, 0.3);
     border-radius: 12px;
-    padding: 25px;
+    padding: clamp(16px, 3vw, 28px);
     position: relative;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     backdrop-filter: blur(4px);
@@ -328,12 +377,72 @@ h1 {
     color: #ffffff;
 }
 
+.card-header h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(17px, 2.5vw, 20px);
+    color: #ffffff;
+    overflow-wrap: anywhere;
+}
+
 .card-body-text {
     font-size: 14px;
     color: #b0cfea;
     line-height: 1.4;
     margin-bottom: 20px;
-    min-height: 45px;
+}
+
+.model-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.detail-block {
+    padding: 16px;
+    border: 1px solid rgba(0, 212, 255, 0.16);
+    border-radius: 9px;
+    background: rgba(4, 10, 25, 0.35);
+}
+
+.detail-block h3 {
+    margin-bottom: 9px;
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+}
+
+.detail-block p,
+.detail-block li {
+    color: #b0cfea;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.detail-block ol {
+    display: grid;
+    gap: 7px;
+    padding-left: 20px;
+    list-style: decimal;
+}
+
+.detail-block li::marker {
+    color: #00d4ff;
+    font-weight: 700;
+}
+
+.detail-block strong {
+    color: #d1ecf1;
+}
+
+.detail-block > p + p {
+    margin-top: 10px;
+}
+
+.detail-example {
+    grid-column: 1 / -1;
+    border-color: rgba(0, 212, 255, 0.3);
+    background: rgba(10, 30, 70, 0.35);
 }
 
 /* Contenedor de Ventajas y Desventajas */
@@ -410,18 +519,26 @@ h1 {
 /* Elementos inferiores de la tarjeta (íconos y textos pequeños) */
 .card-footer-info {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px 20px;
     margin-bottom: 20px;
     padding: 0 5px;
 }
 
 .info-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
+    flex: 1 1 220px;
+    min-width: 0;
     font-size: 13px;
     color: #9abfd8;
+}
+
+.info-item span {
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .info-item i {
@@ -470,7 +587,8 @@ h1 {
 .feature-box {
     display: flex;
     align-items: flex-start;
-    gap: 15px;
+    gap: 12px;
+    min-width: 0;
 }
 
 .feature-box i {
@@ -494,15 +612,122 @@ h1 {
 }
 
 /* --- MEDIA QUERIES PARA RESPONSIVIDAD --- */
+@media (max-width: 1024px) {
+    .model-details {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .detail-example {
+        grid-column: auto;
+    }
+}
+
 @media (max-width: 768px) {
-    .brand-logo { width: 120px; height: 45px; }
+    header {
+        padding-block: 10px;
+    }
+
+    .brand-logo {
+        width: clamp(150px, 38vw, 230px);
+        max-height: 78px;
+    }
+
+    main {
+        padding-block: 20px;
+    }
+
+    .subnav-container {
+        align-items: stretch;
+        gap: 10px;
+        margin-bottom: 24px;
+    }
+
+    .subnav-tabs {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+    }
+
+    .tab {
+        min-height: 44px;
+    }
+
     .pros-cons-container {
         grid-template-columns: 1fr;
     }
+
     h1 {
-        font-size: 26px;
+        font-size: clamp(24px, 6vw, 32px);
+        overflow-wrap: anywhere;
     }
+
+    .bottom-features {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding-inline: 14px;
+    }
+
+    .brand-logo {
+        width: min(62vw, 190px);
+        max-height: 64px;
+    }
+
+    .menu-icon {
+        flex: 0 0 44px;
+        min-height: 44px;
+    }
+
+    .site-menu {
+        width: min(340px, 92vw);
+        padding: 20px 16px;
+    }
+
     main {
-        padding: 15px;
+        padding: 16px 14px;
+    }
+
+    .breadcrumbs {
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    .section-description {
+        font-size: 15px;
+    }
+
+    .subnav-tabs {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .tab {
+        width: 100%;
+        padding-inline: 12px;
+        font-size: 12px;
+    }
+
+    .card {
+        padding: 16px 14px;
+    }
+
+    .detail-block {
+        padding: 13px;
+    }
+
+    .card-footer-info {
+        flex-direction: column;
+    }
+
+    .info-item {
+        flex-basis: auto;
+    }
+
+    .bottom-features {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 16px;
     }
 }

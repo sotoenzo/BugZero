@@ -4,6 +4,8 @@ const menuToggle = document.getElementById('menuToggle');
 const menuClose = document.getElementById('menuClose');
 const siteMenu = document.getElementById('siteMenu');
 const menuOverlay = document.getElementById('menuOverlay');
+const methodologyToggle = document.getElementById('methodologyToggle');
+const methodologySubmenu = document.getElementById('methodologySubmenu');
 
 function setMenuOpen(isOpen) {
     siteMenu.classList.toggle('open', isOpen);
@@ -22,38 +24,48 @@ menuOverlay.addEventListener('click', () => setMenuOpen(false));
 document.addEventListener('keydown', event => {
     if (event.key === 'Escape') setMenuOpen(false);
 });
+methodologyToggle.addEventListener('click', () => {
+    const isExpanded = methodologyToggle.getAttribute('aria-expanded') === 'true';
+    methodologyToggle.setAttribute('aria-expanded', String(!isExpanded));
+    methodologySubmenu.hidden = isExpanded;
+});
 siteMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => setMenuOpen(false));
 });
 
-// Seleccionamos todas las pestañas de la sub-navegación
 const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.model-panel');
 
 function activateTab(tab) {
     tabs.forEach(t => {
         const isActive = t === tab;
         t.classList.toggle('active', isActive);
-        t.setAttribute('aria-pressed', String(isActive));
+        t.setAttribute('aria-selected', String(isActive));
+        t.tabIndex = isActive ? 0 : -1;
+    });
+    panels.forEach(panel => {
+        panel.hidden = panel.id !== tab.dataset.target;
     });
 }
 
-const initialTab = document.getElementById(window.location.hash.slice(1));
-if (initialTab && initialTab.matches('.tab')) {
-    activateTab(initialTab);
+function activateTabFromHash() {
+    const panel = document.getElementById(window.location.hash.slice(1));
+    if (!panel || !panel.matches('.model-panel')) return;
+
+    const tab = document.querySelector(`.tab[data-target="${panel.id}"]`);
+    if (tab) {
+        activateTab(tab);
+        panel.scrollIntoView({ block: 'start' });
+    }
 }
+
+activateTabFromHash();
+if (!window.location.hash) activateTab(tabs[0]);
+window.addEventListener('hashchange', activateTabFromHash);
 
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
         activateTab(tab);
-        history.replaceState(null, '', `#${tab.id}`);
-    });
-});
-
-// Seleccionamos todos los botones de "Ver imagen en grande"
-const zoomButtons = document.querySelectorAll('.btn-large-img');
-
-zoomButtons.forEach((btn, index) => {
-    btn.addEventListener('click', () => {
-        alert(`Abriendo vista ampliada de la tarjeta #${index + 1}`);
+        history.replaceState(null, '', `#${tab.dataset.target}`);
     });
 });

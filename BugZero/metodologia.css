@@ -56,9 +56,10 @@ body {
 
 .brand-logo {
     display: block;
-    width: 140px;
-    height: 53px;
-    object-fit: contain;
+    width: 280px;
+    height: 94px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .compare-btn {
@@ -617,7 +618,7 @@ body {
 }
 
 @media(max-width: 768px) {
-    .brand-logo { width: 120px; height: 45px; }
+    .brand-logo { width: 230px; height: 78px; }
     .hero-section { flex-direction: column; gap: 30px; align-items: flex-start; }
     .hero-right { width: 100%; align-items: center; }
     .gallery-grid { grid-template-columns: 1fr; }

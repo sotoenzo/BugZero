@@ -11,21 +11,11 @@
     <link rel="stylesheet" href="modelosTradicionales.css">
 </head>
 <body>
-<!-- LOGO -->
- <header>
-    <div class="logo-container">
-        <img src="logo.png" alt="BugZero Logo">
-        <div class="logo-text">Bug<span>Zero</span></div>
-    </div>
-    <div class="menu-icon" id="menuToggle">
-        <i class="fa-solid fa-bars"></i>
-    </div>
-</header>
-
-
     <!-- NAVBAR SUPERIOR -->
     <header>
-        <a class="logo-container" href="index.html#inicio" aria-label="BugZero, ir al inicio"></a>
+        <a class="logo-container" href="index.html#inicio" aria-label="BugZero, ir al inicio">
+            <img class="brand-logo" src="img/logo%20bugzero4.png" alt="Logo de BugZero">
+        </a>
         <button class="menu-icon" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
             <i class="fa-solid fa-bars"></i>
         </button>
@@ -43,12 +33,23 @@
             <a class="site-menu-link" href="index.html#inicio"><i class="fa-solid fa-house" aria-hidden="true"></i>Inicio</a>
             <a class="site-menu-link" href="index.html#calidad"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>Calidad</a>
             <a class="site-menu-link" href="index.html#desarrollo"><i class="fa-solid fa-code" aria-hidden="true"></i>Desarrollo</a>
-            <a class="site-menu-link" href="metodologia.html"><i class="fa-solid fa-users" aria-hidden="true"></i>Metodologías ágiles</a>
-            <a class="site-menu-link active" href="modelosTradicionales.html" aria-current="page"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i>Modelos tradicionales</a>
-            <div class="site-menu-submenu" aria-label="Modelos tradicionales">
-                <a href="#cascada">Cascada</a>
-                <a href="#modelo-v">Modelo en V</a>
-                <a href="#iterativo">Iterativo e incremental</a>
+            <div class="site-menu-nav-group">
+                <button class="site-menu-link methodology-trigger" id="methodologyToggle" type="button" aria-expanded="false" aria-controls="methodologySubmenu">
+                    <span><i class="fa-solid fa-users" aria-hidden="true"></i>Metodologías</span>
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </button>
+                <div class="site-menu-submenu" id="methodologySubmenu" hidden>
+                    <a href="modelosTradicionales.html" aria-current="page">Metodologías tradicionales</a>
+                    <a href="metodologia.html">Metodologías ágiles</a>
+                </div>
+            </div>
+            <div class="site-menu-models">
+                <span class="site-menu-section-label">Modelos tradicionales</span>
+                <div class="site-menu-submenu" aria-label="Modelos tradicionales">
+                    <a href="#cascada">Modelo de cascada</a>
+                    <a href="#modelo-v">Modelo en V</a>
+                    <a href="#iterativo">Iterativo e incremental</a>
+                </div>
             </div>
             <a class="site-menu-link" href="index.html#recursos"><i class="fa-solid fa-book-open" aria-hidden="true"></i>Recursos</a>
             <a class="site-menu-link" href="nosotros.html#nosotros"><i class="fa-solid fa-users" aria-hidden="true"></i>Nosotros</a>
@@ -60,7 +61,8 @@
     <main>
         <!-- Migas de pan -->
         <div class="breadcrumbs">
-            <span>Metodologías</span> /
+            <a href="index.html#metodologias">Metodologías</a> /
+            <span>Metodologías tradicionales</span>
         </div>
 
         <!-- Título y Descripción -->
@@ -73,170 +75,216 @@
 
         <!-- Sub-navegación / Solapas -->
         <div class="subnav-container">
-            <span class="subnav-label">Sub-navegación:</span>
-            <div class="subnav-tabs">
-                <button class="tab active" id="cascada" type="button" data-target="cascada">CASCADA</button>
-                <button class="tab" id="modelo-v" type="button" data-target="modelo-v">MODELO EN V</button>
-                <button class="tab" id="iterativo" type="button" data-target="iterativo">ITERATIVO E INCREMENTAL</button>
+            <span class="subnav-label">Elegí un modelo:</span>
+            <div class="subnav-tabs" role="tablist" aria-label="Modelos tradicionales">
+                <button class="tab active" id="tab-cascada" type="button" role="tab" aria-selected="true" aria-controls="cascada" data-target="cascada">MODELO DE CASCADA</button>
+                <button class="tab" id="tab-modelo-v" type="button" role="tab" aria-selected="false" aria-controls="modelo-v" data-target="modelo-v">MODELO EN V</button>
+                <button class="tab" id="tab-iterativo" type="button" role="tab" aria-selected="false" aria-controls="iterativo" data-target="iterativo">ITERATIVO E INCREMENTAL</button>
             </div>
         </div>
 
-        <!-- Cuadrícula de Tarjetas -->
+        <!-- Información de cada modelo -->
         <div class="cards-grid">
-            
-            <!-- TARJETA 1 -->
-            <div class="card">
+            <section class="card model-panel" id="cascada" role="tabpanel" aria-labelledby="tab-cascada">
                 <div class="card-header">
-                    <i class="fa-solid fa-bullseye"></i>
-                    <h3>Alcance y Requisitos</h3>
+                    <i class="fa-solid fa-water"></i>
+                    <h2>Modelo de cascada</h2>
                 </div>
                 <p class="card-body-text">
-                    Los modelos tradicionales se caracterizan por una inflexible alcance y requisitos, estimando, además, se procoven con convenientes requisitos, anpocen msarms y requirements de requisito y secuencia.
+                    Es un modelo secuencial: el proyecto avanza por etapas ordenadas y cada una se completa antes de comenzar la siguiente. Es adecuado cuando los requisitos están claros y cambian poco.
                 </p>
+                <div class="model-details">
+                    <section class="detail-block">
+                        <h3>Etapas principales</h3>
+                        <ol>
+                            <li><strong>Requisitos:</strong> se identifican y documentan las necesidades del cliente.</li>
+                            <li><strong>Análisis y diseño:</strong> se define cómo se organizará y construirá la solución.</li>
+                            <li><strong>Implementación:</strong> se desarrolla el sistema de acuerdo con el diseño.</li>
+                            <li><strong>Pruebas:</strong> se comprueba que el producto cumpla los requisitos acordados.</li>
+                            <li><strong>Despliegue y mantenimiento:</strong> se entrega el sistema y se corrigen problemas posteriores.</li>
+                        </ol>
+                    </section>
+                    <section class="detail-block">
+                        <h3>¿Cuándo conviene?</h3>
+                        <p>Cuando el alcance está bien definido, hay pocas posibilidades de cambio y se necesita planificar el presupuesto, los plazos y la documentación con anticipación.</p>
+                    </section>
+                    <section class="detail-block detail-example">
+                        <h3>Ejemplo</h3>
+                        <p>Un sistema interno para generar informes regulatorios con formatos y reglas ya establecidos. Primero se acuerdan todos los requisitos y luego se desarrolla y valida la solución completa.</p>
+                    </section>
+                </div>
                 <div class="pros-cons-container">
                     <div class="box-section ventajas">
                         <div class="box-title">Ventajas</div>
                         <ul>
-                            <li>Requisitos fijos y estables</li>
-                            <li>Estimación precisa de etapas</li>
-                            <li>Requisit de fijos de talleres</li>
+                            <li>Fases y entregables fáciles de planificar</li>
+                            <li>Seguimiento claro del avance</li>
+                            <li>Documentación ordenada</li>
                         </ul>
                     </div>
                     <div class="box-section desventajas">
                         <div class="box-title">Desventajas</div>
                         <ul>
-                            <li>Dificultad ante cambios tardíos</li>
-                            <li>Altos costes de modificación</li>
+                            <li>Los cambios tardíos son costosos</li>
+                            <li>El producto se valida al final</li>
                         </ul>
                     </div>
                 </div>
                 <div class="card-footer-info">
                     <div class="info-item">
-                        <i class="fa-solid fa-circle-dot"></i>
-                        <span>Proyectos con especificaciones cerradas</span>
+                        <i class="fa-solid fa-list-check"></i>
+                        <span>Requisitos definidos desde el inicio</span>
                     </div>
                     <div class="info-item">
-                        <i class="fa-solid fa-file-contract"></i>
-                        <span>Contrato de contracto-io contrato</span>
+                        <i class="fa-solid fa-arrow-down"></i>
+                        <span>Análisis → diseño → desarrollo → pruebas</span>
                     </div>
                 </div>
-                <button class="btn-large-img">
-                    <i class="fa-solid fa-expand"></i> Ver imagen en grande
-                </button>
-            </div>
+            </section>
 
-            <!-- TARJETA 2 -->
-            <div class="card">
+            <section class="card model-panel" id="modelo-v" role="tabpanel" aria-labelledby="tab-modelo-v" hidden>
                 <div class="card-header">
-                    <i class="fa-solid fa-layer-group"></i>
-                    <h3>Ciclo de Vida Secuencial</h3>
+                    <i class="fa-solid fa-code-branch"></i>
+                    <h2>Modelo en V</h2>
                 </div>
                 <p class="card-body-text">
-                    La ciclo de vida secuencial en un modelo de fases del desarrollo debe completarse antes de pasar a la la siguiente.
+                    Organiza el desarrollo en fases descendentes y relaciona cada fase con una prueba de verificación o validación. Así, las pruebas se planifican desde el comienzo del proyecto.
                 </p>
+                <div class="model-details">
+                    <section class="detail-block">
+                        <h3>Desarrollo y pruebas relacionadas</h3>
+                        <ol>
+                            <li><strong>Requisitos del usuario</strong> se comprueban mediante pruebas de aceptación.</li>
+                            <li><strong>Diseño del sistema</strong> se comprueba mediante pruebas de sistema.</li>
+                            <li><strong>Diseño de arquitectura</strong> se comprueba mediante pruebas de integración.</li>
+                            <li><strong>Diseño detallado y código</strong> se comprueban mediante pruebas unitarias.</li>
+                        </ol>
+                        <p>En la parte descendente se especifica y diseña la solución; en la parte ascendente se ejecutan pruebas cada vez más amplias.</p>
+                    </section>
+                    <section class="detail-block">
+                        <h3>Verificación y validación</h3>
+                        <p><strong>Verificar</strong> es comprobar que cada componente se construyó de acuerdo con su especificación. <strong>Validar</strong> es confirmar que el producto final resuelve las necesidades reales del usuario.</p>
+                    </section>
+                    <section class="detail-block detail-example">
+                        <h3>¿Cuándo conviene?</h3>
+                        <p>En proyectos con requisitos estables y alta necesidad de trazabilidad y pruebas, por ejemplo sistemas financieros, médicos o industriales.</p>
+                    </section>
+                </div>
                 <div class="pros-cons-container">
                     <div class="box-section ventajas">
                         <div class="box-title">Ventajas</div>
                         <ul>
-                            <li>Orden y control claros</li>
-                            <li>Hitos definidos</li>
-                            <li>Hitos de diseńeniatos</li>
+                            <li>Pruebas asociadas a cada etapa</li>
+                            <li>Permite detectar defectos antes</li>
+                            <li>Buena trazabilidad de requisitos</li>
                         </ul>
                     </div>
                     <div class="box-section desventajas">
                         <div class="box-title">Desventajas</div>
                         <ul>
-                            <li>Detección tardía de errores</li>
-                            <li>Larga espera para ver el producto</li>
+                            <li>Poco flexible ante cambios</li>
+                            <li>Requiere requisitos y planificación detallados</li>
                         </ul>
                     </div>
                 </div>
                 <div class="card-footer-info">
                     <div class="info-item">
-                        <i class="fa-solid fa-diagram-project"></i>
-                        <span>Organizaciones con procesos rígidos</span>
+                        <i class="fa-solid fa-file-circle-check"></i>
+                        <span>Proyectos con alta necesidad de verificación</span>
                     </div>
                     <div class="info-item">
-                        <i class="fa-regular fa-calendar-days"></i>
-                        <span>Organizaciones con procesos producto</span>
+                        <i class="fa-solid fa-clipboard-check"></i>
+                        <span>Desarrollo y pruebas se corresponden</span>
                     </div>
                 </div>
-                <button class="btn-large-img">
-                    <i class="fa-solid fa-expand"></i> Ver imagen en grande
-                </button>
-            </div>
+            </section>
 
-            <!-- TARJETA 3 -->
-            <div class="card">
+            <section class="card model-panel" id="iterativo" role="tabpanel" aria-labelledby="tab-iterativo" hidden>
                 <div class="card-header">
-                    <i class="fa-solid fa-users"></i>
-                    <h3>Equipos y Entrega</h3>
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <h2>Iterativo e incremental</h2>
                 </div>
                 <p class="card-body-text">
-                    Equipos en especialización y entrega energizan colaboración de entrega. Este enfoque estructurado es paralizado y solo entreveradas por el entorno con nuestros proceditos.
+                    El producto se construye mediante ciclos repetidos (iteraciones) y entregas que agregan capacidades (incrementos). Cada ciclo permite revisar lo aprendido y ajustar el siguiente.
                 </p>
+                <div class="model-details">
+                    <section class="detail-block">
+                        <h3>¿Cómo funciona?</h3>
+                        <ol>
+                            <li><strong>Planificar:</strong> elegir objetivos y funcionalidades para el próximo ciclo.</li>
+                            <li><strong>Construir:</strong> diseñar, desarrollar e integrar la parte seleccionada.</li>
+                            <li><strong>Probar:</strong> revisar la calidad y el funcionamiento del incremento.</li>
+                            <li><strong>Evaluar:</strong> recibir comentarios y decidir qué mejorar o agregar.</li>
+                            <li><strong>Repetir:</strong> comenzar otro ciclo hasta alcanzar los objetivos del producto.</li>
+                        </ol>
+                    </section>
+                    <section class="detail-block">
+                        <h3>Iteración e incremento</h3>
+                        <p>Una <strong>iteración</strong> es un ciclo de trabajo que revisa y mejora el producto. Un <strong>incremento</strong> es una parte funcional nueva que se suma a lo ya construido. Pueden usarse juntos, aunque describen ideas distintas.</p>
+                    </section>
+                    <section class="detail-block detail-example">
+                        <h3>Ejemplo</h3>
+                        <p>En una tienda en línea, el primer incremento permite consultar productos; el siguiente agrega el carrito y luego se incorporan el pago y el seguimiento del pedido. Los comentarios entre entregas orientan las mejoras.</p>
+                    </section>
+                </div>
                 <div class="pros-cons-container">
                     <div class="box-section ventajas">
                         <div class="box-title">Ventajas</div>
                         <ul>
-                            <li>Roles claros y definidos</li>
-                            <li>Documentación exhaustiva</li>
-                            <li>Proyectos estimadas</li>
+                            <li>Se obtiene valor en entregas parciales</li>
+                            <li>Facilita incorporar comentarios</li>
+                            <li>Los riesgos se revisan en cada ciclo</li>
                         </ul>
                     </div>
                     <div class="box-section desventajas">
                         <div class="box-title">Desventajas</div>
                         <ul>
-                            <li>Menos colaboración interdepartamental</li>
-                            <li>Poco color el cliente hasta el final</li>
+                            <li>Exige coordinación entre iteraciones</li>
+                            <li>El alcance final puede evolucionar</li>
                         </ul>
                     </div>
                 </div>
                 <div class="card-footer-info">
                     <div class="info-item">
-                        <i class="fa-solid fa-sitemap"></i>
-                        <span>Estructuras jerárquicas</span>
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                        <span>Entregas progresivas y utilizables</span>
                     </div>
                     <div class="info-item">
-                        <i class="fa-solid fa-circle-check"></i>
-                        <span>Sigilo sección final deliverable</span>
+                        <i class="fa-solid fa-repeat"></i>
+                        <span>Planificar → construir → evaluar → repetir</span>
                     </div>
                 </div>
-                <button class="btn-large-img">
-                    <i class="fa-solid fa-expand"></i> Ver imagen en grande
-                </button>
-            </div>
-
+            </section>
         </div>
 
-        <!-- BARRA INFERIOR DE CARACTERÍSTICAS -->
+        <!-- Características -->
         <div class="bottom-features">
             <div class="feature-box">
-                <i class="fa-solid fa-bolt"></i>
+                <i class="fa-solid fa-diagram-project"></i>
                 <div class="feature-content">
-                    <h4>Comparación clara</h4>
-                    <p>Visualiza diferencias y similitudes en un solo lugar.</p>
+                    <h4>Tres modelos</h4>
+                    <p>Conocé sus diferencias principales.</p>
                 </div>
             </div>
             <div class="feature-box">
-                <i class="fa-solid fa-gear"></i>
+                <i class="fa-solid fa-list-check"></i>
                 <div class="feature-content">
-                    <h4>Información dinámica</h4>
-                    <p>La tabla se actualiza según tu selección en tiempo real.</p>
+                    <h4>Fases y pruebas</h4>
+                    <p>Identificá cómo se organiza cada enfoque.</p>
                 </div>
             </div>
             <div class="feature-box">
-                <i class="fa-solid fa-users-viewfinder"></i>
+                <i class="fa-solid fa-arrows-rotate"></i>
                 <div class="feature-content">
-                    <h4>Tomá la mejor decisión</h4>
-                    <p>Elegí la metodología que se adapta a tu proyecto.</p>
+                    <h4>Selección interactiva</h4>
+                    <p>Elegí un modelo para ver sus características.</p>
                 </div>
             </div>
             <div class="feature-box">
-                <i class="fa-solid fa-bullseye"></i>
+                <i class="fa-solid fa-book-open"></i>
                 <div class="feature-content">
-                    <h4>Impulsá tu aprendizaje</h4>
-                    <p>Conocé más sobre cada metodología y sus aplicaciones.</p>
+                    <h4>Aprendizaje práctico</h4>
+                    <p>Conocé cuándo puede servir cada modelo.</p>
                 </div>
             </div>
         </div>

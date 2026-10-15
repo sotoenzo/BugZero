@@ -26,12 +26,15 @@ const menuToggle = document.getElementById('menuToggle');
   });
 
   // close menu + mark active link on nav click
-  document.querySelectorAll('.side-link').forEach(link=>{
+  document.querySelectorAll('.side-link:not(#methodologyToggle)').forEach(link=>{
     link.addEventListener('click', ()=>{
       document.querySelectorAll('.side-link').forEach(l=>l.classList.remove('active'));
       link.classList.add('active');
       closeMenu();
     });
+  });
+  methodologySubmenu.querySelectorAll('a').forEach(link=>{
+    link.addEventListener('click', closeMenu);
   });
 
   // highlight active section link on scroll
