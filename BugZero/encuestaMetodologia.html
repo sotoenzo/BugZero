@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#071a31">
+
+    <meta name="description"
+        content="Encuesta interactiva para recomendar una metodología de trabajo según las características de tu proyecto.">
+
+    <title>BugZero | Encuesta de Preferencias Metodológicas</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Biblioteca de iconos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- =========================
+         ENCABEZADO
+    ========================== -->
+
+    <header class="topbar">
+
+        <a class="brand" href="#" aria-label="BugZero, inicio">
+
+            <span class="brand-mark">
+                <i data-lucide="badge-check"></i>
+            </span>
+
+            <span>Bug<span>Zero</span></span>
+
+        </a>
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Abrir menú"
+            aria-expanded="false">
+
+            <i data-lucide="menu"></i>
+
+        </button>
+
+        <nav class="top-nav" id="topNav">
+
+            <a href="#encuesta">Encuesta</a>
+
+            <a href="#metodologias">Metodologías</a>
+
+            <a href="#como-funciona">Cómo funciona</a>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             PRESENTACIÓN
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="hero-copy">
+
+                <a href="#encuesta" class="back-link">
+                    <i data-lucide="arrow-left"></i>
+                    Herramientas
+                </a>
+
+                <div class="hero-title-row">
+
+                    <div class="hero-icon">
+                        <i data-lucide="clipboard-check"></i>
+                    </div>
+
+                    <div>
+
+                        <p class="eyebrow">
+                            BUGZERO · HERRAMIENTA INTERACTIVA
+                        </p>
+
+                        <h1>
+                            Encuesta de Preferencias
+                            <span>Metodológicas</span>
+                        </h1>
+
+                    </div>
+
+                </div>
+
+                <p class="hero-description">
+                    Respondé unas preguntas sobre tu proyecto y obtené
+                    una sugerencia sobre qué metodología se adapta mejor
+                    a tus necesidades.
+                </p>
+
+                <div class="hero-pills">
+
+                    <span>
+                        <i data-lucide="clock-3"></i>
+                        3–5 minutos
+                    </span>
+
+                    <span>
+                        <i data-lucide="chart-no-axes-column-increasing"></i>
+                        Análisis personalizado
+                    </span>
+
+                    <span>
+                        <i data-lucide="shield-check"></i>
+                        Sin registro
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Ilustración decorativa -->
+
+            <div class="hero-visual" aria-hidden="true">
+
+                <div class="orbit orbit-one"></div>
+
+                <div class="orbit orbit-two"></div>
+
+                <div class="visual-glow"></div>
+
+                <div class="visual-board">
+
+                    <div class="board-top">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="board-line">
+                        <i data-lucide="check"></i>
+                        <b></b>
+                    </div>
+
+                    <div class="board-line">
+                        <i data-lucide="check"></i>
+                        <b></b>
+                    </div>
+
+                    <div class="board-line">
+                        <i data-lucide="check"></i>
+                        <b></b>
+                    </div>
+
+                    <div class="board-line">
+                        <i data-lucide="check"></i>
+                        <b></b>
+                    </div>
+
+                    <div class="board-line">
+                        <i data-lucide="check"></i>
+                        <b></b>
+                    </div>
+
+                </div>
+
+                <div class="floating-tag tag-scrum">
+                    <i data-lucide="refresh-cw"></i>
+                    Scrum
+                </div>
+
+                <div class="floating-tag tag-kanban">
+                    <i data-lucide="layout-dashboard"></i>
+                    Kanban
+                </div>
+
+                <div class="floating-tag tag-waterfall">
+                    <i data-lucide="workflow"></i>
+                    Cascada
+                </div>
+
+                <div class="spark spark-a"></div>
+                <div class="spark spark-b"></div>
+                <div class="spark spark-c"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ENCUESTA PRINCIPAL
+        ========================== -->
+
+        <section class="workspace" id="encuesta">
+
+            <div class="survey-panel panel">
+
+                <div class="survey-heading">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            DIAGNÓSTICO DE PROYECTO
+                        </span>
+
+                        <h2>
+                            Encontrá tu metodología ideal
+                        </h2>
+
+                        <p>
+                            Elegí la opción que mejor represente tu
+                            situación. No hay respuestas correctas
+                            o incorrectas.
+                        </p>
+
+                    </div>
+
+                    <span class="question-count" id="questionCount">
+                        Pregunta 1 de 5
+                    </span>
+
+                </div>
+
+
+                <!-- Barra de progreso -->
+
+                <div class="progress-wrap">
+
+                    <div class="progress-track">
+                        <div
+                            class="progress-fill"
+                            id="progressFill">
+                        </div>
+                    </div>
+
+                    <div class="step-labels" id="stepLabels">
+
+                        <span class="active">
+                            <b>1</b>
+                            <small>Tipo de<br>proyecto</small>
+                        </span>
+
+                        <span>
+                            <b>2</b>
+                            <small>Equipo y<br>roles</small>
+                        </span>
+
+                        <span>
+                            <b>3</b>
+                            <small>Requisitos</small>
+                        </span>
+
+                        <span>
+                            <b>4</b>
+                            <small>Cliente y<br>cambios</small>
+                        </span>
+
+                        <span>
+                            <b>5</b>
+                            <small>Organización</small>
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- El JavaScript genera las preguntas -->
+
+                <form id="surveyForm" novalidate>
+
+                    <div id="questionArea" aria-live="polite"></div>
+
+                    <div
+                        class="form-error"
+                        id="formError"
+                        role="alert">
+                    </div>
+
+                    <div class="form-actions">
+
+                        <button
+                            type="button"
+                            class="btn btn-ghost"
+                            id="prevBtn"
+                            disabled>
+
+                            <i data-lucide="arrow-left"></i>
+                            Anterior
+
+                        </button>
+
+                        <span class="save-note">
+
+                            <i data-lucide="lock-keyhole"></i>
+
+                            Tus respuestas se procesan en esta página
+
+                        </span>
+
+                        <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="nextBtn">
+
+                            Siguiente
+
+                            <i data-lucide="arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- =========================
+                 PANEL LATERAL
+            ========================== -->
+
+            <aside class="sidebar">
+
+                <!-- Cómo funciona -->
+
+                <section
+                    class="panel how-panel"
+                    id="como-funciona">
+
+                    <div class="side-title">
+
+                        <span class="side-icon">
+                            <i data-lucide="lightbulb"></i>
+                        </span>
+
+                        <h3>¿Cómo funciona?</h3>
+
+                    </div>
+
+
+                    <div class="how-step">
+
+                        <span>1</span>
+
+                        <p>
+                            Respondé preguntas sobre tu proyecto,
+                            equipo y forma de trabajar.
+                        </p>
+
+                    </div>
+
+
+                    <div class="how-step">
+
+                        <span>2</span>
+
+                        <p>
+                            El sistema compara tus respuestas con
+                            criterios de cada metodología.
+                        </p>
+
+                    </div>
+
+
+                    <div class="how-step">
+
+                        <span>3</span>
+
+                        <p>
+                            Obtenés una recomendación, un puntaje
+                            y una explicación personalizada.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Metodologías disponibles -->
+
+                <section
+                    class="panel methods-panel"
+                    id="metodologias">
+
+                    <div class="side-title">
+
+                        <span class="side-icon">
+                            <i data-lucide="target"></i>
+                        </span>
+
+                        <h3>Metodologías evaluadas</h3>
+
+                    </div>
+
+
+                    <div class="method-mini-grid">
+
+                        <article class="method-mini">
+
+                            <i data-lucide="refresh-cw"></i>
+
+                            <h4>Scrum</h4>
+
+                            <p>
+                                Trabajo iterativo con sprints
+                                y revisiones periódicas.
+                            </p>
+
+                        </article>
+
+
+                        <article class="method-mini">
+
+                            <i data-lucide="layout-dashboard"></i>
+
+                            <h4>Kanban</h4>
+
+                            <p>
+                                Flujo visual, tareas claras
+                                y mejora continua.
+                            </p>
+
+                        </article>
+
+
+                        <article class="method-mini">
+
+                            <i data-lucide="workflow"></i>
+
+                            <h4>Cascada</h4>
+
+                            <p>
+                                Etapas secuenciales y
+                                requisitos definidos.
+                            </p>
+
+                        </article>
+
+
+                        <article class="method-mini">
+
+                            <i data-lucide="repeat-2"></i>
+
+                            <h4>Ágil</h4>
+
+                            <p>
+                                Adaptación frecuente y
+                                entregas incrementales.
+                            </p>
+
+                        </article>
+
+                    </div>
+
+                    <p class="method-note">
+                        La herramienta orienta la decisión:
+                        la recomendación final también depende
+                        del contexto real del equipo.
+                    </p>
+
+                </section>
+
+            </aside>
+
+        </section>
+
+
+        <!-- =========================
+             RESULTADOS DEL ANÁLISIS
+        ========================== -->
+
+        <section
+            class="result-panel panel hidden"
+            id="resultPanel"
+            aria-live="polite">
+
+            <div class="result-topline">
+
+                <span class="result-badge">
+
+                    <i data-lucide="sparkles"></i>
+
+                    ANÁLISIS COMPLETADO
+
+                </span>
+
+                <button
+                    class="btn btn-ghost"
+                    id="editAnswersBtn">
+
+                    <i data-lucide="pencil"></i>
+
+                    Editar respuestas
+
+                </button>
+
+            </div>
+
+
+            <!-- Metodología ganadora -->
+
+            <div class="result-hero">
+
+                <div class="result-symbol" id="resultSymbol">
+
+                    <i data-lucide="refresh-cw"></i>
+
+                </div>
+
+
+                <div class="result-main">
+
+                    <p class="eyebrow">
+                        METODOLOGÍA RECOMENDADA
+                    </p>
+
+                    <h2 id="winnerName">Scrum</h2>
+
+                    <p id="winnerSummary"></p>
+
+                    <div
+                        class="result-tags"
+                        id="winnerTags">
+                    </div>
+
+                </div>
+
+
+                <div class="match-score">
+
+                    <strong id="winnerScore">92%</strong>
+
+                    <span>de coincidencia</span>
+
+                    <div class="score-ring">
+                        <div id="scoreRingFill"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Detalles del resultado -->
+
+            <div class="result-content-grid">
+
+
+                <!-- Comparación -->
+
+                <section class="result-card">
+
+                    <div class="result-card-title">
+
+                        <i data-lucide="chart-no-axes-column-increasing"></i>
+
+                        <h3>Comparación de resultados</h3>
+
+                    </div>
+
+                    <p class="muted">
+                        Puntajes estimados según las respuestas
+                        que seleccionaste.
+                    </p>
+
+                    <div
+                        id="scoreBars"
+                        class="score-bars">
+                    </div>
+
+                </section>
+
+
+                <!-- Explicación -->
+
+                <section class="result-card">
+
+                    <div class="result-card-title">
+
+                        <i data-lucide="scan-search"></i>
+
+                        <h3>¿Por qué te recomendamos esta?</h3>
+                    </div>
+                    <ul id="reasonList" class="reason-list"></ul>
+                </section>
+
+                <section class="result-card full-card">
+                    <div class="result-card-title">
+                        <i data-lucide="list-checks"></i>
+                        <h3>Cómo empezar con esta metodología</h3>
+                    </div>
+                    <div id="starterSteps" class="starter-steps"></div>
+                </section>
+
+                <section class="result-card full-card">
+                    <div class="result-card-title">
+                        <i data-lucide="git-compare"></i>
+                        <h3>Resumen de tus respuestas</h3>
+                    </div>
+                    <div id="answerSummary" class="answer-summary"></div>
+                </section>
+            </div>
+
+            <div class="result-actions">
+                <button
+                    class="btn btn-primary"
+                    id="restartBtn">
+                    <i data-lucide="rotate-ccw"></i>
+                    Hacer otra encuesta
+                </button>
+
+                <button
+                    class="btn btn-secondary"
+                    id="downloadBtn">
+                    <i data-lucide="download"></i>
+                    Descargar resultado (.txt)
+                </button>
+
+                <button
+                    class="btn btn-secondary"
+                    id="printBtn">
+                    <i data-lucide="printer"></i>
+                    Imprimir / Guardar PDF
+                </button>
+            </div>
+            <p class="disclaimer">Esta recomendación se genera mediante reglas de puntuación simples y transparentes. No reemplaza la evaluación profesional ni significa que exista una única metodología correcta.</p>
+        </section>
+
+        <section class="benefits">
+            <article>
+                <span class="benefit-icon"><i data-lucide="timer"></i></span>
+
+                <div>
+                    <h3>Rápido y sencillo</h3>
+                    <p>Completá la encuesta en pocos minutos</p>
+                </div>
+            </article>
+
+            <article>
+                <span class="benefit-icon"><i data-lucide="target"></i></span>
+                <div>
+                    <h3>Resultados explicados</h3>
+                    <p>Conocé qué respuestas influyeron en el resultado.</p>
+                </div>
+            </article>
+
+            <article>
+                <span class="benefit-icon"><i data-lucide="star"></i></span>
+
+                <div>
+                    <h3>Mejores decisiones</h3>
+                    <p>Elegí una forma de trabajo alineada con tu proyecto.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span class="footer-brand">BugZero</span>
+        <span>Calidad · Desarrollo · Metodologías</span>
+        <span>Herramienta educativa para orientar proyectos.</span>
+    </footer>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
