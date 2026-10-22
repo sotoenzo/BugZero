@@ -173,11 +173,16 @@
   cursor: pointer;
 }
 
-.side-link.methodology-trigger svg:last-child {
+.side-link.methodology-trigger:hover,
+.side-link.methodology-trigger:focus-visible {
+  background: rgba(255, 255, 255, .06);
+}
+
+.side-link.methodology-trigger > svg:last-child {
   transition: transform .2s ease;
 }
 
-.side-link.methodology-trigger[aria-expanded="true"] svg:last-child {
+.side-link.methodology-trigger[aria-expanded="true"] > svg:last-child {
   transform: rotate(90deg);
 }
 
