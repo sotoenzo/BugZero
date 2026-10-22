@@ -11,10 +11,10 @@
 
     <title>BugZero | Encuesta de Preferencias Metodológicas</title>
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="encuestaMetodologia.css">
 
     <!-- Biblioteca de iconos -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
 
     <header class="topbar">
 
-        <a class="brand" href="#" aria-label="BugZero, inicio">
+        <a class="brand" href="#inicio" aria-label="BugZero, inicio">
 
             <span class="brand-mark">
                 <i data-lucide="badge-check"></i>
@@ -37,15 +37,17 @@
 
         <button
             class="menu-toggle"
+            type="button"
             id="menuToggle"
             aria-label="Abrir menú"
-            aria-expanded="false">
+            aria-expanded="false"
+            aria-controls="topNav">
 
             <i data-lucide="menu"></i>
 
         </button>
 
-        <nav class="top-nav" id="topNav">
+        <nav class="top-nav" id="topNav" aria-label="Navegación principal">
 
             <a href="#encuesta">Encuesta</a>
 
@@ -64,7 +66,7 @@
              PRESENTACIÓN
         ========================== -->
 
-        <section class="hero">
+        <section class="hero" id="inicio">
 
             <div class="hero-copy">
 
@@ -230,7 +232,13 @@
 
                 <div class="progress-wrap">
 
-                    <div class="progress-track">
+                    <div
+                        class="progress-track"
+                        role="progressbar"
+                        aria-label="Progreso de la encuesta"
+                        aria-valuemin="1"
+                        aria-valuemax="5"
+                        aria-valuenow="1">
                         <div
                             class="progress-fill"
                             id="progressFill">
@@ -303,9 +311,9 @@
                         </span>
 
                         <button
-                            type="button"
                             class="btn btn-primary"
-                            id="nextBtn">
+                            id="nextBtn"
+                            type="submit">
 
                             Siguiente
 
@@ -441,38 +449,16 @@
 
                         </article>
 
-
                         <article class="method-mini">
-
                             <i data-lucide="repeat-2"></i>
-
                             <h4>Ágil</h4>
-
-                            <p>
-                                Adaptación frecuente y
-                                entregas incrementales.
-                            </p>
-
+                            <p>Adaptación frecuente y entregas incrementales.</p>
                         </article>
-
                     </div>
-
-                    <p class="method-note">
-                        La herramienta orienta la decisión:
-                        la recomendación final también depende
-                        del contexto real del equipo.
-                    </p>
-
+                    <p class="method-note">La herramienta orienta la decisión: la recomendación final también depende del contexto real del equipo.</p>
                 </section>
-
             </aside>
-
         </section>
-
-
-        <!-- =========================
-             RESULTADOS DEL ANÁLISIS
-        ========================== -->
 
         <section
             class="result-panel panel hidden"
@@ -480,110 +466,57 @@
             aria-live="polite">
 
             <div class="result-topline">
-
                 <span class="result-badge">
-
                     <i data-lucide="sparkles"></i>
-
                     ANÁLISIS COMPLETADO
-
                 </span>
 
                 <button
                     class="btn btn-ghost"
+                    type="button"
                     id="editAnswersBtn">
-
                     <i data-lucide="pencil"></i>
-
                     Editar respuestas
-
                 </button>
-
             </div>
 
-
-            <!-- Metodología ganadora -->
-
             <div class="result-hero">
-
                 <div class="result-symbol" id="resultSymbol">
-
                     <i data-lucide="refresh-cw"></i>
-
                 </div>
-
 
                 <div class="result-main">
-
-                    <p class="eyebrow">
-                        METODOLOGÍA RECOMENDADA
-                    </p>
-
+                    <p class="eyebrow">METODOLOGÍA RECOMENDADA</p>
                     <h2 id="winnerName">Scrum</h2>
-
                     <p id="winnerSummary"></p>
-
-                    <div
-                        class="result-tags"
-                        id="winnerTags">
-                    </div>
-
+                    <div class="result-tags" id="winnerTags"></div>
                 </div>
 
-
                 <div class="match-score">
-
                     <strong id="winnerScore">92%</strong>
-
                     <span>de coincidencia</span>
-
                     <div class="score-ring">
                         <div id="scoreRingFill"></div>
                     </div>
-
                 </div>
-
             </div>
-
-
-            <!-- Detalles del resultado -->
 
             <div class="result-content-grid">
 
-
-                <!-- Comparación -->
-
                 <section class="result-card">
-
                     <div class="result-card-title">
-
                         <i data-lucide="chart-no-axes-column-increasing"></i>
-
                         <h3>Comparación de resultados</h3>
-
                     </div>
 
-                    <p class="muted">
-                        Puntajes estimados según las respuestas
-                        que seleccionaste.
-                    </p>
+                    <p class="muted">Puntajes estimados según las respuestas que seleccionaste.</p>
 
-                    <div
-                        id="scoreBars"
-                        class="score-bars">
-                    </div>
-
+                    <div id="scoreBars" class="score-bars"></div>
                 </section>
 
-
-                <!-- Explicación -->
-
                 <section class="result-card">
-
                     <div class="result-card-title">
-
                         <i data-lucide="scan-search"></i>
-
                         <h3>¿Por qué te recomendamos esta?</h3>
                     </div>
                     <ul id="reasonList" class="reason-list"></ul>
@@ -609,6 +542,7 @@
             <div class="result-actions">
                 <button
                     class="btn btn-primary"
+                    type="button"
                     id="restartBtn">
                     <i data-lucide="rotate-ccw"></i>
                     Hacer otra encuesta
@@ -616,6 +550,7 @@
 
                 <button
                     class="btn btn-secondary"
+                    type="button"
                     id="downloadBtn">
                     <i data-lucide="download"></i>
                     Descargar resultado (.txt)
@@ -623,6 +558,7 @@
 
                 <button
                     class="btn btn-secondary"
+                    type="button"
                     id="printBtn">
                     <i data-lucide="printer"></i>
                     Imprimir / Guardar PDF
@@ -666,7 +602,7 @@
         <span>Herramienta educativa para orientar proyectos.</span>
     </footer>
 
-<script src="js/app.js"></script>
+<script src="encuestaMetodologia.js" defer></script>
 
 </body>
 </html>
