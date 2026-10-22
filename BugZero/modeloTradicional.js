@@ -2,41 +2,54 @@
 
 const menuToggle = document.getElementById('menuToggle');
 const menuClose = document.getElementById('menuClose');
-const siteMenu = document.getElementById('siteMenu');
-const menuOverlay = document.getElementById('menuOverlay');
+const sideMenu = document.getElementById('sideMenu');
+const overlay = document.getElementById('overlay');
 const methodologyToggle = document.getElementById('methodologyToggle');
 const methodologySubmenu = document.getElementById('methodologySubmenu');
 
 function setMenuOpen(isOpen) {
-    siteMenu.classList.toggle('open', isOpen);
-    menuOverlay.classList.toggle('open', isOpen);
-    siteMenu.setAttribute('aria-hidden', String(!isOpen));
-    menuOverlay.setAttribute('aria-hidden', String(!isOpen));
+    if (!sideMenu || !overlay || !menuToggle) return;
+    sideMenu.classList.toggle('open', isOpen);
+    overlay.classList.toggle('show', isOpen);
+    sideMenu.setAttribute('aria-hidden', String(!isOpen));
+    overlay.setAttribute('aria-hidden', String(!isOpen));
     menuToggle.setAttribute('aria-expanded', String(isOpen));
     menuToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+    document.body.classList.toggle('menu-open', isOpen);
 }
 
-menuToggle.addEventListener('click', () => {
-    setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
-});
-menuClose.addEventListener('click', () => setMenuOpen(false));
-menuOverlay.addEventListener('click', () => setMenuOpen(false));
+if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+      setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
+  });
+}
+if (menuClose) {
+  menuClose.addEventListener('click', () => setMenuOpen(false));
+}
+if (overlay) {
+  overlay.addEventListener('click', () => setMenuOpen(false));
+}
 document.addEventListener('keydown', event => {
     if (event.key === 'Escape') setMenuOpen(false);
 });
-methodologyToggle.addEventListener('click', () => {
-    const isExpanded = methodologyToggle.getAttribute('aria-expanded') === 'true';
-    methodologyToggle.setAttribute('aria-expanded', String(!isExpanded));
-    methodologySubmenu.hidden = isExpanded;
-});
-siteMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => setMenuOpen(false));
-});
+if (methodologyToggle && methodologySubmenu) {
+  methodologyToggle.addEventListener('click', () => {
+      const isExpanded = methodologyToggle.getAttribute('aria-expanded') === 'true';
+      methodologyToggle.setAttribute('aria-expanded', String(!isExpanded));
+      methodologySubmenu.hidden = isExpanded;
+  });
+}
+if (sideMenu) {
+  sideMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => setMenuOpen(false));
+  });
+}
 
 const tabs = document.querySelectorAll('.tab');
 const panels = document.querySelectorAll('.model-panel');
 
 function activateTab(tab) {
+    if (!tab || !tabs.length) return;
     tabs.forEach(t => {
         const isActive = t === tab;
         t.classList.toggle('active', isActive);
@@ -59,13 +72,15 @@ function activateTabFromHash() {
     }
 }
 
-activateTabFromHash();
-if (!window.location.hash) activateTab(tabs[0]);
-window.addEventListener('hashchange', activateTabFromHash);
+if (tabs.length) {
+  activateTabFromHash();
+  if (!window.location.hash) activateTab(tabs[0]);
+  window.addEventListener('hashchange', activateTabFromHash);
 
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        activateTab(tab);
-        history.replaceState(null, '', `#${tab.dataset.target}`);
-    });
-});
+  tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+          activateTab(tab);
+          history.replaceState(null, '', `#${tab.dataset.target}`);
+      });
+  });
+}

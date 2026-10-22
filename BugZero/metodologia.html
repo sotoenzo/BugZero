@@ -9,23 +9,53 @@
     <!-- FontAwesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="metodologia.css">
+    <link rel="stylesheet" href="menu.css">
 </head>
 <body>
 
-    <!-- Header / Navbar -->
     <header class="navbar">
-        <div class="nav-left">
-            <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
-            <a href="index.html#inicio" class="logo-container" aria-label="BugZero, ir al inicio">
-                <img class="brand-logo" src="img/logo%20bugzero4.png" alt="Logo de BugZero">
+        <a href="index.html#inicio" class="brand" aria-label="BugZero, ir al inicio">
+            <img class="brand-logo" src="img/Logotipo%20BugZero%20con%20borde%20blanco%20%282%29.png" alt="Logo de BugZero">
+        </a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="sideMenu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        </button>
+    </header>
+
+    <div class="overlay" id="overlay" aria-hidden="true"></div>
+    <aside class="side-menu" id="sideMenu" aria-label="Menú principal" aria-hidden="true">
+        <div class="side-menu-header">
+            <a href="index.html#inicio" class="brand" aria-label="BugZero, ir al inicio">
+                <img class="brand-logo" src="img/Logotipo%20BugZero%20con%20borde%20blanco%20%282%29.png" alt="Logo de BugZero">
             </a>
-        </div>
-        <div class="nav-right">
-            <button class="compare-btn">
-                <i class="fa-solid fa-arrow-right-arrow-left"></i> Comparar metodologías
+            <button class="side-menu-close" id="menuClose" type="button" aria-label="Cerrar menú">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
         </div>
-    </header>
+        <nav aria-label="Secciones del sitio">
+            <a href="index.html#inicio" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Inicio</span></a>
+            <a href="index.html#calidad" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>Calidad</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg></a>
+            <a href="index.html#desarrollo" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>Desarrollo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg></a>
+            <div class="side-nav-group" id="methodologyNav">
+                <button class="side-link methodology-trigger active" id="methodologyToggle" type="button" aria-expanded="false" aria-controls="methodologySubmenu">
+                    <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M11 20c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/></svg>Metodologías</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+                </button>
+                <div class="side-submenu" id="methodologySubmenu" hidden>
+                    <a class="side-sub-link" href="modelosTradicionales.html">Metodologías tradicionales</a>
+                    <a class="side-sub-link" href="metodologia.html" aria-current="page">Metodologías ágiles</a>
+                </div>
+            </div>
+            <a href="index.html#recursos" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 1 4 17.5v-13z"/><path d="M20 17H6.5A2.5 2.5 0 0 0 4 19.5"/></svg>Recursos</span></a>
+            <a href="nosotros.html" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.5 2.9-6.3 6.5-6.3S15.5 16.5 15.5 20"/><circle cx="17.5" cy="9" r="2.6"/><path d="M14.7 13.8c2.6.3 4.7 2.6 4.8 5.5"/></svg>Nosotros</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg></a>
+            <a href="contacto.html" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg>Contacto</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg></a>
+        </nav>
+        <div class="side-divider"></div>
+        <button class="side-cta" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M11 20c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/></svg>
+            Comparar metodologías
+        </button>
+    </aside>
 
     <!-- Main Content -->
     <main class="main-container">
@@ -33,7 +63,7 @@
         <!-- Top Hero Section -->
         <section class="hero-section">
             <div class="hero-left">
-                <a href="#" class="back-link"><i class="fa-solid fa-arrow-left"></i> Metodologías Ágiles</a>
+                <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Metodologías Ágiles</a>
                 <div class="hero-title-wrapper">
                     <div class="rocket-icon">
                         <i class="fa-solid fa-rocket"></i>

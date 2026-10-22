@@ -6,39 +6,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BugZero — Aprende, practica, construye mejor</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="menu.css">
 </head>
 <body>
 
 <!-- NAVBAR -->
 <header class="navbar">
   <a href="#inicio" class="brand" aria-label="BugZero, ir al inicio">
-    <img class="brand-logo" src="img/logo%20bugzero4.png" alt="Logo de BugZero">
+    <img class="brand-logo" src="img/Logotipo%20BugZero%20con%20borde%20blanco%20%282%29.png" alt="Logo de BugZero">
   </a>
-  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="sideMenu">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
   </button>
 </header>
 
 <!-- SIDE MENU -->
-<div class="overlay" id="overlay"></div>
-<aside class="side-menu" id="sideMenu">
+<div class="overlay" id="overlay" aria-hidden="true"></div>
+<aside class="side-menu" id="sideMenu" aria-label="Menú principal" aria-hidden="true">
   <div class="side-menu-header">
     <a href="#inicio" class="brand" style="font-size:1.2rem;">
-      <img class="brand-logo" src="img/logo%20bugzero4.png" alt="Logo de BugZero">
+      <img class="brand-logo" src="img/Logotipo%20BugZero%20con%20borde%20blanco%20%282%29.png" alt="Logo de BugZero">
     </a>
-    <button class="side-menu-close" id="menuClose" aria-label="Cerrar menú">
+    <button class="side-menu-close" id="menuClose" type="button" aria-label="Cerrar menú">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
-  <nav>
-    <a href="#calidad" class="side-link active">
+  <nav aria-label="Secciones del sitio">
+    <a href="#inicio" class="side-link active">
       <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Inicio</span>
     </a>
-    <a href="#" class="side-link">
+    <a href="#calidad" class="side-link">
       <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>Calidad</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
     </a>
-    <a href="#" class="side-link">
+    <a href="#desarrollo" class="side-link">
       <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>Desarrollo</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
     </a>
@@ -52,7 +53,7 @@
         <a class="side-sub-link" href="metodologia.html">Metodologías ágiles</a>
       </div>
     </div>
-    <a href="#" class="side-link">
+    <a href="#recursos" class="side-link">
       <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 1 4 17.5v-13z"/><path d="M20 17H6.5A2.5 2.5 0 0 0, 4 19.5"/></svg>Recursos</span>
     </a>
     <a href="nosotros.html" class="side-link">
@@ -210,7 +211,7 @@
     </div>
     <h3>Metodologías Ágiles</h3>
     <p>Scrum, Kanban, XP y más. Principios, roles, ceremonias y artefactos.</p>
-    <a href="#metodologias" class="card-link">Ver sección
+    <a href="metodologia.html" class="card-link">Ver sección
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
   </article>
@@ -254,7 +255,7 @@
   <div class="footer-inner">
     <div class="footer-brand" id="contacto">
       <a href="#inicio" class="brand" style="font-size:1.25rem;">
-        <img class="brand-logo" src="img/logo%20bugzero4.png" alt="Logo de BugZero">
+        <img class="brand-logo" src="img/Logotipo%20BugZero%20con%20borde%20blanco%20%282%29.png" alt="Logo de BugZero">
       </a>
       <p>Aprendé hoy, construí mejor mañana.</p>
       <div class="social">

@@ -56,7 +56,7 @@ header {
     width: clamp(150px, 28vw, 280px);
     height: auto;
     max-height: 94px;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
 }
 
