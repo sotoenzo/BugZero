@@ -648,1113 +648,387 @@ const methodInfo = {
 };
 
 
-// ==========================================
-// ESTADO DE LA ENCUESTA
-// ==========================================
+// Estado y referencias de la interfaz
+const state = { current: 0, answers: {} };
+const questionArea = document.getElementById("questionArea");
+const formError = document.getElementById("formError");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
+const surveyPanel = document.querySelector(".survey-panel");
+const resultPanel = document.getElementById("resultPanel");
+const progressFill = document.getElementById("progressFill");
+const progressTrack = document.querySelector(".progress-track");
+const questionCount = document.getElementById("questionCount");
+const stepLabels = document.querySelectorAll("#stepLabels span");
+const menuToggle = document.getElementById("menuToggle");
+const topNav = document.getElementById("topNav");
 
-const state = {
-
-    current: 0,
-
-    answers: {}
-
+const answerCategories = {
+    project: "Tipo de proyecto",
+    team: "Equipo",
+    requirements: "Requisitos",
+    feedback: "Comentarios",
+    planning: "Organización"
 };
 
-
-// ==========================================
-// ELEMENTOS DEL HTML
-// ==========================================
-
-const questionArea =
-    document.getElementById("questionArea");
-
-const formError =
-    document.getElementById("formError");
-
-const nextBtn =
-    document.getElementById("nextBtn");
-
-const prevBtn =
-    document.getElementById("prevBtn");
-
-const surveyPanel =
-    document.querySelector(".survey-panel");
-
-const resultPanel =
-    document.getElementById("resultPanel");
-
-
-// ==========================================
-// FUNCIONES AUXILIARES
-// ==========================================
-
 function icon(name) {
-
     return `<i data-lucide="${name}"></i>`;
-
 }
-
 
 function refreshIcons() {
-
-    if (window.lucide) {
-
+    if (window.lucide && typeof window.lucide.createIcons === "function") {
         window.lucide.createIcons();
-
     }
-
 }
-
-
-// ==========================================
-// MOSTRAR UNA PREGUNTA
-// ==========================================
 
 function renderQuestion() {
+    const question = questions[state.current];
+    const selectedAnswer = state.answers[question.key];
+    const progress = ((state.current + 1) / questions.length) * 100;
 
-    const q = questions[state.current];
+    questionCount.textContent = `Pregunta ${state.current + 1} de ${questions.length}`;
+    progressFill.style.width = `${progress}%`;
+    progressTrack.setAttribute("aria-valuenow", String(state.current + 1));
 
-    const selected = state.answers[q.key];
-
-
-    // Número de pregunta
-
-    document.getElementById("questionCount").textContent =
-        `Pregunta ${state.current + 1} de ${questions.length}`;
-
-
-    // Actualizar progreso
-
-    document.getElementById("progressFill").style.width =
-        `${((state.current + 1) / questions.length) * 100}%`;
-
-
-    // Actualizar indicadores
-
-    document.querySelectorAll("#stepLabels span").forEach(
-        (el, i) => {
-
-            el.classList.toggle(
-                "active",
-                i === state.current
-            );
-
-            el.classList.toggle(
-                "done",
-                i < state.current
-            );
-
-        }
-    );
-
-
-    // Construir las opciones de la pregunta
+    stepLabels.forEach((step, index) => {
+        step.classList.toggle("active", index === state.current);
+        step.classList.toggle("done", index < state.current);
+    });
 
     questionArea.innerHTML = `
-
         <div class="question-block">
-
             <h3 class="question-title">
-
-                <span class="question-number">
-                    ${state.current + 1}.
-                </span>
-
-                ${q.title}
-
+                <span class="question-number">${state.current + 1}.</span>
+                ${question.title}
             </h3>
-
-            <p class="question-hint">
-                ${q.hint}
-            </p>
-
-            <div
-                class="options-grid"
-                role="radiogroup"
-                aria-label="${q.title}">
-
-                ${q.options.map(o => `
-
+            <p class="question-hint">${question.hint}</p>
+            <div class="options-grid" role="radiogroup" aria-label="${question.title}">
+                ${question.options.map(option => `
                     <div
-                        class="option-card ${
-                            selected === o.value ? "selected" : ""
-                        }"
+                        class="option-card ${selectedAnswer === option.value ? "selected" : ""}"
                         role="radio"
-                        aria-checked="${selected === o.value}"
+                        aria-checked="${selectedAnswer === option.value}"
                         tabindex="0"
-                        data-value="${o.value}">
-
+                        data-value="${option.value}">
                         <span class="radio-dot"></span>
-
-                        <span class="option-icon">
-                            ${icon(o.icon)}
-                        </span>
-
+                        <span class="option-icon">${icon(option.icon)}</span>
                         <span class="option-copy">
-
-                            <strong>
-                                ${o.title}
-                            </strong>
-
-                            <small>
-                                ${o.desc}
-                            </small>
-
+                            <strong>${option.title}</strong>
+                            <small>${option.desc}</small>
                         </span>
-
-                        <span class="option-check">
-                            ${icon("check-circle-2")}
-                        </span>
-
+                        <span class="option-check">${icon("check-circle-2")}</span>
                     </div>
-
                 `).join("")}
-
             </div>
-
         </div>
-
     `;
 
+    questionArea.querySelectorAll(".option-card").forEach(card => {
+        const choose = () => selectAnswer(question.key, card.dataset.value);
 
-    // Activar las opciones
-
-    questionArea
-        .querySelectorAll(".option-card")
-        .forEach(card => {
-
-            const choose = () => {
-
-                selectAnswer(
-                    q.key,
-                    card.dataset.value
-                );
-
-            };
-
-
-            card.addEventListener("click", choose);
-
-
-            card.addEventListener("keydown", e => {
-
-                if (
-                    e.key === "Enter" ||
-                    e.key === " "
-                ) {
-
-                    e.preventDefault();
-
-                    choose();
-
-                }
-
-            });
-
+        card.addEventListener("click", choose);
+        card.addEventListener("keydown", event => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                choose();
+            }
         });
-
-
-    // Botón anterior
+    });
 
     prevBtn.disabled = state.current === 0;
-
-
-    // Texto del botón siguiente
-
-    nextBtn.innerHTML =
-
-        state.current === questions.length - 1
-
-            ? `Analizar respuestas ${icon("sparkles")}`
-
-            : `Siguiente ${icon("arrow-right")}`;
-
-
-    // Limpiar errores
-
+    nextBtn.innerHTML = state.current === questions.length - 1
+        ? `Analizar respuestas ${icon("sparkles")}`
+        : `Siguiente ${icon("arrow-right")}`;
     formError.textContent = "";
-
-
     refreshIcons();
-
 }
-
-
-// ==========================================
-// SELECCIONAR UNA RESPUESTA
-// ==========================================
 
 function selectAnswer(key, value) {
-
     state.answers[key] = value;
 
-    const q = questions[state.current];
-
-
-    questionArea
-        .querySelectorAll(".option-card")
-        .forEach(card => {
-
-            const selected =
-                card.dataset.value === value;
-
-
-            card.classList.toggle(
-                "selected",
-                selected
-            );
-
-
-            card.setAttribute(
-                "aria-checked",
-                String(selected)
-            );
-
-        });
-
+    questionArea.querySelectorAll(".option-card").forEach(card => {
+        const isSelected = card.dataset.value === value;
+        card.classList.toggle("selected", isSelected);
+        card.setAttribute("aria-checked", String(isSelected));
+    });
 
     formError.textContent = "";
-
     refreshIcons();
-
 }
-
-
-// ==========================================
-// AVANZAR A LA SIGUIENTE PREGUNTA
-// ==========================================
 
 function goNext() {
+    const question = questions[state.current];
 
-    const q = questions[state.current];
-
-
-    // Verificar que se haya elegido una opción
-
-    if (!state.answers[q.key]) {
-
-        formError.textContent =
-            "Elegí una opción para continuar.";
-
+    if (!state.answers[question.key]) {
+        formError.textContent = "Elegí una opción para continuar.";
         return;
-
     }
 
-
-    // Avanzar o analizar
-
-    if (state.current < questions.length - 1) {
-
-        state.current++;
-
-        renderQuestion();
-
-
-        surveyPanel.scrollIntoView({
-
-            behavior: "smooth",
-
-            block: "start"
-
-        });
-
-    } else {
-
+    if (state.current === questions.length - 1) {
         showResult();
-
+        return;
     }
 
+    state.current += 1;
+    renderQuestion();
+    surveyPanel.scrollIntoView({ behavior: "smooth", block: "start" });
 }
-
-
-// ==========================================
-// VOLVER A LA PREGUNTA ANTERIOR
-// ==========================================
 
 function goPrev() {
-
-    if (state.current > 0) {
-
-        state.current--;
-
-        renderQuestion();
-
+    if (state.current === 0) {
+        return;
     }
 
+    state.current -= 1;
+    renderQuestion();
 }
-
-
-// ==========================================
-// CALCULAR PUNTAJES
-// ==========================================
 
 function calculateScores() {
+    const scores = { Scrum: 0, Kanban: 0, Agile: 0, Cascada: 0 };
 
-    const scores = {
-
-        Scrum: 0,
-
-        Kanban: 0,
-
-        Agile: 0,
-
-        Cascada: 0
-
-    };
-
-
-    // Recorrer cada pregunta y sumar puntos
-
-    questions.forEach(q => {
-
-        const answer = q.options.find(
-
-            o => o.value === state.answers[q.key]
-
+    questions.forEach(question => {
+        const answer = question.options.find(
+            option => option.value === state.answers[question.key]
         );
 
-
-        if (answer) {
-
-            Object.entries(answer.scores).forEach(
-
-                ([method, points]) => {
-
-                    scores[method] += points;
-
-                }
-
-            );
-
+        if (!answer) {
+            return;
         }
 
+        Object.entries(answer.scores).forEach(([method, points]) => {
+            scores[method] += points;
+        });
     });
-
 
     return scores;
-
 }
-
-
-// ==========================================
-// COMPARAR LAS METODOLOGÍAS
-// ==========================================
 
 function scorePercentages(scores) {
+    const results = Object.entries(scores).map(([name, score]) => ({
+        name,
+        score,
+        percent: 0
+    }));
+    const maxScore = Math.max(...results.map(result => result.score));
+    const total = Object.values(scores).reduce((sum, score) => sum + score, 0) || 1;
 
-    const raw = Object.entries(scores).map(
-
-        ([name, score]) => ({
-
-            name,
-
-            score,
-
-            percent: 0
-
-        })
-
-    );
-
-
-    const maxScore = Math.max(
-
-        ...raw.map(x => x.score)
-
-    );
-
-
-    // Obtener el total de puntos asignados
-
-    const total =
-
-        scores.Scrum +
-        scores.Kanban +
-        scores.Agile +
-        scores.Cascada || 1;
-
-
-    // Calcular porcentajes relativos
-
-    raw.forEach(item => {
-
-        item.percent = Math.round(
-
-            item.score / total * 100
-
-        );
-
+    results.forEach(result => {
+        result.percent = Math.round((result.score / total) * 100);
     });
 
+    const winner = results.reduce((best, result) => (
+        result.score > best.score ? result : best
+    ));
+    const tied = results.filter(result => result.score === maxScore);
 
-    // Encontrar la metodología con más puntos
+    return { results, winner, tied };
+}
 
-    const winner = raw.reduce(
-
-        (a, b) =>
-
-            b.score > a.score ? b : a
-
+function getAnswerLabel(question) {
+    const selected = question.options.find(
+        option => option.value === state.answers[question.key]
     );
 
+    return selected ? selected.title : "Sin respuesta";
+}
 
-    // Detectar empates
-
-    const tied = raw.filter(
-
-        x => x.score === maxScore
-
-    );
-
-
+function getPreferredMethod() {
     return {
-
-        raw,
-
-        winner,
-
-        tied,
-
-        maxScore
-
-    };
-
+        sprints: "Scrum",
+        flow: "Kanban",
+        phases: "Cascada",
+        mixed: "Agile"
+    }[state.answers.planning];
 }
 
-
-// ==========================================
-// OBTENER EL TEXTO DE UNA RESPUESTA
-// ==========================================
-
-function getAnswerLabel(q) {
-
-    const chosen = q.options.find(
-
-        o => o.value === state.answers[q.key]
-
-    );
-
-
-    return chosen
-
-        ? chosen.title
-
-        : "Sin respuesta";
-
+function renderScoreBars(results, winnerName) {
+    return [...results]
+        .sort((first, second) => second.score - first.score)
+        .map(result => `
+            <div class="score-row ${result.name === winnerName ? "winner" : ""}">
+                <span class="score-row-label">
+                    ${result.name}${result.name === winnerName ? " ★" : ""}
+                </span>
+                <div class="score-track">
+                    <div style="width: ${Math.max(3, result.percent)}%"></div>
+                </div>
+                <strong>${result.percent}%</strong>
+            </div>
+        `).join("");
 }
 
+function renderReasons(reasons, isTie) {
+    const reasonItems = reasons.map(reason => `
+        <li>${icon("check-circle-2")}<span>${reason}</span></li>
+    `).join("");
+    const tieMessage = isTie ? `
+        <li>
+            ${icon("info")}
+            <span>
+                Hubo un empate entre varias opciones. Se priorizó tu preferencia
+                de organización para elegir la sugerencia principal.
+            </span>
+        </li>
+    ` : "";
 
-// ==========================================
-// ANALIZAR Y MOSTRAR LOS RESULTADOS
-// ==========================================
+    return reasonItems + tieMessage;
+}
+
+function renderStarterSteps(steps) {
+    return steps.map(([title, description]) => {
+        const [number, label] = title.split(" · ");
+
+        return `
+            <article class="starter-step">
+                <span>${number}</span>
+                <h4>${label}</h4>
+                <p>${description}</p>
+            </article>
+        `;
+    }).join("");
+}
+
+function renderAnswerSummary() {
+    return questions.map((question, index) => `
+        <div class="answer-item">
+            <span>Pregunta ${index + 1} · ${answerCategories[question.key]}</span>
+            <strong>${getAnswerLabel(question)}</strong>
+        </div>
+    `).join("");
+}
 
 function showResult() {
-
     const scores = calculateScores();
-
-
-    const {
-
-        raw,
-
-        winner,
-
-        tied
-
-    } = scorePercentages(scores);
-
-
-    let chosen = winner;
-
-
-    // Resolver empates según la preferencia de organización
-
-    if (tied.length > 1) {
-
-        const planning = state.answers.planning;
-
-
-        const preferred = {
-
-            sprints: "Scrum",
-
-            flow: "Kanban",
-
-            phases: "Cascada",
-
-            mixed: "Agile"
-
-        }[planning];
-
-
-        chosen =
-
-            tied.find(x => x.name === preferred) ||
-
-            tied.find(x => x.name === "Agile") ||
-
-            tied[0];
-
-    }
-
-
-    // Información de la metodología seleccionada
-
+    const { results, winner, tied } = scorePercentages(scores);
+    const preferredMethod = getPreferredMethod();
+    const chosen = tied.length > 1
+        ? tied.find(result => result.name === preferredMethod)
+            || tied.find(result => result.name === "Agile")
+            || tied[0]
+        : winner;
     const info = methodInfo[chosen.name];
-
-
-    // Calcular el máximo posible para la metodología
-
-    const maxPossible = questions.reduce(
-
-        (total, q) =>
-
-            total + Math.max(
-
-                ...q.options.map(
-
-                    o => o.scores[chosen.name]
-
-                )
-
-            ),
-
-        0
-
-    );
-
-
-    // Porcentaje estimado de coincidencia
-
-    const pct = Math.min(
-
-        100,
-
-        Math.round(
-
-            chosen.score / maxPossible * 100
-
-        )
-
-    );
-
-
-    // Ocultar la encuesta y mostrar resultados
+    const maxPossible = questions.reduce((total, question) => (
+        total + Math.max(...question.options.map(
+            option => option.scores[chosen.name]
+        ))
+    ), 0);
+    const percentage = maxPossible
+        ? Math.min(100, Math.round((chosen.score / maxPossible) * 100))
+        : 0;
 
     surveyPanel.classList.add("hidden");
-
     resultPanel.classList.remove("hidden");
-
-
-    // Icono de la metodología
-
-    document.getElementById("resultSymbol").innerHTML =
-
-        icon(info.icon);
-
-
-    // Nombre de la metodología
-
-    document.getElementById("winnerName").textContent =
-
-        chosen.name;
-
-
-    // Explicación
-
-    document.getElementById("winnerSummary").textContent =
-
-        info.summary;
-
-
-    // Porcentaje
-
-    document.getElementById("winnerScore").textContent =
-
-        `${pct}%`;
-
-
-    document.getElementById("scoreRingFill").style.width =
-
-        `${pct}%`;
-
-
-    // Etiquetas
-
-    document.getElementById("winnerTags").innerHTML =
-
-        info.tags.map(
-
-            tag => `<span>${tag}</span>`
-
-        ).join("");
-
-
-    // Ordenar metodologías de mayor a menor puntaje
-
-    document.getElementById("scoreBars").innerHTML =
-
-        raw
-
-            .sort((a, b) => b.score - a.score)
-
-            .map(item => `
-
-                <div class="score-row ${
-                    item.name === chosen.name ? "winner" : ""
-                }">
-
-                    <span class="score-row-label">
-
-                        ${item.name}
-
-                        ${item.name === chosen.name ? " ★" : ""}
-
-                    </span>
-
-                    <div class="score-track">
-
-                        <div style="width: ${
-                            Math.max(3, item.percent)
-                        }%"></div>
-
-                    </div>
-
-                    <strong>
-                        ${item.percent}%
-                    </strong>
-
-                </div>
-
-            `).join("");
-
-
-    // Explicar los motivos de la recomendación
-
-    const extra = tied.length > 1
-
-        ? `
-
-            <li>
-
-                ${icon("info")}
-
-                <span>
-                    Hubo un empate entre varias opciones.
-                    Se priorizó tu preferencia de organización
-                    para elegir la sugerencia principal.
-                </span>
-
-            </li>
-
-        `
-
-        : "";
-
-
-    document.getElementById("reasonList").innerHTML =
-
-        info.reasons.map(
-
-            reason => `
-
-                <li>
-
-                    ${icon("check-circle-2")}
-
-                    <span>${reason}</span>
-
-                </li>
-
-            `
-
-        ).join("") + extra;
-
-
-    // Mostrar los primeros pasos recomendados
-
-    document.getElementById("starterSteps").innerHTML =
-
-        info.steps.map(step => `
-
-            <article class="starter-step">
-
-                <span>
-                    ${step[0].split(" · ")[0]}
-                </span>
-
-                <h4>
-                    ${step[0].split(" · ")[1]}
-                </h4>
-
-                <p>
-                    ${step[1]}
-                </p>
-
-            </article>
-
-        `).join("");
-
-
-    // Mostrar las respuestas elegidas
-
-    document.getElementById("answerSummary").innerHTML =
-
-        questions.map((q, i) => `
-
-            <div class="answer-item">
-
-                <span>
-
-                    Pregunta ${i + 1} ·
-
-                    ${
-                        q.key === "project"
-
-                            ? "Tipo de proyecto"
-
-                            : q.key === "team"
-
-                            ? "Equipo"
-
-                            : q.key === "requirements"
-
-                            ? "Requisitos"
-
-                            : q.key === "feedback"
-
-                            ? "Comentarios"
-
-                            : "Organización"
-                    }
-
-                </span>
-
-                <strong>
-                    ${getAnswerLabel(q)}
-                </strong>
-
-            </div>
-
-        `).join("");
-
-
-    // Actualizar iconos
-
-    refreshIcons();
-
-
-    // Mostrar la pantalla de resultados
-
-    resultPanel.scrollIntoView({
-
-        behavior: "smooth",
-
-        block: "start"
-
-    });
-
-
-    // Guardar información para descargar el resultado
+    document.getElementById("resultSymbol").innerHTML = icon(info.icon);
+    document.getElementById("winnerName").textContent = chosen.name;
+    document.getElementById("winnerSummary").textContent = info.summary;
+    document.getElementById("winnerScore").textContent = `${percentage}%`;
+    document.getElementById("scoreRingFill").style.width = `${percentage}%`;
+    document.getElementById("winnerTags").innerHTML = info.tags
+        .map(tag => `<span>${tag}</span>`)
+        .join("");
+    document.getElementById("scoreBars").innerHTML = renderScoreBars(results, chosen.name);
+    document.getElementById("reasonList").innerHTML = renderReasons(
+        info.reasons,
+        tied.length > 1
+    );
+    document.getElementById("starterSteps").innerHTML = renderStarterSteps(info.steps);
+    document.getElementById("answerSummary").innerHTML = renderAnswerSummary();
 
     resultPanel.dataset.winner = chosen.name;
-
-    resultPanel.dataset.percent = pct;
-
+    resultPanel.dataset.percent = String(percentage);
     resultPanel.dataset.scores = JSON.stringify(scores);
 
+    refreshIcons();
+    resultPanel.scrollIntoView({ behavior: "smooth", block: "start" });
 }
-
-
-// ==========================================
-// REINICIAR LA ENCUESTA
-// ==========================================
 
 function resetSurvey() {
-
     state.current = 0;
-
     state.answers = {};
-
-
-    // Ocultar resultados
-
     resultPanel.classList.add("hidden");
-
-
-    // Mostrar encuesta
-
     surveyPanel.classList.remove("hidden");
-
-
-    // Volver a la primera pregunta
-
     renderQuestion();
-
-
-    surveyPanel.scrollIntoView({
-
-        behavior: "smooth",
-
-        block: "start"
-
-    });
-
+    surveyPanel.scrollIntoView({ behavior: "smooth", block: "start" });
 }
-
-
-// ==========================================
-// DESCARGAR EL RESULTADO COMO TXT
-// ==========================================
 
 function downloadResult() {
-
     const winner = resultPanel.dataset.winner;
-
-    const pct = resultPanel.dataset.percent;
-
-    const scores = JSON.parse(
-
-        resultPanel.dataset.scores || "{}"
-
-    );
-
-
+    const percentage = resultPanel.dataset.percent;
+    const scores = JSON.parse(resultPanel.dataset.scores || "{}");
     const info = methodInfo[winner];
 
-
-    // Construir el contenido del archivo
+    if (!info) {
+        throw new Error("No hay un resultado válido para descargar.");
+    }
 
     const lines = [
-
         "BUGZERO | RESULTADO DE ENCUESTA METODOLÓGICA",
-
         "============================================",
-
         "",
-
         `Metodología recomendada: ${winner}`,
-
-        `Coincidencia estimada: ${pct}%`,
-
+        `Coincidencia estimada: ${percentage}%`,
         "",
-
         info.summary,
-
         "",
-
         "¿Por qué se recomienda?",
-
-        ...info.reasons.map(
-
-            reason => `- ${reason}`
-
-        ),
-
+        ...info.reasons.map(reason => `- ${reason}`),
         "",
-
         "Puntajes relativos:",
-
-        ...Object.entries(scores).map(
-
-            ([method, points]) =>
-
-                `- ${method}: ${points} puntos`
-
-        ),
-
+        ...Object.entries(scores).map(([method, points]) => `- ${method}: ${points} puntos`),
         "",
-
         "Respuestas:",
-
-        ...questions.map(
-
-            (q, i) =>
-
-                `${i + 1}. ${q.title}\n   ${getAnswerLabel(q)}`
-
-        ),
-
+        ...questions.map((question, index) => (
+            `${index + 1}. ${question.title}\n   ${getAnswerLabel(question)}`
+        )),
         "",
-
         "Nota: resultado orientativo basado en reglas de puntuación simples."
-
     ];
+    const file = new Blob([lines.join("\n")], {
+        type: "text/plain;charset=utf-8"
+    });
+    const url = URL.createObjectURL(file);
+    const link = document.createElement("a");
 
-
-    // Crear el archivo
-
-    const blob = new Blob(
-
-        [lines.join("\n")],
-
-        {
-
-            type: "text/plain;charset=utf-8"
-
-        }
-
-    );
-
-
-    // Crear enlace temporal de descarga
-
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-
-
-    a.href = url;
-
-    a.download = "resultado-encuesta-bugzero.txt";
-
-
-    document.body.appendChild(a);
-
-    a.click();
-
-    a.remove();
-
-
+    link.href = url;
+    link.download = "resultado-encuesta-bugzero.txt";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
     URL.revokeObjectURL(url);
-
 }
 
-
-// ==========================================
-// BOTONES DE LA ENCUESTA
-// ==========================================
-
-
-// Siguiente / analizar
-
-nextBtn.addEventListener(
-
-    "click",
-
-    goNext
-
-);
-
-
-// Anterior
-
-prevBtn.addEventListener(
-
-    "click",
-
-    goPrev
-
-);
-
-
-// Editar las respuestas
-
-document.getElementById("editAnswersBtn")
-
-    .addEventListener("click", () => {
-
-        resultPanel.classList.add("hidden");
-
-        surveyPanel.classList.remove("hidden");
-
-
-        surveyPanel.scrollIntoView({
-
-            behavior: "smooth",
-
-            block: "start"
-
-        });
-
-    });
-
-
-// Realizar otra encuesta
-
-document.getElementById("restartBtn")
-
-    .addEventListener(
-
-        "click",
-
-        resetSurvey
-
-    );
-
-
-// Descargar TXT
-
-document.getElementById("downloadBtn")
-
-    .addEventListener(
-
-        "click",
-
-        downloadResult
-
-    );
-
-
-// Imprimir o guardar como PDF
-
-document.getElementById("printBtn")
-
-    .addEventListener(
-
-        "click",
-
-        () => window.print()
-
-    );
-
-
-// ==========================================
-// MENÚ RESPONSIVE
-// ==========================================
-
-document.getElementById("menuToggle")
-
-    .addEventListener("click", () => {
-
-        const nav = document.getElementById("topNav");
-
-
-        const open = nav.classList.toggle("open");
-
-
-        document.getElementById("menuToggle")
-
-            .setAttribute(
-
-                "aria-expanded",
-
-                String(open)
-
-            );
-
-    });
-
-
-// Cerrar menú al seleccionar una sección
-
-document.querySelectorAll("#topNav a")
-
-    .forEach(a => {
-
-        a.addEventListener("click", () => {
-
-            document.getElementById("topNav")
-
-                .classList.remove("open");
-
-        });
-
-    });
-
-
-// ==========================================
-// INICIAR LA PÁGINA
-// ==========================================
+function showSurveyForEditing() {
+    resultPanel.classList.add("hidden");
+    surveyPanel.classList.remove("hidden");
+    surveyPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function closeMenu() {
+    topNav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Abrir menú");
+}
+
+// Eventos de la encuesta
+nextBtn.addEventListener("click", event => {
+    event.preventDefault();
+    goNext();
+});
+prevBtn.addEventListener("click", goPrev);
+document.getElementById("editAnswersBtn").addEventListener("click", showSurveyForEditing);
+document.getElementById("restartBtn").addEventListener("click", resetSurvey);
+document.getElementById("downloadBtn").addEventListener("click", downloadResult);
+document.getElementById("printBtn").addEventListener("click", () => window.print());
+
+// Eventos del menú responsive
+menuToggle.addEventListener("click", () => {
+    const isOpen = topNav.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+});
+
+topNav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+});
 
 renderQuestion();

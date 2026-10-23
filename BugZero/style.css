@@ -271,6 +271,16 @@
   .footer-col ul li{margin-bottom:10px;}
   .footer-col a{color:var(--ink-500);font-size:.88rem;transition:color .15s ease;}
   .footer-col a:hover{color:var(--blue-400);}
+  .footer-col .footer-action-link{
+    display:inline-flex;align-items:center;gap:7px;
+    color:var(--blue-400);font-weight:600;
+  }
+  .footer-col .footer-action-link:hover{color:var(--blue-300);}
+  .footer-col .footer-action-link svg{
+    width:15px;height:15px;
+    transition:transform .15s ease;
+  }
+  .footer-col .footer-action-link:hover svg{transform:translateX(3px);}
   .footer-contact li{display:flex;align-items:center;gap:8px;color:var(--ink-500);font-size:.88rem;margin-bottom:12px;}
   .footer-contact svg{width:15px;height:15px;color:var(--blue-400);flex-shrink:0;}
   .social{display:flex;gap:12px;margin-top:16px;}
