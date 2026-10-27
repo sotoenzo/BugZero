@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BugZero - Gestión de la Calidad del Software</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="menu.css">
+  <link rel="stylesheet" href="calidad.css">
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html#inicio" class="brand" aria-label="BugZero, ir al inicio">
+      <img class="brand-logo" src="img/Logotipo%20BugZero%20con%20borde%20blanco%20%282%29.png" alt="Logo de BugZero">
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="sideMenu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </header>
+
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+  <aside class="side-menu" id="sideMenu" aria-label="Menú principal" aria-hidden="true">
+    <div class="side-menu-header">
+      <a href="index.html#inicio" class="brand" aria-label="BugZero, ir al inicio">
+        <img class="brand-logo" src="img/Logotipo%20BugZero%20con%20borde%20blanco%20%282%29.png" alt="Logo de BugZero">
+      </a>
+      <button class="side-menu-close" id="menuClose" type="button" aria-label="Cerrar menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav aria-label="Secciones del sitio">
+      <a href="index.html#inicio" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Inicio</span></a>
+      <div class="side-nav-group" id="qualityNav">
+        <button class="side-link submenu-trigger active" id="qualityToggle" type="button" aria-expanded="false" aria-controls="qualitySubmenu">
+          <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>Calidad</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="side-submenu" id="qualitySubmenu" hidden>
+          <a class="side-sub-link" href="#fundamentos">Fundamentos de Calidad</a>
+          <a class="side-sub-link" href="#pruebas">Técnicas de Aseguramiento de la Calidad</a>
+          <a class="side-sub-link" href="#herramientas-calidad">Herramientas de Calidad</a>
+        </div>
+      </div>
+      <div class="side-nav-group" id="developmentNav">
+        <button class="side-link submenu-trigger" id="developmentToggle" type="button" aria-expanded="false" aria-controls="developmentSubmenu">
+          <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>Desarrollo</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="side-submenu" id="developmentSubmenu" hidden>
+          <a class="side-sub-link" href="metodologia.html#ciclo-vida">Ciclo de vida</a>
+          <a class="side-sub-link" href="metodologia.html#tradicionales">Metodologías tradicionales</a>
+          <a class="side-sub-link" href="metodologia.html#agiles">Metodologías ágiles</a>
+        </div>
+      </div>
+      <a href="metodologia.html#agiles" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M11 20c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/></svg>Metodologías</span></a>
+      <a href="index.html#recursos" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 1 4 17.5v-13z"/><path d="M20 17H6.5A2.5 2.5 0 0 0 4 19.5"/></svg>Recursos</span></a>
+      <div class="side-nav-group">
+        <button class="side-link submenu-trigger" id="interactiveToggle" type="button" aria-expanded="false" aria-controls="interactiveSubmenu">
+          <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>Herramientas Interactivas</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="side-submenu" id="interactiveSubmenu" hidden>
+          <a class="side-sub-link" href="comparadorMetodologia.html#comparador">Comparador de Metodologías</a>
+          <a class="side-sub-link" href="comparadorMetodologia.html#encuesta">Encuesta de Preferencias Metodológicas</a>
+        </div>
+      </div>
+      <a href="nosotros.html" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.5 2.9-6.3 6.5-6.3S15.5 16.5 15.5 20"/><circle cx="17.5" cy="9" r="2.6"/><path d="M14.7 13.8c2.6.3 4.7 2.6 4.8 5.5"/></svg>Nosotros</span></a>
+      <a href="contacto.html" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg>Contacto</span></a>
+    </nav>
+  </aside>
+
+  <main class="quality-main">
+    <a href="index.html#inicio" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+      Inicio
+    </a>
+    <section class="quality-panel" aria-labelledby="fundamentals-title">
+      <p class="quality-eyebrow">BUGZERO · GESTIÓN DE CALIDAD DEL SOFTWARE</p>
+      <h1 id="fundamentos">Fundamentos de Calidad</h1>
+      <p class="quality-intro">La calidad del software es el grado en que un producto satisface necesidades y requisitos. Conocer sus características y métricas ayuda a evaluar el producto y a tomar decisiones durante todo su ciclo de vida.</p>
+
+      <div class="standard-picker">
+        <h2>Elegí un estándar:</h2>
+        <div class="tab-list" role="tablist" aria-label="Estándares de calidad">
+          <button class="standard-tab is-active" id="iso-9126-tab" type="button" role="tab" aria-selected="true" aria-controls="iso-9126-panel" tabindex="0">ISO 9126</button>
+          <button class="standard-tab" id="iso-25000-tab" type="button" role="tab" aria-selected="false" aria-controls="iso-25000-panel" tabindex="-1">ISO/IEC 25000</button>
+        </div>
+      </div>
+
+      <div class="standard-panel" id="iso-9126-panel" role="tabpanel" aria-labelledby="iso-9126-tab">
+        <h2><i data-lucide="waves" aria-hidden="true"></i> ISO/IEC 9126 · Calidad del producto de software</h2>
+        <p>Este estándar organiza la calidad del producto en características evaluables. Sirve como referencia para analizar si el software cumple su propósito y resulta adecuado para las personas que lo utilizan.</p>
+        <div class="standard-grid">
+          <article class="detail-card">
+            <h3>Conceptos clave de calidad</h3>
+            <ul class="quality-list">
+              <li><strong>Funcionalidad:</strong> funciones adecuadas para las necesidades especificadas.</li>
+              <li><strong>Fiabilidad:</strong> funcionamiento estable y consistente bajo condiciones definidas.</li>
+              <li><strong>Usabilidad:</strong> facilidad para comprender, aprender y utilizar el producto.</li>
+              <li><strong>Eficiencia:</strong> rendimiento en relación con los recursos utilizados.</li>
+              <li><strong>Mantenibilidad:</strong> facilidad para analizar, modificar y probar el software.</li>
+              <li><strong>Portabilidad:</strong> facilidad para adaptar o trasladar el producto a otros entornos.</li>
+            </ul>
+          </article>
+          <article class="detail-card">
+            <h3>Métricas de calidad</h3>
+            <ul class="quality-list">
+              <li><strong>Cobertura de pruebas:</strong> proporción de requisitos o código cubiertos por pruebas.</li>
+              <li><strong>Densidad de defectos:</strong> defectos encontrados en relación con el tamaño del producto.</li>
+              <li><strong>Tiempo de resolución:</strong> tiempo promedio necesario para corregir un defecto.</li>
+            </ul>
+            <p>Las métricas se interpretan según el contexto, los objetivos y el método de medición acordado.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="standard-panel" id="iso-25000-panel" role="tabpanel" aria-labelledby="iso-25000-tab" hidden>
+        <h2><i data-lucide="waves" aria-hidden="true"></i> ISO/IEC 25000 · Serie SQuaRE</h2>
+        <p>SQuaRE (System and Software Quality Requirements and Evaluation) reúne guías para especificar requisitos, medir y evaluar la calidad de sistemas y productos de software. La serie amplía y organiza el trabajo de calidad en distintas normas relacionadas.</p>
+        <div class="standard-grid">
+          <article class="detail-card">
+            <h3>Conceptos clave de calidad</h3>
+            <ul class="quality-list">
+              <li><strong>Adecuación funcional:</strong> grado en que las funciones satisfacen las necesidades previstas.</li>
+              <li><strong>Eficiencia de desempeño:</strong> rendimiento en relación con el tiempo de respuesta y los recursos.</li>
+              <li><strong>Compatibilidad:</strong> capacidad de coexistir e intercambiar información con otros sistemas.</li>
+              <li><strong>Capacidad de interacción:</strong> facilidad de uso, aprendizaje y accesibilidad para las personas.</li>
+              <li><strong>Fiabilidad:</strong> capacidad de mantener el funcionamiento esperado.</li>
+              <li><strong>Seguridad:</strong> protección de datos y control de acceso a la información.</li>
+              <li><strong>Mantenibilidad y flexibilidad:</strong> facilidad de modificar y adaptar el producto.</li>
+            </ul>
+          </article>
+          <article class="detail-card">
+            <h3>Métricas de calidad</h3>
+            <ul class="quality-list">
+              <li><strong>Cobertura de pruebas:</strong> proporción de requisitos o código cubiertos por pruebas.</li>
+              <li><strong>Densidad de defectos:</strong> defectos encontrados en relación con el tamaño del producto.</li>
+              <li><strong>Tiempo de resolución:</strong> tiempo promedio necesario para corregir un defecto.</li>
+            </ul>
+            <p>Las métricas se interpretan según el contexto, los objetivos y el método de medición acordado.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="quality-separator" role="separator" aria-hidden="true"><span></span><i data-lucide="shield-check"></i><span></span></div>
+
+    <section class="quality-panel" aria-labelledby="testing-title">
+      <p class="quality-eyebrow">BUGZERO · GESTIÓN DE CALIDAD DEL SOFTWARE</p>
+      <h2 class="section-title" id="pruebas">Técnicas de Aseguramiento de la Calidad</h2>
+      <p class="quality-intro">Las pruebas de software ayudan a detectar defectos y comprobar que el producto cumple sus requisitos. Se organizan en niveles según el alcance y utilizan distintas técnicas para diseñar casos de prueba.</p>
+
+      <section class="quality-subsection" aria-labelledby="levels-title">
+        <h3 class="subsection-title"><i data-lucide="command" aria-hidden="true"></i>Niveles de prueba</h3>
+        <p class="subsection-intro">Abrí cada tarjeta para conocer su objetivo, alcance y ejemplo.</p>
+        <div class="level-grid">
+          <article class="level-card">
+            <button class="level-toggle" type="button" aria-expanded="true" aria-controls="level-unit-detail">
+              <span class="level-number">01</span><span class="level-copy"><strong>Pruebas unitarias</strong><small>Verifican componentes individuales.</small></span><i data-lucide="chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="level-detail" id="level-unit-detail">
+              <p>Comprueban una unidad pequeña del programa, como una función, clase o módulo, de forma aislada.</p>
+              <ul>
+                <li><strong>Objetivo:</strong> detectar errores cerca de su origen.</li>
+                <li><strong>Responsables:</strong> habitualmente, quienes desarrollan el código.</li>
+                <li><strong>Ejemplo:</strong> comprobar que una función calcule correctamente un descuento.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="level-card">
+            <button class="level-toggle" type="button" aria-expanded="true" aria-controls="level-integration-detail">
+              <span class="level-number">02</span><span class="level-copy"><strong>Pruebas de integración</strong><small>Comprueban la interacción entre componentes.</small></span><i data-lucide="chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="level-detail" id="level-integration-detail">
+              <p>Verifican que dos o más módulos, servicios o sistemas colaboren correctamente a través de sus interfaces.</p>
+              <ul>
+                <li><strong>Objetivo:</strong> encontrar fallos en el intercambio de datos o el uso de interfaces.</li>
+                <li><strong>Alcance:</strong> desde la integración de pocos módulos hasta servicios externos.</li>
+                <li><strong>Ejemplo:</strong> comprobar que el proceso de compra actualice el inventario.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="level-card">
+            <button class="level-toggle" type="button" aria-expanded="true" aria-controls="level-system-detail">
+              <span class="level-number">03</span><span class="level-copy"><strong>Pruebas de sistema</strong><small>Evalúan el producto integrado de extremo a extremo.</small></span><i data-lucide="chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="level-detail" id="level-system-detail">
+              <p>Evalúan el sistema completo en un entorno representativo para comprobar sus requisitos funcionales y no funcionales.</p>
+              <ul>
+                <li><strong>Objetivo:</strong> validar el comportamiento del producto como un todo.</li>
+                <li><strong>Alcance:</strong> flujos completos y características como rendimiento o seguridad.</li>
+                <li><strong>Ejemplo:</strong> completar una compra desde el inicio de sesión hasta la confirmación.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="quality-subsection technique-section" aria-labelledby="techniques-title">
+        <h3 class="subsection-title"><i data-lucide="diamond" aria-hidden="true"></i>Técnicas de diseño de pruebas</h3>
+        <p class="subsection-intro">Las técnicas de caja negra y caja blanca describen cómo se diseñan los casos de prueba; pueden aplicarse en distintos niveles.</p>
+        <div class="technique-grid">
+          <article class="technique-card">
+            <button class="technique-toggle" type="button" aria-expanded="true" aria-controls="black-box-detail">
+              <span class="level-number">A</span><span><strong>Caja negra</strong><small>Se prueba el comportamiento observable.</small></span><i data-lucide="chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="technique-detail" id="black-box-detail">
+              <p>Los casos se diseñan a partir de requisitos, entradas y salidas esperadas, sin depender de la estructura interna del código.</p>
+              <ul>
+                <li><strong>Técnicas habituales:</strong> clases de equivalencia y análisis de valores límite.</li>
+                <li><strong>Útil para:</strong> validar funcionalidades desde la perspectiva de quien usa el producto.</li>
+                <li><strong>Ejemplo:</strong> probar límites válidos y no válidos de un formulario de registro.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="technique-card">
+            <button class="technique-toggle" type="button" aria-expanded="true" aria-controls="white-box-detail">
+              <span class="level-number">B</span><span><strong>Caja blanca</strong><small>Se consideran la estructura y la lógica internas.</small></span><i data-lucide="chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="technique-detail" id="white-box-detail">
+              <p>Los casos se diseñan con conocimiento del código para ejercitar instrucciones, decisiones, caminos o condiciones internas.</p>
+              <ul>
+                <li><strong>Técnicas habituales:</strong> cobertura de sentencias y cobertura de decisiones.</li>
+                <li><strong>Útil para:</strong> detectar lógica no ejercitada y revisar rutas importantes del programa.</li>
+                <li><strong>Ejemplo:</strong> verificar que se recorran las ramas de una validación de acceso.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <div class="approach-grid" aria-label="Enfoques de las técnicas de prueba">
+          <article class="approach-card">
+            <h4>Enfoque externo</h4>
+            <p><strong>Caja negra:</strong> requisitos y resultados observables, sin necesitar conocer la implementación.</p>
+          </article>
+          <article class="approach-card">
+            <h4>Enfoque interno</h4>
+            <p><strong>Caja blanca:</strong> estructura del código, lógica y cobertura de los caminos seleccionados.</p>
+          </article>
+        </div>
+        <p class="key-idea"><strong>Idea clave:</strong> combinar niveles y técnicas permite observar el software desde distintos alcances y perspectivas.</p>
+      </section>
+    </section>
+
+    <div class="quality-separator" role="separator" aria-hidden="true"><span></span><i data-lucide="wrench"></i><span></span></div>
+
+    <section class="quality-panel" aria-labelledby="tools-title">
+      <p class="quality-eyebrow">BUGZERO · GESTIÓN DE CALIDAD DEL SOFTWARE</p>
+      <h2 class="section-title" id="herramientas-calidad">Herramientas de Calidad</h2>
+      <p class="quality-intro tools-intro">Las herramientas de calidad ayudan a organizar el trabajo de pruebas, dar seguimiento a los defectos y analizar el código. Explorá las categorías para conocer qué aporta cada tipo y cuándo puede resultar útil.</p>
+
+      <div class="tool-filter" role="group" aria-label="Filtrar herramientas por categoría">
+        <span class="filter-label">Filtrar por categoría:</span>
+        <button class="filter-button is-active" type="button" data-category="all" aria-pressed="true">Ver Todo</button>
+        <button class="filter-button" type="button" data-category="projects" aria-pressed="false">Gestión de Proyectos</button>
+        <button class="filter-button" type="button" data-category="automation" aria-pressed="false">Automatización y Pruebas</button>
+        <button class="filter-button" type="button" data-category="testing" aria-pressed="false">Gestión de Pruebas</button>
+      </div>
+      <p class="tool-count" id="toolCount" aria-live="polite">Se muestran 15 herramientas</p>
+
+      <div class="tool-grid" id="toolGrid">
+        <article class="tool-card" data-category="projects"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/jira.svg" alt="" aria-hidden="true"><div><h3>Jira Software</h3><span class="tool-category">Gestión de Proyectos</span></div></div><p>Desarrollo ágil, sprints, backlogs y seguimiento de proyectos.</p><p class="tool-includes"><strong>Incluye:</strong> gestión de requerimientos, tableros Scrum e integración con Jenkins.</p></article>
+        <article class="tool-card" data-category="automation"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/selenium.svg" alt="" aria-hidden="true"><div><h3>Selenium</h3><span class="tool-category">Automatización y Pruebas</span></div></div><p>Automatización de pruebas web con herramientas de código abierto.</p><p class="tool-includes"><strong>Soporta</strong> Python, Java y JavaScript; integración con CI/CD.</p></article>
+        <article class="tool-card" data-category="testing"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/testrail.svg" alt="" aria-hidden="true"><div><h3>TestRail</h3><span class="tool-category">Gestión de Pruebas</span></div></div><p>Gestión integral de casos de prueba y reportes de calidad.</p><p class="tool-includes"><strong>Incluye:</strong> planificación, trazabilidad e integración con Jira.</p></article>
+        <article class="tool-card" data-category="projects"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/monday.png" alt="" aria-hidden="true"><div><h3>Monday.com</h3><span class="tool-category">Gestión de Proyectos</span></div></div><p>Tableros visuales, flujos personalizables y colaboración en equipo.</p><p class="tool-includes"><strong>Incluye:</strong> seguimiento de tiempo, automatizaciones e integración con Slack y Jira.</p></article>
+        <article class="tool-card" data-category="automation"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/playwright.png" alt="" aria-hidden="true"><div><h3>Playwright</h3><span class="tool-category">Automatización y Pruebas</span></div></div><p>Pruebas rápidas de extremo a extremo para aplicaciones web modernas.</p><p class="tool-includes"><strong>Incluye:</strong> pruebas en varios navegadores, paralelismo y capturas de pantalla.</p></article>
+        <article class="tool-card" data-category="testing"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/xray.png" alt="" aria-hidden="true"><div><h3>Xray (para Jira)</h3><span class="tool-category">Gestión de Pruebas</span></div></div><p>Extensión de gestión de calidad y pruebas dentro de Jira.</p><p class="tool-includes"><strong>Incluye:</strong> trazabilidad y gestión completa del ciclo de pruebas.</p></article>
+        <article class="tool-card" data-category="projects"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/clickup.svg" alt="" aria-hidden="true"><div><h3>ClickUp</h3><span class="tool-category">Gestión de Proyectos</span></div></div><p>Plataforma integral para planificar proyectos y colaborar en equipo.</p><p class="tool-includes"><strong>Incluye:</strong> diagramas de Gantt, tableros y gestión de sprints.</p></article>
+        <article class="tool-card" data-category="automation"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/cypress.svg" alt="" aria-hidden="true"><div><h3>Cypress</h3><span class="tool-category">Automatización y Pruebas</span></div></div><p>Pruebas de extremo a extremo rápidas para aplicaciones web.</p><p class="tool-includes"><strong>Incluye:</strong> depuración en vivo, capturas de video y soporte para React y Vue.</p></article>
+        <article class="tool-card" data-category="testing"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/qase.svg" alt="" aria-hidden="true"><div><h3>Qase</h3><span class="tool-category">Gestión de Pruebas</span></div></div><p>Gestión moderna y colaborativa de pruebas de software.</p><p class="tool-includes"><strong>Incluye:</strong> editor de casos, reportes en tiempo real y webhooks.</p></article>
+        <article class="tool-card" data-category="projects"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/notion.svg" alt="" aria-hidden="true"><div><h3>Notion</h3><span class="tool-category">Gestión de Proyectos</span></div></div><p>Espacio de trabajo para documentación, wikis y gestión del conocimiento.</p><p class="tool-includes"><strong>Incluye:</strong> bases de datos flexibles, plantillas de QA y planificación de proyectos.</p></article>
+        <article class="tool-card" data-category="automation"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/postman.svg" alt="" aria-hidden="true"><div><h3>Postman</h3><span class="tool-category">Automatización y Pruebas</span></div></div><p>Plataforma para diseñar, probar y documentar APIs.</p><p class="tool-includes"><strong>Incluye:</strong> colecciones de pruebas, monitoreo de APIs y documentación automática.</p></article>
+        <article class="tool-card" data-category="automation"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/testrigor.png" alt="" aria-hidden="true"><div><h3>testRigor</h3><span class="tool-category">Automatización y Pruebas</span></div></div><p>Automatización de pruebas con instrucciones en lenguaje natural.</p><p class="tool-includes"><strong>Incluye:</strong> pruebas web y móvil, y mantenimiento asistido de pruebas.</p></article>
+        <article class="tool-card" data-category="projects"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/trello.svg" alt="" aria-hidden="true"><div><h3>Trello</h3><span class="tool-category">Gestión de Proyectos</span></div></div><p>Tableros Kanban sencillos y visuales para organizar tareas.</p><p class="tool-includes"><strong>Incluye:</strong> listas, tarjetas, checklist, automatizaciones y fechas de entrega.</p></article>
+        <article class="tool-card" data-category="automation"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/apachejmeter.svg" alt="" aria-hidden="true"><div><h3>Apache JMeter</h3><span class="tool-category">Automatización y Pruebas</span></div></div><p>Pruebas de carga y rendimiento para aplicaciones y servicios.</p><p class="tool-includes"><strong>Incluye:</strong> pruebas de estrés, integración con CI/CD e informes de rendimiento.</p></article>
+        <article class="tool-card" data-category="testing"><div class="tool-heading"><img class="tool-logo" src="img/tool-logos/allure.png" alt="" aria-hidden="true"><div><h3>Allure TestOps</h3><span class="tool-category">Gestión de Pruebas</span></div></div><p>Visualización y reportes avanzados de resultados de pruebas.</p><p class="tool-includes"><strong>Incluye:</strong> orquestación de pruebas, trazabilidad con CI/CD y paneles de ejecución.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="quality-footer" id="nosotros">
+    <div class="quality-footer-inner">
+      <div class="footer-brand">
+        <a href="index.html#inicio" class="brand" aria-label="BugZero, ir al inicio">
+          <img class="brand-logo" src="img/Logotipo%20BugZero%20con%20borde%20blanco%20%282%29.png" alt="Logo de BugZero">
+        </a>
+        <p>Aprendé hoy, construí mejor mañana.</p>
+        <div class="social">
+          <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.7 5.6.7 12c0 5.1 3.3 9.4 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.6 7.9-5.9 7.9-11C23.3 5.6 18.3.5 12 .5z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.4-5.1c-.3-.9-1-1.6-1.9-1.9C19 4.5 12 4.5 12 4.5s-7 0-8.7.5c-.9.3-1.6 1-1.9 1.9C1 8.5 1 12 1 12s0 3.5.4 5.1c.3.9 1 1.6 1.9 1.9 1.7.5 8.7.5 8.7.5s7 0 8.7-.5c.9-.3 1.6-1 1.9-1.9.4-1.6.4-5.1.4-5.1zM9.8 15.3V8.7l5.8 3.3-5.8 3.3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5zM.4 8.3H4.6V23H.4V8.3zM8.5 8.3h4v2h.06c.56-1 1.9-2.1 3.9-2.1 4.2 0 5 2.8 5 6.3V23h-4.2v-6.6c0-1.6 0-3.6-2.2-3.6-2.2 0-2.5 1.7-2.5 3.5V23H8.5V8.3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg>info@bugzero.com</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s-8-7.2-8-13a8 8 0 0 1 16 0c0 5.8-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>Neuquén, Argentina</li>
+          <li><a class="footer-action-link" href="contacto.html">Ir a contacto<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Conócenos</h5>
+        <ul>
+          <li><a class="footer-action-link" href="nosotros.html">Sobre nosotros<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="quality-footer-bottom">© 2026 BugZero. Todos los derechos reservados.</div>
+  </footer>
+  <script src="script.js"></script>
+  <script src="calidad.js"></script>
+</body>
+</html>

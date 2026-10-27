@@ -1,3 +1,4 @@
+(() => {
     /* ---------- 1. DATOS ---------- */
     const FILAS = [
       { key: 'enfoque', label: 'Enfoque',                  icon: 'compass' },
@@ -122,6 +123,15 @@
     const $wrap  = document.getElementById('tableWrap');
     const $empty = document.getElementById('emptyState');
     const $count = document.getElementById('selectedCount');
+    const $selectionWarning = document.getElementById('selectionWarning');
+
+    function showSelectionWarning() {
+      $selectionWarning.classList.remove('hidden');
+    }
+
+    function hideSelectionWarning() {
+      $selectionWarning.classList.add('hidden');
+    }
 
     /* ---------- 3. RENDER ---------- */
     function renderChips() {
@@ -151,10 +161,10 @@
       const n = activas.length;
 
       $count.textContent = n + (n === 1 ? ' seleccionada' : ' seleccionadas');
-      $wrap.classList.toggle('hidden', n === 0);
-      $empty.classList.toggle('hidden', n !== 0);
+      $wrap.classList.toggle('hidden', n < 2);
+      $empty.classList.toggle('hidden', n >= 2);
 
-      if (n === 0) { $table.innerHTML = ''; return; }
+      if (n < 2) { $table.innerHTML = ''; return; }
 
       const thead = `
         <thead>
@@ -201,16 +211,22 @@
       const btn = e.target.closest('[data-id]');
       if (!btn) return;
       const id = btn.dataset.id;
-      seleccion.has(id) ? seleccion.delete(id) : seleccion.add(id);
+      if (seleccion.has(id)) {
+        if (seleccion.size <= 2) {
+          showSelectionWarning();
+          return;
+        }
+        seleccion.delete(id);
+      } else {
+        seleccion.add(id);
+        hideSelectionWarning();
+      }
       render();
     });
 
     document.getElementById('selectAll').addEventListener('click', () => {
       METODOLOGIAS.forEach(m => seleccion.add(m.id));
-      render();
-    });
-    document.getElementById('clearAll').addEventListener('click', () => {
-      seleccion.clear();
+      hideSelectionWarning();
       render();
     });
 
@@ -261,3 +277,4 @@
 
     /* ---------- 6. INIT ---------- */
     render();
+})();

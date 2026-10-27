@@ -35,10 +35,17 @@
     <a href="#inicio" class="side-link active">
       <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Inicio</span>
     </a>
-    <a href="#calidad" class="side-link">
-      <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>Calidad</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
-    </a>
+    <div class="side-nav-group" id="qualityNav">
+      <button class="side-link submenu-trigger" id="qualityToggle" type="button" aria-expanded="false" aria-controls="qualitySubmenu">
+        <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>Calidad</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+      <div class="side-submenu" id="qualitySubmenu" hidden>
+        <a class="side-sub-link" href="calidad.html#fundamentos">Fundamentos de Calidad</a>
+        <a class="side-sub-link" href="calidad.html#pruebas">Técnicas de Aseguramiento de la Calidad</a>
+        <a class="side-sub-link" href="calidad.html#herramientas-calidad">Herramientas de Calidad</a>
+      </div>
+    </div>
     <div class="side-nav-group" id="developmentNav">
       <button class="side-link submenu-trigger" id="developmentToggle" type="button" aria-expanded="false" aria-controls="developmentSubmenu">
         <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>Desarrollo</span>
@@ -63,8 +70,8 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
       </button>
       <div class="side-submenu" id="interactiveSubmenu" hidden>
-        <a class="side-sub-link" href="comparadorMetodologia.html">Comparador de Metodologías</a>
-        <a class="side-sub-link" href="encuestaMetodologia.html">Encuesta de Preferencias Metodológicas</a>
+        <a class="side-sub-link" href="comparadorMetodologia.html#comparador">Comparador de Metodologías</a>
+        <a class="side-sub-link" href="comparadorMetodologia.html#encuesta">Encuesta de Preferencias Metodológicas</a>
       </div>
     </div>
     <a href="nosotros.html" class="side-link">
@@ -189,7 +196,7 @@
     </div>
     <h3>Gestión de la Calidad<br>del Software</h3>
     <p>Conceptos clave, métricas, estándares (ISO 9126/25000), pruebas y herramientas de calidad.</p>
-    <a href="#calidad" class="card-link">Ver sección
+    <a href="calidad.html" class="card-link">Ver sección
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
   </article>
@@ -233,11 +240,7 @@
     </div>
     <h3>Herramientas Interactivas</h3>
     <p>Comparador Interactivo de Metodologías y Encuesta de Preferencias Metodológicas</p>
-    <a href="comparadorMetodologia.html" class="card-link">Comparador de Metodologías
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
-    <br>
-    <a href="encuestaMetodologia.html" class="card-link">Encuesta de Preferencias Metodológicas
+    <a href="comparadorMetodologia.html" class="card-link">Ver sección
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
   </article>
