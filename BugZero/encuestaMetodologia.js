@@ -661,7 +661,11 @@ const progressTrack = document.querySelector(".progress-track");
 const questionCount = document.getElementById("questionCount");
 const stepLabels = document.querySelectorAll("#stepLabels span");
 const menuToggle = document.getElementById("menuToggle");
-const topNav = document.getElementById("topNav");
+const menuClose = document.getElementById("menuClose");
+const sideMenu = document.getElementById("sideMenu");
+const overlay = document.getElementById("overlay");
+const methodologyToggle = document.getElementById("methodologyToggle");
+const methodologySubmenu = document.getElementById("methodologySubmenu");
 
 const answerCategories = {
     project: "Tipo de proyecto",
@@ -951,52 +955,6 @@ function resetSurvey() {
     surveyPanel.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function downloadResult() {
-    const winner = resultPanel.dataset.winner;
-    const percentage = resultPanel.dataset.percent;
-    const scores = JSON.parse(resultPanel.dataset.scores || "{}");
-    const info = methodInfo[winner];
-
-    if (!info) {
-        throw new Error("No hay un resultado válido para descargar.");
-    }
-
-    const lines = [
-        "BUGZERO | RESULTADO DE ENCUESTA METODOLÓGICA",
-        "============================================",
-        "",
-        `Metodología recomendada: ${winner}`,
-        `Coincidencia estimada: ${percentage}%`,
-        "",
-        info.summary,
-        "",
-        "¿Por qué se recomienda?",
-        ...info.reasons.map(reason => `- ${reason}`),
-        "",
-        "Puntajes relativos:",
-        ...Object.entries(scores).map(([method, points]) => `- ${method}: ${points} puntos`),
-        "",
-        "Respuestas:",
-        ...questions.map((question, index) => (
-            `${index + 1}. ${question.title}\n   ${getAnswerLabel(question)}`
-        )),
-        "",
-        "Nota: resultado orientativo basado en reglas de puntuación simples."
-    ];
-    const file = new Blob([lines.join("\n")], {
-        type: "text/plain;charset=utf-8"
-    });
-    const url = URL.createObjectURL(file);
-    const link = document.createElement("a");
-
-    link.href = url;
-    link.download = "resultado-encuesta-bugzero.txt";
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
-}
-
 function showSurveyForEditing() {
     resultPanel.classList.add("hidden");
     surveyPanel.classList.remove("hidden");
@@ -1004,9 +962,23 @@ function showSurveyForEditing() {
 }
 
 function closeMenu() {
-    topNav.classList.remove("open");
+    sideMenu.classList.remove("open");
+    overlay.classList.remove("show");
+    overlay.setAttribute("aria-hidden", "true");
+    sideMenu.setAttribute("aria-hidden", "true");
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.setAttribute("aria-label", "Abrir menú");
+    document.body.classList.remove("menu-open");
+}
+
+function openMenu() {
+    sideMenu.classList.add("open");
+    overlay.classList.add("show");
+    overlay.setAttribute("aria-hidden", "false");
+    sideMenu.setAttribute("aria-hidden", "false");
+    menuToggle.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-label", "Cerrar menú");
+    document.body.classList.add("menu-open");
 }
 
 // Eventos de la encuesta
@@ -1017,17 +989,32 @@ nextBtn.addEventListener("click", event => {
 prevBtn.addEventListener("click", goPrev);
 document.getElementById("editAnswersBtn").addEventListener("click", showSurveyForEditing);
 document.getElementById("restartBtn").addEventListener("click", resetSurvey);
-document.getElementById("downloadBtn").addEventListener("click", downloadResult);
-document.getElementById("printBtn").addEventListener("click", () => window.print());
 
-// Eventos del menú responsive
 menuToggle.addEventListener("click", () => {
-    const isOpen = topNav.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-    menuToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+    if (menuToggle.getAttribute("aria-expanded") === "true") {
+        closeMenu();
+    } else {
+        openMenu();
+    }
 });
 
-topNav.querySelectorAll("a").forEach(link => {
+menuClose.addEventListener("click", closeMenu);
+overlay.addEventListener("click", closeMenu);
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeMenu();
+});
+
+document.querySelectorAll(".side-link:not(#methodologyToggle)").forEach(link => {
+    link.addEventListener("click", closeMenu);
+});
+
+methodologyToggle.addEventListener("click", () => {
+    const isExpanded = methodologyToggle.getAttribute("aria-expanded") === "true";
+    methodologyToggle.setAttribute("aria-expanded", String(!isExpanded));
+    methodologySubmenu.hidden = isExpanded;
+});
+
+methodologySubmenu.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", closeMenu);
 });
 

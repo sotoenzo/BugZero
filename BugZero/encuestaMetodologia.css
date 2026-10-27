@@ -80,105 +80,6 @@ main {
 
 
 /* =========================
-   ENCABEZADO
-========================= */
-
-.topbar {
-    height: 86px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 clamp(20px, 4.2vw, 66px);
-
-    background: linear-gradient(
-        100deg,
-        #145aa0,
-        #0d4f90
-    );
-
-    border-bottom: 1px solid #4c96d3;
-
-    position: sticky;
-    top: 0;
-
-    z-index: 20;
-
-    box-shadow: 0 7px 25px #00102166;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-
-    font-size: 29px;
-    font-weight: 800;
-
-    letter-spacing: -1.2px;
-}
-
-.brand > span:last-child span {
-    font-weight: 500;
-}
-
-.brand-mark {
-    height: 50px;
-    width: 50px;
-
-    border: 2px solid #c8faff;
-
-    border-radius: 50%;
-
-    display: grid;
-    place-items: center;
-
-    color: #c8faff;
-}
-
-.brand-mark svg {
-    width: 34px;
-    height: 34px;
-}
-
-.top-nav {
-    display: flex;
-    gap: 28px;
-
-    color: #e0f4ff;
-
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.top-nav a {
-    opacity: .86;
-    transition: .2s;
-}
-
-.top-nav a:hover {
-    opacity: 1;
-    color: var(--cyan);
-}
-
-.menu-toggle {
-    display: none;
-
-    background: transparent;
-    border: 0;
-
-    color: white;
-}
-
-.menu-toggle svg {
-    width: 29px;
-    height: 29px;
-}
-
-
-/* =========================
    PRESENTACIÓN
 ========================= */
 
@@ -207,6 +108,12 @@ main {
     font-size: 14px;
 
     margin-bottom: 15px;
+    transition: color .2s ease;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+    color: #ffffff;
 }
 
 .back-link svg {
@@ -1846,49 +1753,6 @@ h1 span {
 
 @media (max-width: 640px) {
 
-    .topbar {
-        height: 70px;
-
-        padding: 0 18px;
-    }
-
-    .brand {
-        font-size: 25px;
-    }
-
-    .brand-mark {
-        height: 42px;
-        width: 42px;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .top-nav {
-        display: none;
-
-        position: absolute;
-
-        top: 69px;
-        left: 0;
-        right: 0;
-
-        background: #0b3e6c;
-
-        padding: 18px 22px;
-
-        flex-direction: column;
-
-        gap: 15px;
-
-        border-bottom: 1px solid #2874a7;
-    }
-
-    .top-nav.open {
-        display: flex;
-    }
-
     .hero {
         grid-template-columns: 1fr;
 
@@ -2143,7 +2007,9 @@ h1 span {
         color: #10243a;
     }
 
-    .topbar,
+    .navbar,
+    .overlay,
+    .side-menu,
     .hero,
     .workspace,
     .benefits,

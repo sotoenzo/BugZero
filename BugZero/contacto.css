@@ -437,23 +437,36 @@ body.menu-open {
   font-size: .9rem;
 }
 
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  font-size: .9rem;
-}
-
-.footer-links a:hover {
-  color: var(--blue-300);
-}
-
 .site-footer small {
-  width: 100%;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, .08);
   font-size: .8rem;
   text-align: right;
+}
+
+.breadcrumbs {
+  position: relative;
+  top: -10px;
+  max-width: 1120px;
+  margin: 0 auto 24px;
+  color: #7b9ebd;
+  font-size: 14px;
+}
+
+.breadcrumbs a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #8ab4f8;
+  transition: color .2s ease;
+}
+
+.breadcrumbs a:hover,
+.breadcrumbs a:focus-visible {
+  color: #ffffff;
+}
+
+.breadcrumbs svg {
+  width: 16px;
+  height: 16px;
 }
 
 @media (max-width: 800px) {
