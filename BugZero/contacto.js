@@ -2,8 +2,10 @@ const menuToggle = document.getElementById("menuToggle");
 const menuClose = document.getElementById("menuClose");
 const sideMenu = document.getElementById("sideMenu");
 const overlay = document.getElementById("overlay");
-const methodologyToggle = document.getElementById("methodologyToggle");
-const methodologySubmenu = document.getElementById("methodologySubmenu");
+const developmentToggle = document.getElementById("developmentToggle");
+const developmentSubmenu = document.getElementById("developmentSubmenu");
+const interactiveToggle = document.getElementById("interactiveToggle");
+const interactiveSubmenu = document.getElementById("interactiveSubmenu");
 const contactForm = document.getElementById("contactForm");
 const formSuccess = document.getElementById("formSuccess");
 
@@ -49,23 +51,24 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeMenu();
 });
 
-document.querySelectorAll(".side-link:not(#methodologyToggle)").forEach((link) => {
+document.querySelectorAll(".side-link:not(.submenu-trigger)").forEach((link) => {
   link.addEventListener("click", closeMenu);
 });
 
-if (methodologyToggle && methodologySubmenu) {
-  methodologyToggle.addEventListener("click", () => {
-    const isExpanded = methodologyToggle.getAttribute("aria-expanded") === "true";
-    methodologyToggle.setAttribute("aria-expanded", String(!isExpanded));
-    methodologySubmenu.hidden = isExpanded;
+[[developmentToggle, developmentSubmenu], [interactiveToggle, interactiveSubmenu]].forEach(([toggle, submenu]) => {
+  if (!toggle || !submenu) return;
+  toggle.addEventListener("click", () => {
+    const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!isExpanded));
+    submenu.hidden = isExpanded;
   });
-}
+});
 
-if (methodologySubmenu) {
-  methodologySubmenu.querySelectorAll("a").forEach((link) => {
+document.querySelectorAll(".side-submenu").forEach((submenu) => {
+  submenu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", closeMenu);
   });
-}
+});
 
 if (contactForm && formSuccess) {
   contactForm.addEventListener("input", () => {

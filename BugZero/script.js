@@ -2,8 +2,10 @@ const menuToggle = document.getElementById('menuToggle');
 const menuClose = document.getElementById('menuClose');
 const sideMenu = document.getElementById('sideMenu');
 const overlay = document.getElementById('overlay');
-const methodologyToggle = document.getElementById('methodologyToggle');
-const methodologySubmenu = document.getElementById('methodologySubmenu');
+const developmentToggle = document.getElementById('developmentToggle');
+const developmentSubmenu = document.getElementById('developmentSubmenu');
+const interactiveToggle = document.getElementById('interactiveToggle');
+const interactiveSubmenu = document.getElementById('interactiveSubmenu');
 
 function openMenu(){
   if (!sideMenu || !overlay || !menuToggle) return;
@@ -44,16 +46,17 @@ if (overlay) {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
-if (methodologyToggle && methodologySubmenu) {
-  methodologyToggle.addEventListener('click', () => {
-    const isExpanded = methodologyToggle.getAttribute('aria-expanded') === 'true';
-    methodologyToggle.setAttribute('aria-expanded', String(!isExpanded));
-    methodologySubmenu.hidden = isExpanded;
+[[developmentToggle, developmentSubmenu], [interactiveToggle, interactiveSubmenu]].forEach(([toggle, submenu]) => {
+  if (!toggle || !submenu) return;
+  toggle.addEventListener('click', () => {
+    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isExpanded));
+    submenu.hidden = isExpanded;
   });
-}
+});
 
 // close menu + mark active link on nav click
-const sideLinks = document.querySelectorAll('.side-link:not(#methodologyToggle)');
+const sideLinks = document.querySelectorAll('.side-link:not(.submenu-trigger)');
 sideLinks.forEach(link => {
   link.addEventListener('click', () => {
     document.querySelectorAll('.side-link').forEach(l => l.classList.remove('active'));
@@ -61,11 +64,11 @@ sideLinks.forEach(link => {
     closeMenu();
   });
 });
-if (methodologySubmenu) {
-  methodologySubmenu.querySelectorAll('a').forEach(link => {
+document.querySelectorAll('.side-submenu').forEach(submenu => {
+  submenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', closeMenu);
   });
-}
+});
 
 // highlight active section link on scroll
 const sections = ['inicio','calidad','desarrollo','metodologias','recursos','nosotros','contacto']
