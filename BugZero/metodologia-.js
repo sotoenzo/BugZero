@@ -4,6 +4,10 @@ const sideMenu = document.getElementById('sideMenu') || document.querySelector('
 const overlay = document.getElementById('overlay') || document.querySelector('.overlay');
 const developmentToggle = document.getElementById('developmentToggle');
 const developmentSubmenu = document.getElementById('developmentSubmenu');
+const methodsToggle = document.getElementById('methodsToggle');
+const methodsSubmenu = document.getElementById('methodsSubmenu');
+const resourceToggle = document.getElementById('resourceToggle');
+const resourceSubmenu = document.getElementById('resourceSubmenu');
 const interactiveToggle = document.getElementById('interactiveToggle');
 const interactiveSubmenu = document.getElementById('interactiveSubmenu');
 
@@ -45,7 +49,7 @@ document.querySelectorAll('.side-link:not(.submenu-trigger)').forEach((link) => 
     link.addEventListener('click', () => setMenuOpen(false));
 });
 
-[[developmentToggle, developmentSubmenu], [interactiveToggle, interactiveSubmenu]].forEach(([toggle, submenu]) => {
+[[developmentToggle, developmentSubmenu], [methodsToggle, methodsSubmenu], [resourceToggle, resourceSubmenu], [interactiveToggle, interactiveSubmenu]].forEach(([toggle, submenu]) => {
     if (!toggle || !submenu) return;
     toggle.addEventListener('click', () => {
         const isExpanded = toggle.getAttribute('aria-expanded') === 'true';

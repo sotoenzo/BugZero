@@ -76,9 +76,14 @@
   z-index: 100;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
   width: min(320px, 88vw);
-  height: 100%;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
   padding: 20px 20px 28px;
+  overflow: hidden;
   background: #050b1a;
   border-left: 1px solid rgba(255, 255, 255, .08);
   transform: translateX(100%);
@@ -91,6 +96,7 @@
 
 .side-menu-header {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: space-between;
   padding: 6px 6px 22px;
@@ -115,8 +121,35 @@
 
 .side-menu nav {
   display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
   flex-direction: column;
   gap: 4px;
+  padding-bottom: 8px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-color: rgba(79, 163, 255, .55) rgba(255, 255, 255, .04);
+  scrollbar-width: thin;
+}
+
+.side-menu nav::-webkit-scrollbar {
+  width: 7px;
+}
+
+.side-menu nav::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, .04);
+  border-radius: 999px;
+}
+
+.side-menu nav::-webkit-scrollbar-thumb {
+  border: 1px solid #050b1a;
+  border-radius: 999px;
+  background: rgba(79, 163, 255, .55);
+}
+
+.side-menu nav::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 163, 255, .8);
 }
 
 .side-nav-group {

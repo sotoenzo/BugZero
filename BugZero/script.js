@@ -6,6 +6,10 @@ const qualityToggle = document.getElementById('qualityToggle');
 const qualitySubmenu = document.getElementById('qualitySubmenu');
 const developmentToggle = document.getElementById('developmentToggle');
 const developmentSubmenu = document.getElementById('developmentSubmenu');
+const methodsToggle = document.getElementById('methodsToggle');
+const methodsSubmenu = document.getElementById('methodsSubmenu');
+const resourceToggle = document.getElementById('resourceToggle');
+const resourceSubmenu = document.getElementById('resourceSubmenu');
 const interactiveToggle = document.getElementById('interactiveToggle');
 const interactiveSubmenu = document.getElementById('interactiveSubmenu');
 
@@ -48,7 +52,7 @@ if (overlay) {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
-[[qualityToggle, qualitySubmenu], [developmentToggle, developmentSubmenu], [interactiveToggle, interactiveSubmenu]].forEach(([toggle, submenu]) => {
+[[qualityToggle, qualitySubmenu], [developmentToggle, developmentSubmenu], [methodsToggle, methodsSubmenu], [resourceToggle, resourceSubmenu], [interactiveToggle, interactiveSubmenu]].forEach(([toggle, submenu]) => {
   if (!toggle || !submenu) return;
   toggle.addEventListener('click', () => {
     const isExpanded = toggle.getAttribute('aria-expanded') === 'true';

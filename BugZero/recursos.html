@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Glosario, preguntas frecuentes, lecturas y ejercicios para aprender sobre calidad y desarrollo de software.">
+  <title>Recursos y Aprendizaje | BugZero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="menu.css">
+  <link rel="stylesheet" href="recursos.css">
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html#inicio" class="brand" aria-label="BugZero, ir al inicio">
+      <img class="brand-logo" src="img/Logotipo%20BugZero%20con%20borde%20blanco%20%282%29.png" alt="Logo de BugZero">
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="sideMenu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </header>
+
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+  <aside class="side-menu" id="sideMenu" aria-label="Menú principal" aria-hidden="true">
+    <div class="side-menu-header">
+      <a href="index.html#inicio" class="brand" aria-label="BugZero, ir al inicio"><img class="brand-logo" src="img/Logotipo%20BugZero%20con%20borde%20blanco%20%282%29.png" alt="Logo de BugZero"></a>
+      <button class="side-menu-close" id="menuClose" type="button" aria-label="Cerrar menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav aria-label="Secciones del sitio">
+      <a href="index.html#inicio" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Inicio</span></a>
+      <div class="side-nav-group">
+        <button class="side-link submenu-trigger" id="qualityToggle" type="button" aria-expanded="false" aria-controls="qualitySubmenu"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>Calidad</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg></button>
+        <div class="side-submenu" id="qualitySubmenu" hidden>
+          <a class="side-sub-link" href="calidad.html#fundamentos">Fundamentos de Calidad</a>
+          <a class="side-sub-link" href="calidad.html#pruebas">Técnicas de Aseguramiento de la Calidad</a>
+          <a class="side-sub-link" href="calidad.html#herramientas-calidad">Herramientas de Calidad</a>
+        </div>
+      </div>
+      <div class="side-nav-group">
+        <button class="side-link submenu-trigger" id="developmentToggle" type="button" aria-expanded="false" aria-controls="developmentSubmenu"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>Desarrollo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg></button>
+        <div class="side-submenu" id="developmentSubmenu" hidden>
+          <a class="side-sub-link" href="metodologia.html#ciclo-vida">Ciclo de vida</a>
+          <a class="side-sub-link" href="metodologia.html#tradicionales">Metodologías tradicionales</a>
+          <a class="side-sub-link" href="metodologia.html#agiles">Metodologías ágiles</a>
+        </div>
+      </div>
+      <div class="side-nav-group">
+        <button class="side-link submenu-trigger" id="methodsToggle" type="button" aria-expanded="false" aria-controls="methodsSubmenu"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M11 20c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/></svg>Metodologías en Detalle</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg></button>
+        <div class="side-submenu" id="methodsSubmenu" hidden>
+          <a class="side-sub-link" href="scrumKanban.html#scrum">Scrum en detalle</a>
+          <a class="side-sub-link" href="scrumKanban.html#kanban">Kanban en detalle</a>
+        </div>
+      </div>
+      <div class="side-nav-group">
+        <button class="side-link submenu-trigger active" id="resourceToggle" type="button" aria-expanded="false" aria-controls="resourceSubmenu"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 1 4 17.5v-13z"/><path d="M20 17H6.5A2.5 2.5 0 0 0 4 19.5"/></svg>Recursos y ejercicios</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg></button>
+        <div class="side-submenu" id="resourceSubmenu" hidden>
+          <a class="side-sub-link" href="#glosario" aria-current="page">Glosario</a>
+          <a class="side-sub-link" href="#preguntas-frecuentes">Preguntas frecuentes</a>
+          <a class="side-sub-link" href="#enlaces-de-interes">Enlaces de interés</a>
+          <a class="side-sub-link" href="#ejercicio">Ejercicio práctico</a>
+        </div>
+      </div>
+      <div class="side-nav-group">
+        <button class="side-link submenu-trigger" id="interactiveToggle" type="button" aria-expanded="false" aria-controls="interactiveSubmenu"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>Herramientas Interactivas</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg></button>
+        <div class="side-submenu" id="interactiveSubmenu" hidden>
+          <a class="side-sub-link" href="comparadorMetodologia.html#comparador">Comparador de Metodologías</a>
+          <a class="side-sub-link" href="comparadorMetodologia.html#encuesta">Encuesta de Preferencias Metodológicas</a>
+        </div>
+      </div>
+      <a href="nosotros.html" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.5 2.9-6.3 6.5-6.3S15.5 16.5 15.5 20"/><circle cx="17.5" cy="9" r="2.6"/><path d="M14.7 13.8c2.6.3 4.7 2.6 4.8 5.5"/></svg>Nosotros</span></a>
+      <a href="contacto.html" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg>Contacto</span></a>
+    </nav>
+  </aside>
+
+  <main class="learning-page">
+    <a href="index.html#inicio" class="back-link"><span aria-hidden="true">←</span> Inicio</a>
+
+    <section class="learning-section glossary-section" id="glosario" aria-labelledby="glossary-title">
+      <header class="section-heading">
+        <div>
+          <h1 id="glossary-title">Glosario</h1>
+          <p>Encontrá definiciones de conceptos clave de calidad y desarrollo de software. Buscá por término o descripción, o explorá el listado alfabético.</p>
+        </div>
+      </header>
+      <div class="glossary-search">
+        <label for="glossarySearch">Buscar en el glosario</label>
+        <div class="search-input-wrap">
+          <input id="glossarySearch" type="search" placeholder="Ej.: calidad, pruebas, ISO/IEC..." autocomplete="off">
+          <span aria-hidden="true">⌕</span>
+        </div>
+        <p>La búsqueda no distingue mayúsculas ni tildes; también podés usar el índice por letra.</p>
+      </div>
+      <div class="alphabet-area">
+        <h2>Índice alfabético</h2>
+        <div class="alphabet-index" id="alphabetIndex" aria-label="Filtrar glosario por letra"></div>
+      </div>
+      <p class="term-count" id="termCount" aria-live="polite"></p>
+      <div class="glossary-list" id="glossaryList"></div>
+      <p class="empty-state" id="glossaryEmpty" hidden>No encontramos términos que coincidan. Probá con otra palabra o letra.</p>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"><span></span></div>
+
+    <section class="learning-section faq-section" id="preguntas-frecuentes" aria-labelledby="faq-title">
+      <header class="section-heading">
+        <div>
+          <h2 id="faq-title">Preguntas frecuentes</h2>
+          <p>Respuestas breves a dudas comunes sobre calidad, pruebas y organización del trabajo de software.</p>
+        </div>
+      </header>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>¿Qué significa calidad del software?</summary>
+          <p>Es el grado en que un producto satisface necesidades y requisitos en su contexto de uso. No significa solo que “no tenga errores”: también importan, por ejemplo, la seguridad, la usabilidad, la confiabilidad y la facilidad de mantenimiento.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Cuál es la diferencia entre QA y testing?</summary>
+          <p>El aseguramiento de la calidad (QA) busca prevenir problemas mediante procesos y prácticas planificadas. El testing ejecuta evaluaciones sobre el producto para detectar defectos y obtener información sobre su calidad. Se complementan, pero no son sinónimos.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Para qué sirve un tablero Kanban?</summary>
+          <p>Hace visible el flujo de trabajo: muestra qué tareas están pendientes, en curso o terminadas. También ayuda a limitar el trabajo en curso (WIP), detectar bloqueos y mejorar la entrega de valor.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué aportan las normas ISO/IEC de calidad de software?</summary>
+          <p>Proponen modelos y vocabulario compartido para especificar, medir y evaluar características de calidad. Ayudan a definir criterios y requisitos; no certifican automáticamente que todo producto sea de calidad ni reemplazan las pruebas.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Se puede probar un software sin encontrar todos sus defectos?</summary>
+          <p>Sí. Las pruebas reducen incertidumbre y aportan evidencia, pero no demuestran la ausencia absoluta de defectos. Conviene priorizar escenarios según riesgos, impacto y probabilidad de uso.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué diferencia hay entre verificación y validación?</summary>
+          <p>La verificación comprueba si el producto cumple especificaciones (“¿lo construimos correctamente?”). La validación comprueba si resuelve las necesidades de sus usuarios y del contexto (“¿construimos lo correcto?”).</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Scrum y Kanban son lo mismo?</summary>
+          <p>No. Scrum es un marco de trabajo con responsabilidades, eventos y artefactos definidos, organizados en Sprints. Kanban es una estrategia para optimizar el flujo mediante la visualización y gestión activa del trabajo y su mejora continua.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Por qué limitar el trabajo en curso (WIP)?</summary>
+          <p>Un límite WIP evita que el equipo empiece más tareas de las que puede terminar. Ayuda a enfocar, detectar cuellos de botella y hacer más predecible el flujo; el límite se ajusta al contexto del equipo.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué es una prueba de regresión?</summary>
+          <p>Es una prueba repetida después de un cambio para comprobar que una funcionalidad existente sigue comportándose como se espera y que el cambio no introdujo efectos no deseados.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿La accesibilidad es solo para personas con discapacidad?</summary>
+          <p>La accesibilidad elimina barreras para personas con distintas capacidades, y también suele mejorar la experiencia de todas las personas, por ejemplo, en móviles, con conexiones limitadas o en situaciones temporales.</p>
+        </details>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"><span></span></div>
+
+    <section class="learning-section resources-section" id="enlaces-de-interes" aria-labelledby="resources-title">
+      <header class="section-heading">
+        <div>
+          <h2 id="resources-title">Enlaces de interés</h2>
+          <p>Explorá documentación, estándares, libros y organizaciones para profundizar en calidad, pruebas y desarrollo de software. Los recursos externos se abren en una pestaña nueva.</p>
+        </div>
+      </header>
+      <div class="resource-browser">
+        <div class="resource-tabs" role="tablist" aria-label="Tipo de recurso">
+          <button class="resource-tab is-active" id="tab-web" type="button" role="tab" aria-selected="true" aria-controls="panel-web">Recursos web</button>
+          <button class="resource-tab" id="tab-pdf" type="button" role="tab" aria-selected="false" aria-controls="panel-pdf" tabindex="-1">Documentos PDF</button>
+          <button class="resource-tab" id="tab-books" type="button" role="tab" aria-selected="false" aria-controls="panel-books" tabindex="-1">Libros</button>
+          <button class="resource-tab" id="tab-orgs" type="button" role="tab" aria-selected="false" aria-controls="panel-orgs" tabindex="-1">Organizaciones</button>
+        </div>
+        <div class="resource-content">
+          <section class="resource-panel is-active" id="panel-web" role="tabpanel" aria-labelledby="tab-web">
+            <h3><span class="resource-arrow" aria-hidden="true">↗</span> Recursos web</h3>
+            <div class="resource-grid">
+              <article class="resource-card"><span class="resource-type">WEB</span><div><h4>Documentación de Playwright</h4><p>Guías oficiales para crear y ejecutar pruebas de extremo a extremo en aplicaciones web.</p><a href="https://playwright.dev/docs/intro" target="_blank" rel="noopener noreferrer">Visitar documentación de Playwright <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">WEB</span><div><h4>Guía de pruebas web de MDN</h4><p>Introducción a estrategias y herramientas para comprobar aplicaciones web y su compatibilidad.</p><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing" target="_blank" rel="noopener noreferrer">Leer la guía de MDN <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">WEB</span><div><h4>OWASP Top 10</h4><p>Documento de referencia sobre riesgos importantes de seguridad en aplicaciones web.</p><a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener noreferrer">Consultar OWASP Top 10 <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">WEB</span><div><h4>W3C: WCAG 2.2</h4><p>Recomendación del W3C con criterios para hacer el contenido web más accesible.</p><a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer">Leer WCAG 2.2 <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">WEB</span><div><h4>Guía de Scrum</h4><p>Definición oficial del marco Scrum, sus responsabilidades, eventos y artefactos.</p><a href="https://scrumguides.org/scrum-guide.html" target="_blank" rel="noopener noreferrer">Leer la Guía de Scrum <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">WEB</span><div><h4>Kanban Guide</h4><p>Referencia concisa sobre la definición de Kanban y sus prácticas para gestionar el flujo.</p><a href="https://kanbanguides.org/english/" target="_blank" rel="noopener noreferrer">Consultar la guía de Kanban <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">WEB</span><div><h4>ISTQB: fundamentos de testing</h4><p>Temario y materiales del nivel Foundation para aprender terminología y fundamentos de pruebas.</p><a href="https://istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0/" target="_blank" rel="noopener noreferrer">Explorar CTFL v4.0 <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">WEB</span><div><h4>OWASP Web Security Testing Guide</h4><p>Guía abierta con técnicas de pruebas de seguridad para aplicaciones web.</p><a href="https://owasp.org/www-project-web-security-testing-guide/latest/" target="_blank" rel="noopener noreferrer">Abrir la guía de pruebas OWASP <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">WEB</span><div><h4>ISO/IEC 25010:2023</h4><p>Ficha oficial del modelo de calidad de producto para productos TIC y software.</p><a href="https://www.iso.org/standard/78176.html" target="_blank" rel="noopener noreferrer">Consultar la ficha de ISO <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">WEB</span><div><h4>Introducción a la accesibilidad web</h4><p>Material educativo del W3C WAI sobre barreras, beneficios y principios de accesibilidad.</p><a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/" target="_blank" rel="noopener noreferrer">Aprender sobre accesibilidad <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">WEB</span><div><h4>Secure Software Development Framework</h4><p>Prácticas recomendadas por NIST para integrar seguridad en el desarrollo de software.</p><a href="https://csrc.nist.gov/Projects/ssdf" target="_blank" rel="noopener noreferrer">Explorar el SSDF de NIST <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">WEB</span><div><h4>La pirámide de pruebas</h4><p>Artículo de Martin Fowler sobre cómo equilibrar distintos niveles de pruebas automatizadas.</p><a href="https://martinfowler.com/articles/practical-test-pyramid.html" target="_blank" rel="noopener noreferrer">Leer el artículo <span aria-hidden="true">↗</span></a></div></article>
+            </div>
+          </section>
+          <section class="resource-panel" id="panel-pdf" role="tabpanel" aria-labelledby="tab-pdf" hidden>
+            <h3><span class="resource-arrow" aria-hidden="true">↗</span> Documentos PDF</h3>
+            <div class="resource-grid">
+              <article class="resource-card"><span class="resource-type">PDF</span><div><h4>Scrum Guide 2020</h4><p>Versión oficial en inglés de la guía de Scrum, disponible como documento PDF.</p><a href="https://scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-US.pdf" target="_blank" rel="noopener noreferrer">Abrir el Scrum Guide (PDF) <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">PDF</span><div><h4>NIST SP 800-218: SSDF</h4><p>Publicación con recomendaciones para reducir riesgos y vulnerabilidades en el software.</p><a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-218.pdf" target="_blank" rel="noopener noreferrer">Abrir NIST SP 800-218 (PDF) <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">PDF</span><div><h4>CTFL v4.0: materiales oficiales</h4><p>Programa, glosario y documentos descargables del nivel Foundation de ISTQB; algunos materiales dependen del idioma seleccionado.</p><a href="https://istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0/" target="_blank" rel="noopener noreferrer">Ver descargas oficiales de ISTQB <span aria-hidden="true">↗</span></a></div></article>
+            </div>
+          </section>
+          <section class="resource-panel" id="panel-books" role="tabpanel" aria-labelledby="tab-books" hidden>
+            <h3><span class="resource-arrow" aria-hidden="true">↗</span> Libros</h3>
+            <div class="resource-grid">
+              <article class="resource-card"><span class="resource-type">LIBRO</span><div><h4>Software Engineering at Google</h4><p>Libro digital gratuito sobre prácticas de ingeniería, sostenibilidad del código y trabajo en equipos.</p><a href="https://abseil.io/resources/swe-book" target="_blank" rel="noopener noreferrer">Leer el libro en línea <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">LIBRO</span><div><h4>The Pragmatic Programmer</h4><p>Lectura recomendada sobre oficio, diseño, aprendizaje continuo y buenas prácticas de desarrollo.</p><a href="https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/" target="_blank" rel="noopener noreferrer">Ver el libro en Pragmatic Bookshelf <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">LIBRO</span><div><h4>Refactoring</h4><p>Martin Fowler explica cómo mejorar el diseño interno del código en pequeños pasos, preservando su comportamiento.</p><a href="https://martinfowler.com/books/refactoring.html" target="_blank" rel="noopener noreferrer">Conocer el libro Refactoring <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">LIBRO</span><div><h4>Continuous Delivery</h4><p>Libro y recursos sobre automatización, entrega frecuente y construcción de pipelines de publicación confiables.</p><a href="https://continuousdelivery.com/" target="_blank" rel="noopener noreferrer">Explorar Continuous Delivery <span aria-hidden="true">↗</span></a></div></article>
+            </div>
+          </section>
+          <section class="resource-panel" id="panel-orgs" role="tabpanel" aria-labelledby="tab-orgs" hidden>
+            <h3><span class="resource-arrow" aria-hidden="true">↗</span> Organizaciones</h3>
+            <div class="resource-grid">
+              <article class="resource-card"><span class="resource-type">ORG</span><div><h4>W3C</h4><p>Consorcio internacional que desarrolla estándares abiertos para la Web.</p><a href="https://www.w3.org/" target="_blank" rel="noopener noreferrer">Visitar W3C <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">ORG</span><div><h4>OWASP Foundation</h4><p>Comunidad abierta y sin fines de lucro dedicada a mejorar la seguridad del software.</p><a href="https://owasp.org/" target="_blank" rel="noopener noreferrer">Visitar OWASP <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">ORG</span><div><h4>ISTQB</h4><p>Organización internacional que mantiene certificaciones y programas de estudio de testing.</p><a href="https://istqb.org/" target="_blank" rel="noopener noreferrer">Visitar ISTQB <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">ORG</span><div><h4>ISO</h4><p>Organización Internacional de Normalización; publica estándares para distintos sectores.</p><a href="https://www.iso.org/" target="_blank" rel="noopener noreferrer">Visitar ISO <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">ORG</span><div><h4>NIST</h4><p>Instituto estadounidense que desarrolla guías técnicas, incluyendo prácticas de desarrollo seguro.</p><a href="https://www.nist.gov/" target="_blank" rel="noopener noreferrer">Visitar NIST <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">ORG</span><div><h4>Scrum.org</h4><p>Organización educativa con cursos, evaluaciones y material relacionado con Scrum.</p><a href="https://www.scrum.org/" target="_blank" rel="noopener noreferrer">Visitar Scrum.org <span aria-hidden="true">↗</span></a></div></article>
+              <article class="resource-card"><span class="resource-type">ORG</span><div><h4>Kanban University</h4><p>Comunidad de formación y recursos sobre el Método Kanban.</p><a href="https://kanban.university/" target="_blank" rel="noopener noreferrer">Visitar Kanban University <span aria-hidden="true">↗</span></a></div></article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider" aria-hidden="true"><span></span></div>
+
+    <section class="learning-section quiz-section" id="ejercicio" aria-labelledby="quiz-title">
+      <header class="section-heading">
+        <div>
+          <h2 id="quiz-title">Ejercicio práctico: calidad del software</h2>
+          <p>Poné a prueba tus conocimientos. Elegí una respuesta para cada pregunta y seleccioná “Ver resultado” para conocer tu puntaje y revisar las explicaciones.</p>
+        </div>
+      </header>
+      <form id="quizForm">
+        <fieldset class="quiz-question" data-answer="2" data-explanation="La calidad se evalúa según las necesidades y requisitos en un contexto de uso; no equivale a sumar funciones ni a prometer cero defectos.">
+          <legend><span class="question-number">01</span> ¿Cuál es la mejor descripción de la calidad del software?</legend>
+          <label><input type="radio" name="q1" value="0"> Que el programa no tenga ningún defecto en ninguna circunstancia.</label>
+          <label><input type="radio" name="q1" value="1"> Que el producto incluya la mayor cantidad posible de funciones.</label>
+          <label><input type="radio" name="q1" value="2"> Que satisfaga necesidades y requisitos en su contexto de uso.</label>
+          <label><input type="radio" name="q1" value="3"> Que el equipo termine de programarlo en el menor tiempo posible.</label>
+        </fieldset>
+        <fieldset class="quiz-question" data-answer="0" data-explanation="QA trabaja sobre procesos y prevención; las pruebas evalúan el producto y ayudan a encontrar defectos y comprobar requisitos.">
+          <legend><span class="question-number">02</span> ¿Qué diferencia a QA de las pruebas de software (testing)?</legend>
+          <label><input type="radio" name="q2" value="0"> QA busca prevenir problemas mediante procesos; testing evalúa el producto para detectar defectos y verificar requisitos.</label>
+          <label><input type="radio" name="q2" value="1"> QA y testing son nombres distintos para la misma actividad.</label>
+          <label><input type="radio" name="q2" value="2"> Testing previene todos los defectos y QA solo los documenta.</label>
+          <label><input type="radio" name="q2" value="3"> QA se realiza únicamente después de publicar el producto.</label>
+        </fieldset>
+        <fieldset class="quiz-question" data-answer="1" data-explanation="Las pruebas aportan evidencia y reducen riesgos, pero no permiten probar exhaustivamente todas las entradas y estados de sistemas complejos.">
+          <legend><span class="question-number">03</span> ¿Qué puede demostrar una prueba de software?</legend>
+          <label><input type="radio" name="q3" value="0"> Que no existen defectos en ninguna parte del producto.</label>
+          <label><input type="radio" name="q3" value="1"> Que en las condiciones probadas se observó un resultado; no demuestra la ausencia de todos los defectos.</label>
+          <label><input type="radio" name="q3" value="2"> Que todos los usuarios utilizarán el producto de la misma manera.</label>
+          <label><input type="radio" name="q3" value="3"> Que el producto cumple cualquier requisito futuro.</label>
+        </fieldset>
+        <fieldset class="quiz-question" data-answer="1" data-explanation="El tablero visualiza el trabajo y permite seguir el flujo. Junto con políticas explícitas ayuda a gestionar el sistema y a identificar bloqueos.">
+          <legend><span class="question-number">04</span> ¿Cuál es un propósito de un tablero Kanban?</legend>
+          <label><input type="radio" name="q4" value="0"> Reemplazar toda conversación y planificación del equipo.</label>
+          <label><input type="radio" name="q4" value="1"> Visualizar el flujo de trabajo y ayudar a identificar bloqueos.</label>
+          <label><input type="radio" name="q4" value="2"> Obligar a todos los equipos a usar las mismas columnas y límites.</label>
+          <label><input type="radio" name="q4" value="3"> Medir la calidad únicamente contando tareas terminadas.</label>
+        </fieldset>
+        <fieldset class="quiz-question" data-answer="0" data-explanation="En Scrum, un Sprint es un evento de duración fija que contiene el trabajo y los demás eventos necesarios para alcanzar un objetivo.">
+          <legend><span class="question-number">05</span> ¿Qué es un Sprint en Scrum?</legend>
+          <label><input type="radio" name="q5" value="0"> Un evento de duración fija que organiza el trabajo y los demás eventos de Scrum.</label>
+          <label><input type="radio" name="q5" value="1"> Una lista de todos los defectos conocidos del producto.</label>
+          <label><input type="radio" name="q5" value="2"> Una reunión que solo ocurre al publicar una versión.</label>
+          <label><input type="radio" name="q5" value="3"> Una medida de velocidad del equipo expresada en horas.</label>
+        </fieldset>
+        <div class="quiz-actions">
+          <button class="quiz-button primary" type="submit">Ver resultado</button>
+          <button class="quiz-button secondary" type="reset">Reiniciar cuestionario</button>
+        </div>
+        <div class="quiz-result" id="quizResult" role="status" aria-live="polite" hidden></div>
+      </form>
+    </section>
+  </main>
+  <footer id="nosotros">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html#inicio" class="brand" style="font-size:1.25rem;">
+          <img class="brand-logo" src="img/Logotipo%20BugZero%20con%20borde%20blanco%20%282%29.png" alt="Logo de BugZero">
+        </a>
+        <p>Aprendé hoy, construí mejor mañana.</p>
+        <div class="social">
+          <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.7 5.6.7 12c0 5.1 3.3 9.4 7.9 11 .6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.6 7.9-5.9 7.9-11C23.3 5.6 18.3.5 12 .5z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.4-5.1c-.3-.9-1-1.6-1.9-1.9C19 4.5 12 4.5 12 4.5s-7 0-8.7.5c-.9.3-1.6 1-1.9 1.9C1 8.5 1 12 1 12s0 3.5.4 5.1c.3.9 1 1.6 1.9 1.9 1.7.5 8.7.5 8.7.5s7 0 8.7-.5c.9-.3 1.6-1 1.9-1.9.4-1.6.4-5.1.4-5.1zM9.8 15.3V8.7l5.8 3.3-5.8 3.3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5zM.4 8.3H4.6V23H.4V8.3zM8.5 8.3h4v2h.06c.56-1 1.9-2.1 3.9-2.1 4.2 0 5 2.8 5 6.3V23h-4.2v-6.6c0-1.6 0-3.6-2.2-3.6-2.2 0-2.5 1.7-2.5 3.5V23H8.5V8.3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg> info@bugzero.com</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s-8-7.2-8-13a8 8 0 0 1 16 0c0 5.8-8 13-8 13z"/><circle cx="12" cy="9" r="2.5"/></svg> Neuquén, Argentina</li>
+          <li><a class="footer-action-link" href="contacto.html">Ir a contacto<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Conócenos</h5>
+        <ul>
+          <li><a class="footer-action-link" href="nosotros.html">Sobre nosotros<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 BugZero. Todos los derechos reservados.</div>
+  </footer>
+  <script src="recursos.js"></script>
+</body>
+</html>

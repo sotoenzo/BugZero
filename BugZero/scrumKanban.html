@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conocé Scrum y practicá el flujo de trabajo de Kanban en un tablero interactivo.">
+  <title>Scrum y Kanban | BugZero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="menu.css">
+  <link rel="stylesheet" href="scrumKanban.css">
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html#inicio" class="brand" aria-label="BugZero, ir al inicio">
+      <img class="brand-logo" src="img/Logotipo%20BugZero%20con%20borde%20blanco%20%282%29.png" alt="Logo de BugZero">
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="sideMenu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </header>
+
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+  <aside class="side-menu" id="sideMenu" aria-label="Menú principal" aria-hidden="true">
+    <div class="side-menu-header">
+      <a href="index.html#inicio" class="brand" aria-label="BugZero, ir al inicio">
+        <img class="brand-logo" src="img/Logotipo%20BugZero%20con%20borde%20blanco%20%282%29.png" alt="Logo de BugZero">
+      </a>
+      <button class="side-menu-close" id="menuClose" type="button" aria-label="Cerrar menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav aria-label="Secciones del sitio">
+      <a href="index.html#inicio" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Inicio</span></a>
+      <div class="side-nav-group" id="qualityNav">
+        <button class="side-link submenu-trigger" id="qualityToggle" type="button" aria-expanded="false" aria-controls="qualitySubmenu">
+          <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>Calidad</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="side-submenu" id="qualitySubmenu" hidden>
+          <a class="side-sub-link" href="calidad.html#fundamentos">Fundamentos de Calidad</a>
+          <a class="side-sub-link" href="calidad.html#pruebas">Técnicas de Aseguramiento de la Calidad</a>
+          <a class="side-sub-link" href="calidad.html#herramientas-calidad">Herramientas de Calidad</a>
+        </div>
+      </div>
+      <div class="side-nav-group" id="developmentNav">
+        <button class="side-link submenu-trigger" id="developmentToggle" type="button" aria-expanded="false" aria-controls="developmentSubmenu">
+          <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>Desarrollo</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="side-submenu" id="developmentSubmenu" hidden>
+          <a class="side-sub-link" href="metodologia.html#ciclo-vida">Ciclo de vida</a>
+          <a class="side-sub-link" href="metodologia.html#tradicionales">Metodologías tradicionales</a>
+          <a class="side-sub-link" href="metodologia.html#agiles">Metodologías ágiles</a>
+          <a class="side-sub-link" href="#scrum" aria-current="page">Scrum y Kanban</a>
+        </div>
+      </div>
+      <div class="side-nav-group">
+        <button class="side-link submenu-trigger" id="methodsToggle" type="button" aria-expanded="false" aria-controls="methodsSubmenu">
+          <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M11 20c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/></svg>Metodologías en Detalle</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="side-submenu" id="methodsSubmenu" hidden>
+          <a class="side-sub-link" href="#scrum">Scrum en detalle</a>
+          <a class="side-sub-link" href="#kanban">Kanban en detalle</a>
+        </div>
+      </div>
+      <div class="side-nav-group">
+  <button class="side-link submenu-trigger" id="resourceToggle" type="button" aria-expanded="false" aria-controls="resourceSubmenu">
+    <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 1 4 17.5v-13z"/><path d="M20 17H6.5A2.5 2.5 0 0 0 4 19.5"/></svg>Recursos y ejercicios</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
+  </button>
+  <div class="side-submenu" id="resourceSubmenu" hidden>
+    <a class="side-sub-link" href="recursos.html#glosario">Glosario</a>
+    <a class="side-sub-link" href="recursos.html#preguntas-frecuentes">Preguntas frecuentes</a>
+    <a class="side-sub-link" href="recursos.html#enlaces-de-interes">Enlaces de interés</a>
+    <a class="side-sub-link" href="recursos.html#ejercicio">Ejercicio práctico</a>
+  </div>
+</div>
+      <div class="side-nav-group">
+        <button class="side-link submenu-trigger" id="interactiveToggle" type="button" aria-expanded="false" aria-controls="interactiveSubmenu">
+          <span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>Herramientas Interactivas</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="side-submenu" id="interactiveSubmenu" hidden>
+          <a class="side-sub-link" href="comparadorMetodologia.html#comparador">Comparador de Metodologías</a>
+          <a class="side-sub-link" href="comparadorMetodologia.html#encuesta">Encuesta de Preferencias Metodológicas</a>
+        </div>
+      </div>
+      <a href="nosotros.html" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.5 2.9-6.3 6.5-6.3S15.5 16.5 15.5 20"/><circle cx="17.5" cy="9" r="2.6"/><path d="M14.7 13.8c2.6.3 4.7 2.6 4.8 5.5"/></svg>Nosotros</span></a>
+      <a href="contacto.html" class="side-link"><span class="left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg>Contacto</span></a>
+    </nav>
+  </aside>
+
+  <main class="method-pair-main">
+    <a href="index.html#inicio" class="page-back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+      Inicio
+    </a>
+
+    <section class="method-panel scrum-panel" id="scrum" aria-labelledby="scrum-title">
+      <h1 id="scrum-title">SCRUM en detalle</h1>
+      <div class="scrum-diagram-scroll" role="group" aria-label="Diagrama interactivo del ciclo Scrum. Seleccioná una etapa para conocer su objetivo.">
+        <svg class="scrum-diagram" viewBox="0 0 1067 767" role="img" aria-labelledby="scrum-diagram-title scrum-diagram-desc" xmlns="http://www.w3.org/2000/svg">
+          <title id="scrum-diagram-title">Ciclo Scrum</title>
+          <desc id="scrum-diagram-desc">En la Planificación del Sprint, el Scrum Team selecciona trabajo de la Pila de Producto y crea la Pila del Sprint. Durante el Sprint, Developers se sincronizan diariamente. El Incremento se inspecciona en la Revisión y el Scrum Team identifica mejoras en la Retrospectiva.</desc>
+          <defs>
+            <linearGradient id="blue-panel" x2=".8" y2="1">
+              <stop stop-color="#1b6d91"/>
+              <stop offset="1" stop-color="#103454"/>
+            </linearGradient>
+            <linearGradient id="teal-panel" x2=".8" y2="1">
+              <stop stop-color="#187a85"/>
+              <stop offset="1" stop-color="#104c65"/>
+            </linearGradient>
+            <linearGradient id="orange-panel" x2=".8" y2="1">
+              <stop stop-color="#a44f42"/>
+              <stop offset="1" stop-color="#60333c"/>
+            </linearGradient>
+            <linearGradient id="green-panel" x2=".8" y2="1">
+              <stop stop-color="#278b85"/>
+              <stop offset="1" stop-color="#175767"/>
+            </linearGradient>
+            <linearGradient id="orbit-gradient" x2=".8" y2="1">
+              <stop stop-color="#8ce9e5"/>
+              <stop offset="1" stop-color="#38aebb"/>
+            </linearGradient>
+            <marker id="orbit-arrowhead" viewBox="0 0 24 24" markerWidth="40" markerHeight="40" refX="23" refY="12" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M1 1L23 12L1 23L6 12Z" fill="url(#orbit-gradient)" stroke="#276e82" stroke-width="1.5"/>
+            </marker>
+            <filter id="phase-glow" x="-35%" y="-35%" width="170%" height="170%">
+              <feGaussianBlur stdDeviation="5" result="blur"/>
+              <feFlood flood-color="#00d9f5" flood-opacity=".5"/>
+              <feComposite in2="blur" operator="in"/>
+              <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="arrow-glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path d="M30 74H432L458 111L432 148H30L50 111Z" fill="url(#blue-panel)" stroke="#57c3e3" stroke-width="2" aria-hidden="true"/>
+          <text x="237" y="126" class="diagram-copy diagram-title" aria-hidden="true">Ciclo SCRUM</text>
+
+          <g class="diagram-phase phase-blue" data-phase="backlog" role="button" tabindex="0" aria-label="Pila de Producto">
+            <path class="phase-shape" d="M63 241H321L247 525H63Z"/>
+            <path class="phase-shape" d="M43 185H296L321 253H63Z"/>
+            <g class="diagram-icon" transform="translate(73 200)" aria-hidden="true">
+              <rect x="4" y="5" width="26" height="38" rx="3"/>
+              <path d="M11 5V1H23V5M11 15H24M11 23H24M11 31H24M11 38H24"/>
+              <circle cx="8" cy="15" r="1"/><circle cx="8" cy="23" r="1"/><circle cx="8" cy="31" r="1"/><circle cx="8" cy="38" r="1"/>
+            </g>
+            <text x="205" y="232" class="diagram-copy diagram-label">Pila de Producto</text>
+            <g class="diagram-copy diagram-label diagram-list">
+              <text x="85" y="292">1. …</text><text x="85" y="323">2. …</text>
+              <text x="85" y="354">3. …</text><text x="85" y="385">4. …</text>
+              <text x="85" y="416">5. …</text><text x="85" y="447">6. …</text>
+              <text x="85" y="478">7. …</text><text x="85" y="509">8. …</text>
+            </g>
+          </g>
+
+          <g class="diagram-phase phase-teal" data-phase="planning" role="button" tabindex="0" aria-label="Planificación del Sprint">
+            <path class="phase-shape" d="M371 244H570L588 342L568 474H371Z" pointer-events="none"/>
+            <path class="phase-hitbox" d="M371 244H570L588 342L568 474H371Z M390 277H553V451H390Z"/>
+            <path class="phase-shape" d="M346 192H570L597 229L578 266H372L346 239L359 220Z"/>
+            <g class="diagram-icon" transform="translate(360 202)" aria-hidden="true">
+              <path d="M3 3H29V38H3Z M9 12H23M9 19H23M9 26H20"/>
+              <circle cx="32" cy="34" r="7"/><path d="M32 29V39M27 34H37"/>
+            </g>
+            <text x="493" y="218" class="diagram-copy diagram-label">Planificación</text>
+            <text x="493" y="252" class="diagram-copy diagram-label">del SPRINT</text>
+          </g>
+
+          <g class="diagram-phase phase-blue" data-phase="sprint-backlog" role="button" tabindex="0" aria-label="Pila del Sprint">
+            <path class="phase-shape" d="M380 272H562V466H380Z"/>
+            <text x="398" y="307" class="diagram-copy diagram-label diagram-list-item">Pila del</text>
+            <text x="398" y="340" class="diagram-copy diagram-label diagram-list-item">SPRINT</text>
+            <g class="diagram-copy diagram-label diagram-list">
+              <text x="398" y="383">1. …</text><text x="398" y="418">2. …</text><text x="398" y="453">3. …</text>
+            </g>
+          </g>
+
+          <g aria-hidden="true">
+            <circle cx="778" cy="300" r="137" fill="#0b3850" fill-opacity=".26" stroke="#6bced3" stroke-opacity=".14" stroke-width="2"/>
+            <path class="orbit-arrow" marker-end="url(#orbit-arrowhead)" d="M658 246A137 137 0 0 1 794 164"/>
+            <path class="orbit-arrow" marker-end="url(#orbit-arrowhead)" d="M833 179A137 137 0 0 1 901 321"/>
+            <path class="orbit-arrow" marker-end="url(#orbit-arrowhead)" d="M887 363A137 137 0 0 1 744 426"/>
+            <path class="orbit-arrow" marker-end="url(#orbit-arrowhead)" d="M705 411A137 137 0 0 1 644 275"/>
+          </g>
+
+          <g class="diagram-phase phase-blue phase-circle" data-phase="sprint" role="button" tabindex="0" aria-label="Sprint">
+            <circle class="phase-shape" cx="778" cy="355" r="52"/>
+            <text x="778" y="363" class="diagram-copy diagram-title sprint-label">SPRINT</text>
+          </g>
+          <g class="diagram-phase phase-teal phase-circle" data-phase="daily" role="button" tabindex="0" aria-label="Scrum Diario">
+            <circle class="phase-shape" cx="778" cy="239" r="52"/>
+            <path d="M759 202a19 19 0 0 1 32-5l4 4M795 201l-1-10-10 3M797 215a19 19 0 0 1-32 5l-4-4M761 216l1 10 10-3" fill="none" stroke="#d7f6ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"/>
+            <text x="778" y="253" class="diagram-copy diagram-label daily-label">SCRUM</text>
+            <text x="778" y="274" class="diagram-copy diagram-label daily-label">DIARIO</text>
+          </g>
+
+          <g class="diagram-phase phase-green" data-phase="increment" role="button" tabindex="0" aria-label="Incremento">
+            <path class="phase-shape" d="M839 468H967Q979 468 979 480V492Q979 506 992 506Q1005 506 1005 521V535Q1005 550 992 550Q979 550 979 564V578Q979 590 967 590H839Q827 590 827 578V564Q827 550 814 550Q801 550 801 535V521Q801 506 814 506Q827 506 827 492V480Q827 468 839 468Z"/>
+            <g class="diagram-icon" aria-hidden="true">
+              <circle cx="903" cy="500" r="11"/><circle cx="884" cy="507" r="8"/><circle cx="922" cy="507" r="8"/>
+              <path d="M883 530Q883 515 903 515Q923 515 923 530M868 532Q868 519 882 519M938 532Q938 519 924 519"/>
+            </g>
+            <text x="903" y="568" class="diagram-copy diagram-label">Incremento</text>
+          </g>
+
+          <g class="diagram-phase phase-blue" data-phase="review" role="button" tabindex="0" aria-label="Revisión del Sprint">
+            <path class="phase-shape" d="M545 564H758L787 611L758 650H545L562 611Z"/>
+            <circle class="diagram-icon" cx="593" cy="601" r="17" aria-hidden="true"/>
+            <path class="diagram-icon" d="M606 614L620 630M584 601a9 9 0 1 1 15 7" aria-hidden="true"/>
+            <text x="698" y="598" class="diagram-copy diagram-label">Revisión del</text>
+            <text x="698" y="630" class="diagram-copy diagram-label">SPRINT</text>
+          </g>
+
+          <g class="diagram-phase phase-orange" data-phase="retro" role="button" tabindex="0" aria-label="Retrospectiva del Sprint">
+            <path class="phase-shape" d="M279 562H479L506 609L479 647H279L297 609Z"/>
+            <circle class="diagram-icon" cx="312" cy="604" r="17" aria-hidden="true"/>
+            <path class="diagram-icon" d="M312 592V604L321 609M312 581V576M312 632V627" aria-hidden="true"/>
+            <text x="414" y="596" class="diagram-copy diagram-label">Retrospectiva</text>
+            <text x="414" y="630" class="diagram-copy diagram-label">del SPRINT</text>
+          </g>
+
+          <g class="diagram-flow-group" aria-hidden="true">
+            <path class="diagram-flow" d="M321 321H342M597 321H619M887 443L906 466M843 613H794M539 613H508M278 597H228Q199 597 199 568V543"/>
+            <path d="M350 321L336 313V329Z M627 321L613 313V329Z M914 480L910 460L896 470Z M782 613L798 605V621Z M496 613L512 605V621Z M199 530L190 547H208Z" fill="#69caff"/>
+          </g>
+        </svg>
+      </div>
+      <p class="scrum-diagram-caption">Seleccioná una etapa del diagrama para conocer su objetivo.</p>
+
+      <dialog class="scrum-event-dialog" id="scrumEventDialog" aria-labelledby="scrumEventTitle" aria-describedby="scrumEventObjective">
+        <div class="scrum-event-header">
+          <p class="scrum-type-badge" id="scrumEventType">Evento de Scrum</p>
+          <button class="scrum-event-close" type="button" aria-label="Cerrar explicación">×</button>
+        </div>
+        <h2 id="scrumEventTitle">Sprint</h2>
+        <div class="scrum-event-arrow" aria-hidden="true">⌄</div>
+        <div class="scrum-event-content"><p id="scrumEventObjective"></p></div>
+      </dialog>
+
+      <div class="roles-heading">
+        <span aria-hidden="true">♟</span>
+        <h2>Roles de Scrum</h2>
+      </div>
+      <div class="roles-grid">
+        <article class="role-card">
+          <h3>Product Owner</h3>
+          <p>Define la visión del producto, gestiona la Pila de Producto y representa los intereses del negocio y los usuarios.</p>
+          <ul>
+            <li>Gestiona y prioriza la Pila de Producto (Product Backlog).</li>
+            <li>Asegura que el equipo entregue el máximo valor posible.</li>
+          </ul>
+        </article>
+        <article class="role-card">
+          <h3>Scrum Master</h3>
+          <p>Facilita el proceso Scrum, ayuda al equipo a eliminar impedimentos y promueve la colaboración y la mejora continua.</p>
+          <ul>
+            <li>Organiza y acompaña los eventos Scrum.</li>
+            <li>Ayuda a que el equipo comprenda y aplique Scrum.</li>
+          </ul>
+        </article>
+        <article class="role-card">
+          <h3>Diseñador</h3>
+          <p>Define cómo se verá y cómo se usará el producto, creando experiencias claras y accesibles.</p>
+          <ul>
+            <li>Diseña interfaces y recorridos de usuario.</li>
+            <li>Colabora con el equipo para validar soluciones.</li>
+          </ul>
+        </article>
+        <article class="role-card">
+          <h3>Programador</h3>
+          <p>Implementa las funcionalidades y mantiene el código necesario para construir el producto.</p>
+          <ul>
+            <li>Desarrolla soluciones a partir de los requisitos y diseños.</li>
+            <li>Colabora con el equipo para integrar y mantener el producto.</li>
+          </ul>
+        </article>
+        <article class="role-card">
+          <h3>Tester</h3>
+          <p>Verifica el Incremento y contribuye a mantener los estándares técnicos y la calidad del producto.</p>
+          <ul>
+            <li>Integra y prueba el código continuamente para asegurar que sea utilizable.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <div class="method-separator" role="separator" aria-label="Separador entre Scrum y Kanban">
+      <span></span>
+      <span></span>
+    </div>
+
+    <section class="method-panel kanban-panel" id="kanban" aria-labelledby="kanban-title">
+      <h2 id="kanban-title">KANBAN en detalle</h2>
+      <p class="kanban-intro">Kanban es una metodología visual para organizar y mejorar el flujo de trabajo. Las tareas se representan como tarjetas que avanzan por columnas según su estado, haciendo visible qué está pendiente, qué está en curso y qué ya se completó. El equipo puede detectar bloqueos, priorizar el trabajo y entregar valor de manera continua, sin depender de iteraciones de duración fija.</p>
+
+      <div class="kanban-board-frame">
+        <div class="board-heading">
+          <div>
+            <h3>Tablero Kanban</h3>
+            <p>Arrastrá cada tarjeta a otra columna para cambiar su estado. También podés enfocarla y usar las flechas izquierda y derecha.</p>
+          </div>
+        </div>
+        <div class="kanban-board" id="kanbanBoard" aria-label="Tablero Kanban interactivo">
+          <section class="kanban-column" data-status="todo" aria-labelledby="todo-title">
+            <header class="column-header">
+              <h4 id="todo-title">Por hacer</h4>
+              <span class="task-count" aria-label="Cantidad de tareas">2</span>
+            </header>
+            <div class="column-tasks">
+              <article class="task-card" id="task-search" tabindex="0" draggable="true" data-task="search" aria-label="Mejorar búsqueda del catálogo. Por hacer. Usa las flechas izquierda y derecha para cambiar de columna.">
+                <h5>Mejorar búsqueda del catálogo</h5>
+                <p>Permitir filtrar productos por nombre y categoría.</p>
+                <span class="task-tag">Funcionalidad</span>
+              </article>
+              <article class="task-card" id="task-login" tabindex="0" draggable="true" data-task="login" aria-label="Preparar pruebas de inicio de sesión. Por hacer. Usa las flechas izquierda y derecha para cambiar de columna.">
+                <h5>Preparar pruebas de inicio de sesión</h5>
+                <p>Verificar acceso correcto y mensajes de error.</p>
+                <span class="task-tag">Pruebas</span>
+              </article>
+            </div>
+          </section>
+          <section class="kanban-column" data-status="progress" aria-labelledby="progress-title">
+            <header class="column-header">
+              <h4 id="progress-title">En progreso</h4>
+              <span class="task-count" aria-label="Cantidad de tareas">1</span>
+            </header>
+            <div class="column-tasks">
+              <article class="task-card" id="task-header" tabindex="0" draggable="true" data-task="header" aria-label="Ajustar encabezado adaptable. En progreso. Usa las flechas izquierda y derecha para cambiar de columna.">
+                <h5>Ajustar encabezado adaptable</h5>
+                <p>Mejorar la visualización del menú en pantallas pequeñas.</p>
+                <span class="task-tag">Interfaz</span>
+              </article>
+            </div>
+          </section>
+          <section class="kanban-column" data-status="review" aria-labelledby="review-title">
+            <header class="column-header">
+              <h4 id="review-title">En revisión</h4>
+              <span class="task-count" aria-label="Cantidad de tareas">1</span>
+            </header>
+            <div class="column-tasks">
+              <article class="task-card" id="task-checkout" tabindex="0" draggable="true" data-task="checkout" aria-label="Validar formulario de compra. En revisión. Usa las flechas izquierda y derecha para cambiar de columna.">
+                <h5>Validar formulario de compra</h5>
+                <p>Revisar campos obligatorios y confirmación de pedido.</p>
+                <span class="task-tag">Validación</span>
+              </article>
+            </div>
+          </section>
+          <section class="kanban-column" data-status="done" aria-labelledby="done-title">
+            <header class="column-header">
+              <h4 id="done-title">Hecho</h4>
+              <span class="task-count" aria-label="Cantidad de tareas">1</span>
+            </header>
+            <div class="column-tasks">
+              <article class="task-card" id="task-testing" tabindex="0" draggable="true" data-task="testing" aria-label="Configurar entorno de pruebas. Hecho. Usa las flechas izquierda y derecha para cambiar de columna.">
+                <h5>Configurar entorno de pruebas</h5>
+                <p>Preparar datos y accesos para el equipo de QA.</p>
+                <span class="task-tag">Infraestructura</span>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="scrumKanban.js"></script>
+</body>
+</html>

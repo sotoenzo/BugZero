@@ -237,6 +237,10 @@
     const overlay = document.getElementById('overlay');
     const developmentToggle = document.getElementById('developmentToggle');
     const developmentSubmenu = document.getElementById('developmentSubmenu');
+    const methodsToggle = document.getElementById('methodsToggle');
+    const methodsSubmenu = document.getElementById('methodsSubmenu');
+    const resourceToggle = document.getElementById('resourceToggle');
+    const resourceSubmenu = document.getElementById('resourceSubmenu');
     const interactiveToggle = document.getElementById('interactiveToggle');
     const interactiveSubmenu = document.getElementById('interactiveSubmenu');
 
@@ -263,7 +267,7 @@
       link.addEventListener('click', () => setMenuOpen(false));
     });
 
-    [[developmentToggle, developmentSubmenu], [interactiveToggle, interactiveSubmenu]].forEach(([toggle, submenu]) => {
+    [[developmentToggle, developmentSubmenu], [methodsToggle, methodsSubmenu], [resourceToggle, resourceSubmenu], [interactiveToggle, interactiveSubmenu]].forEach(([toggle, submenu]) => {
       toggle.addEventListener('click', () => {
         const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
         toggle.setAttribute('aria-expanded', String(!isExpanded));

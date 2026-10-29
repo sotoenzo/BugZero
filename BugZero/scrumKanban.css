@@ -1,0 +1,600 @@
+:root {
+  color-scheme: dark;
+  --pair-bg: #060d1d;
+  --pair-panel: #071226;
+  --pair-card: #0a1a31;
+  --pair-border: rgba(0, 190, 235, .27);
+  --pair-muted: #a9bfd8;
+  --pair-cyan: #62ddff;
+}
+
+html {
+  overflow-x: clip;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(0, 111, 172, .09), transparent 56%),
+    var(--pair-bg);
+  color: #f3f7ff;
+  font-family: 'Inter', sans-serif;
+}
+
+.side-menu {
+  box-sizing: border-box;
+}
+
+.method-pair-main {
+  width: min(1440px, 100%);
+  margin: 0 auto;
+  padding: 26px 34px 72px;
+}
+
+.page-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: var(--pair-muted);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color .15s ease;
+}
+
+.page-back-link:hover,
+.page-back-link:focus-visible {
+  color: #fff;
+}
+
+.page-back-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.method-panel {
+  padding: clamp(24px, 4vw, 40px);
+  border: 1px solid var(--pair-border);
+  border-radius: 20px;
+  background: rgba(4, 13, 30, .76);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .17);
+}
+
+.method-panel h1,
+.method-panel h2 {
+  color: #f6f8fc;
+  font-size: clamp(1.7rem, 3.2vw, 2.45rem);
+  font-weight: 750;
+  letter-spacing: -.035em;
+}
+
+.scrum-diagram-scroll {
+  overflow-x: auto;
+  margin-top: 20px;
+  border: 1px solid rgba(69, 174, 218, .24);
+  border-radius: 13px;
+  background: rgba(8, 21, 43, .86);
+  scrollbar-color: #1687a6 #07152b;
+}
+
+.scrum-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.diagram-copy {
+  fill: #eef7ff;
+  font-family: 'Inter', sans-serif;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.diagram-label {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.diagram-title {
+  fill: #d7edff;
+  font-size: 39px;
+  font-weight: 750;
+  letter-spacing: 1px;
+}
+
+.diagram-list {
+  text-anchor: start;
+  font-size: 25px;
+}
+
+.diagram-list-item {
+  text-anchor: start;
+}
+
+.sprint-label {
+  font-size: 24px;
+}
+
+.daily-label {
+  font-size: 18px;
+}
+
+.diagram-phase {
+  cursor: pointer;
+}
+
+.diagram-phase .phase-shape {
+  stroke: #52bce0;
+  stroke-width: 2;
+  transition: stroke .18s ease, filter .18s ease, fill .18s ease;
+}
+
+.phase-hitbox {
+  fill: transparent;
+  fill-rule: evenodd;
+  pointer-events: all;
+}
+
+.diagram-phase:hover .phase-shape {
+  stroke: #e6fbff;
+  stroke-width: 4;
+  filter: url(#phase-glow);
+}
+
+.diagram-phase:focus {
+  outline: none;
+}
+
+.diagram-phase:focus-visible .phase-shape {
+  stroke: #fff;
+  stroke-width: 4;
+}
+
+.phase-blue .phase-shape {
+  fill: url(#blue-panel);
+}
+
+.phase-teal .phase-shape {
+  fill: url(#teal-panel);
+  stroke: #62d9dc;
+}
+
+.phase-orange .phase-shape {
+  fill: url(#orange-panel);
+  stroke: #ff9a76;
+}
+
+.phase-green .phase-shape {
+  fill: url(#green-panel);
+  stroke: #78e1cc;
+}
+
+.diagram-icon {
+  fill: none;
+  stroke: #d4f5ff;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.diagram-flow {
+  fill: none;
+  stroke: #61cfff;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: url(#arrow-glow);
+}
+
+.orbit-arrow {
+  fill: none;
+  stroke: url(#orbit-gradient);
+  stroke-width: 20;
+  stroke-linecap: round;
+  filter: url(#arrow-glow);
+}
+
+.scrum-diagram-caption {
+  margin: 9px 2px 0;
+  color: var(--pair-muted);
+  font-size: .82rem;
+  line-height: 1.5;
+}
+
+.scrum-event-dialog {
+  width: min(460px, calc(100vw - 32px));
+  max-width: none;
+  margin: auto;
+  padding: 22px;
+  color: #f3f7ff;
+  border: 1px solid rgba(0, 217, 245, .55);
+  border-radius: 14px;
+  background: linear-gradient(145deg, #0b2540, #071629 78%);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .48), 0 0 32px rgba(0, 217, 245, .14);
+}
+
+.scrum-event-dialog::backdrop {
+  background: rgba(1, 8, 18, .76);
+  backdrop-filter: blur(4px);
+}
+
+.scrum-event-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.scrum-type-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  margin: 0;
+  padding: 5px 11px;
+  border: 1px solid rgba(98, 221, 255, .48);
+  border-radius: 8px;
+  background: rgba(20, 138, 177, .2);
+  color: #a6efff;
+  font-size: .73rem;
+  font-weight: 700;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+
+.scrum-type-badge[data-type="artefacto"] {
+  border-color: rgba(120, 225, 204, .48);
+  background: rgba(39, 139, 133, .2);
+  color: #a7f1df;
+}
+
+.scrum-event-close {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 0;
+  color: #f3f7ff;
+  border: 1px solid var(--pair-border);
+  border-radius: 8px;
+  background: rgba(3, 18, 33, .85);
+  font: inherit;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.scrum-event-close:hover {
+  border-color: var(--pair-cyan);
+}
+
+.scrum-event-dialog h2 {
+  margin: 8px 0 0;
+  color: var(--pair-cyan);
+  font-size: 1.25rem;
+}
+
+.scrum-event-arrow {
+  height: 30px;
+  color: var(--pair-cyan);
+  text-align: center;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.scrum-event-content {
+  padding: 16px;
+  border: 1px solid rgba(0, 217, 245, .35);
+  border-radius: 10px;
+  background: rgba(3, 17, 31, .75);
+}
+
+.scrum-event-content p {
+  margin: 0;
+  color: var(--pair-muted);
+  font-size: .92rem;
+  line-height: 1.6;
+}
+
+.roles-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 24px 0 14px;
+}
+
+.roles-heading > span {
+  color: var(--pair-cyan);
+  font-size: 1.15rem;
+}
+
+.roles-heading h2 {
+  font-size: 1.25rem;
+  letter-spacing: -.02em;
+}
+
+.roles-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.role-card {
+  min-width: 0;
+  padding: 16px 14px;
+  border: 1px solid rgba(90, 133, 179, .22);
+  border-radius: 12px;
+  background: rgba(5, 15, 33, .72);
+}
+
+.role-card h3 {
+  margin-bottom: 9px;
+  font-size: .91rem;
+}
+
+.role-card p,
+.role-card li {
+  color: #bdcbe0;
+  font-size: .76rem;
+  line-height: 1.5;
+}
+
+.role-card ul {
+  display: grid;
+  gap: 7px;
+  margin: 10px 0 0;
+  padding-left: 17px;
+}
+
+.role-card li::marker {
+  color: var(--pair-cyan);
+}
+
+.method-separator {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 0;
+  margin: 54px 0;
+  padding: 9px 0;
+}
+
+.method-separator::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #8ce9e5;
+  border-radius: 50%;
+  background: #071629;
+  box-shadow: 0 0 0 5px rgba(0, 190, 235, .09), 0 0 18px rgba(98, 221, 255, .85);
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+.method-separator span {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(67, 196, 231, .9));
+}
+
+.method-separator span:last-child {
+  background: linear-gradient(90deg, rgba(67, 196, 231, .9), transparent);
+}
+
+.kanban-panel h2 {
+  margin-bottom: 12px;
+}
+
+.kanban-intro {
+  max-width: 980px;
+  color: #b7cbe3;
+  font-size: clamp(.95rem, 1.5vw, 1.08rem);
+  line-height: 1.65;
+}
+
+.board-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 28px 0 14px;
+}
+
+.board-heading h3 {
+  margin-bottom: 5px;
+  font-size: 1.22rem;
+}
+
+.board-heading p {
+  color: var(--pair-muted);
+  font-size: .83rem;
+  line-height: 1.5;
+}
+
+.kanban-board-frame {
+  padding: 20px;
+  border: 1px solid rgba(0, 190, 235, .34);
+  border-radius: 16px;
+  background: rgba(4, 13, 30, .58);
+  box-shadow: inset 0 0 28px rgba(8, 24, 50, .18);
+}
+
+.kanban-board-frame .board-heading {
+  margin: 0 0 16px;
+}
+
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  gap: 12px;
+}
+
+.kanban-column {
+  min-width: 0;
+  min-height: 250px;
+  padding: 11px;
+  border: 1px solid rgba(0, 168, 215, .28);
+  border-radius: 14px;
+  background: rgba(8, 21, 43, .86);
+  transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+
+.kanban-column.is-drop-target {
+  border-color: var(--pair-cyan);
+  background: rgba(12, 45, 70, .85);
+  box-shadow: 0 0 20px rgba(29, 191, 232, .13);
+}
+
+.column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 2px 2px 11px;
+  border-bottom: 1px solid rgba(105, 149, 194, .18);
+}
+
+.column-header h4 {
+  font-size: .93rem;
+}
+
+.task-count {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border: 1px solid rgba(35, 185, 225, .35);
+  border-radius: 50%;
+  background: rgba(21, 113, 147, .2);
+  color: #a6eaff;
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+.column-tasks {
+  display: grid;
+  gap: 9px;
+  min-height: 195px;
+  padding-top: 10px;
+}
+
+.task-card {
+  padding: 14px 13px;
+  border: 1px solid rgba(75, 141, 187, .27);
+  border-radius: 11px;
+  background: linear-gradient(145deg, rgba(12, 31, 55, .98), rgba(8, 23, 43, .98));
+  cursor: grab;
+  transition: transform .18s ease, border-color .18s ease, opacity .18s ease;
+}
+
+.task-card:hover,
+.task-card:focus-visible {
+  border-color: rgba(80, 207, 240, .7);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.task-card:focus-visible {
+  box-shadow: 0 0 0 2px rgba(98, 221, 255, .22);
+}
+
+.task-card.is-dragging {
+  opacity: .45;
+  cursor: grabbing;
+}
+
+.task-card h5 {
+  margin-bottom: 8px;
+  color: #f0f5ff;
+  font-size: .85rem;
+  line-height: 1.4;
+}
+
+.task-card p {
+  margin-bottom: 10px;
+  color: #bdd0e6;
+  font-size: .78rem;
+  line-height: 1.55;
+}
+
+.task-tag {
+  display: inline-flex;
+  padding: 4px 9px;
+  border: 1px solid rgba(32, 180, 218, .35);
+  border-radius: 999px;
+  background: rgba(0, 154, 193, .1);
+  color: #83e3ff;
+  font-size: .69rem;
+  font-weight: 600;
+}
+
+@media (max-width: 980px) {
+  .roles-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .kanban-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .scrum-diagram {
+    min-width: 720px;
+  }
+}
+
+@media (max-width: 600px) {
+  .method-pair-main {
+    padding: 20px 14px 48px;
+  }
+
+  .method-panel {
+    padding: 22px 16px;
+    border-radius: 15px;
+  }
+
+  .roles-grid,
+  .kanban-board {
+    grid-template-columns: 1fr;
+  }
+
+  .role-card {
+    padding: 16px;
+  }
+
+  .kanban-column {
+    min-height: 0;
+  }
+
+  .kanban-board-frame {
+    padding: 14px;
+  }
+
+  .column-tasks {
+    min-height: 56px;
+  }
+
+  .method-separator {
+    margin: 30px 0;
+  }
+
+  .method-separator p {
+    max-width: 180px;
+    line-height: 1.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
